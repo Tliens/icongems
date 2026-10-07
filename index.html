@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>IconGems — Free SVG Icons & Illustrations, Search & Download</title>
-<meta name="description" content="Search and download 100,000+ free SVG icons from Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome and more. Copy SVG/React/Vue code, export SVG & PNG, plus a curated directory of free illustration libraries. For designers, developers, PMs and AI. No signup.">
+<meta name="description" content="Search and download 100,000+ free SVG icons from Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome and more. Copy SVG/React/Vue code, export SVG & PNG, plus a curated directory of free illustration libraries. For designers, developers, PMs — and built for AI: llms.txt, machine-readable catalog, keyless open API. No signup.">
 <link rel="canonical" href="https://icongems.kuige.me/">
 <link rel="alternate" hreflang="en" href="https://icongems.kuige.me/">
 <link rel="alternate" hreflang="zh" href="https://icongems.kuige.me/?lang=zh">
@@ -55,6 +55,13 @@ body{
   transition:background .25s,color .25s;
 }
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+/* AI banner — the site's differentiator, first thing on the page */
+.aibar{background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 15%,var(--bg)),color-mix(in srgb,var(--accent2) 12%,var(--bg)));border-bottom:1px solid var(--line);font-size:13px}
+.aibar .wrap{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:7px 20px;text-align:center}
+.aibar b{color:var(--accent)}
+.aibar a{color:var(--accent);font-weight:700;text-decoration:none;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px}
+.aibar a:hover{text-decoration:underline}
+.aibar [data-i18n="aibar_more"]{font-family:inherit}
 /* topbar */
 .top{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:14px;height:58px}
@@ -261,6 +268,14 @@ select{background:var(--card);color:var(--ink);border:1px solid var(--line);bord
 </script>
 </head>
 <body>
+<!-- AI/LLM agents: site guide at /llms.txt · complete guide at /llms-full.txt · machine catalog at /data/catalog.json · search & SVG via api.iconify.design (keyless, open CORS) -->
+<div class="aibar"><div class="wrap">
+  <span>🤖 <b data-i18n="aibar_t">Built for AI, end to end</b><span data-i18n="aibar_d"> — keyless, machine-readable, open CORS:</span></span>
+  <a href="llms.txt">llms.txt</a>
+  <a href="llms-full.txt">llms-full.txt</a>
+  <a href="data/catalog.json">catalog.json</a>
+  <a href="#ai" data-i18n="aibar_more">API &amp; recipes ↓</a>
+</div></div>
 <div class="top"><div class="wrap">
   <a class="brand" href="./" title="IconGems">
     <img class="mark" src="logo.png?v=1" alt="IconGems logo">
@@ -466,6 +481,7 @@ en:{'nav_find':'Search & Download','nav_libs':'Icon Libraries','nav_art':'Illust
 'h1':'Search 100,000+ free icons from the names you trust',
 'sub':'Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap — aggregated search, one-click SVG/PNG download, copy-ready code. Plus a hand-picked directory of free illustration libraries.',
 'st_libs':'curated libraries','st_icons':'curated icons','st_all':'searchable · SVG + PNG','st_allnum':'200,000+','st_free':'Free · no signup',
+'aibar_t':'Built for AI, end to end','aibar_d':' — keyless, machine-readable, open CORS:','aibar_more':'API & recipes ↓',
 'picks_t':'Popular picks','picks_status':'hand-picked from the famous sets — search 200,000+ more above',
 'more':'Show more','copy':'Copy','copied':'Copied ✓',
 'libs_h2':'The famous libraries, all in one place',
@@ -498,12 +514,13 @@ en:{'nav_find':'Search & Download','nav_libs':'Icon Libraries','nav_art':'Illust
 'color':'Color','multicolor':'Multicolor icon — keeps its original colors','current':'follows theme',
 'live':'live via api.iconify.design',
 'title_en':'IconGems — Free SVG Icons & Illustrations, Search & Download',
-'desc_en':'Search and download 100,000+ free SVG icons from Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome and more. Copy SVG/React/Vue code, export SVG & PNG, plus a curated directory of free illustration libraries. For designers, developers, PMs and AI. No signup.'},
+'desc_en':'Search and download 100,000+ free SVG icons from Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome and more. Copy SVG/React/Vue code, export SVG & PNG, plus a curated directory of free illustration libraries. For designers, developers, PMs — and built for AI: llms.txt, machine-readable catalog, keyless open API. No signup.'},
 zh:{'nav_find':'搜索与下载','nav_libs':'图标库','nav_art':'插画库','nav_ai':'For AI','nav_faq':'常见问题',
 'eyebrow':'免费图标与插画 · 设计师 / 程序员 / 产品经理 / AI',
 'h1':'一站搜齐 100,000+ 大厂免费图标',
 'sub':'Google Material Symbols、微软 Fluent、Tabler、Lucide、Phosphor、Font Awesome、Bootstrap——聚合搜索、一键下载 SVG/PNG、代码即复制。另附人工精选的免费插画库导航。',
 'st_libs':'个精选图标库','st_icons':'个精选图标','st_all':'全量可搜 · SVG + PNG','st_allnum':'200,000+','st_free':'免费 · 免注册',
+'aibar_t':'整条链路，为 AI 铺就','aibar_d':' —— 免密钥、机器可读、开放 CORS：','aibar_more':'API 与接入配方 ↓',
 'picks_t':'热门精选','picks_status':'选自各大厂集合——上方搜索框可搜 200,000+ 图标',
 'more':'加载更多','copy':'复制','copied':'已复制 ✓',
 'libs_h2':'知名图标库，一站收齐',
@@ -536,7 +553,7 @@ zh:{'nav_find':'搜索与下载','nav_libs':'图标库','nav_art':'插画库','n
 'color':'颜色','multicolor':'多彩图标——保留原始配色','current':'跟随主题',
 'live':'实时 · api.iconify.design',
 'title_en':'IconGems — 免费图标与插画库 · 10万+ SVG 在线搜索下载',
-'desc_en':'一站式搜索下载 10 万+ 免费开源 SVG 图标：Google Material Symbols、微软 Fluent、Tabler、Lucide、Phosphor、Font Awesome 等，可复制 SVG/React/Vue 代码、导出 SVG/PNG，另附精选免费插画库导航。面向设计师、程序员、产品经理与 AI。'}};
+'desc_en':'一站式搜索下载 10 万+ 免费开源 SVG 图标：Google Material Symbols、微软 Fluent、Tabler、Lucide、Phosphor、Font Awesome 等，可复制 SVG/React/Vue 代码、导出 SVG/PNG，另附精选免费插画库导航。面向设计师、程序员、产品经理——并为 AI 就绪：llms.txt / 完整目录 / 开放 API。'}};
 let lang='en';
 const t=k=>(L[lang]&&L[lang][k])??L.en[k]??k;
 function applyLang(l){
