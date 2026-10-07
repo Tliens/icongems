@@ -1,4 +1,33 @@
+# IconGems — AI agents welcome.
+# Site guide for LLMs:      https://icongems.kuige.me/llms.txt
+# Complete LLM guide:       https://icongems.kuige.me/llms-full.txt
+# Machine-readable catalog: https://icongems.kuige.me/data/catalog.json
+
 User-agent: *
+Allow: /
+
+# Explicitly welcome AI / LLM crawlers
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: meta-externalagent
 Allow: /
 
 Sitemap: https://icongems.kuige.me/sitemap.xml

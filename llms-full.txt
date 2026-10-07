@@ -1,3 +1,96 @@
+# IconGems
+
+> Free search & download for 109,813+ open-source SVG icons from 29 famous libraries (Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap, ByteDance IconPark…) plus 16 curated free illustration libraries. Bilingual EN/ZH. Built for designers, developers, PMs — and AI agents: every asset below is machine-readable, key-less and CORS-open.
+
+## Quick start for agents
+
+1. Pick a set from the catalog (check `license` first): https://icongems.kuige.me/data/catalog.json
+2. Search: `GET https://api.iconify.design/search?query=<term>&prefixes=<prefix(es)>`
+3. Get SVG: `GET https://api.iconify.design/<prefix>/<name>.svg?height=64` (`&color=%23hex` to recolor)
+4. Ship: MIT/Apache/ISC/CC0 sets need no attribution; CC BY 4.0 sets do. Full details in llms-full.txt.
+
+## Site
+
+- [IconGems](https://icongems.kuige.me/): the human interface — aggregated search, one-click SVG/PNG download, copy-ready React/Vue/HTML/CSS
+- [llms-full.txt](https://icongems.kuige.me/llms-full.txt): this guide with the complete catalog inlined
+
+## Curated icon sets (29 sets, 109,813 icons, counts as of 2026-10-07)
+
+- [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons): 19,876 icons, license MIT, prefix `fluent` [ui]
+- [Material Symbols](https://fonts.google.com/icons): 15,717 icons, license Apache-2.0, prefix `material-symbols` [ui]
+- [Phosphor](https://phosphoricons.com): 9,072 icons, license MIT, prefix `ph` [ui]
+- [Material Design Icons](https://pictogrammers.com/library/mdi/): 7,447 icons, license Apache-2.0, prefix `mdi` [ui]
+- [Tabler Icons](https://tabler.io/icons): 6,220 icons, license MIT, prefix `tabler` [ui]
+- [Solar](https://solar-icons.com): 8,706 icons, license CC-BY-4.0, prefix `solar` [ui]
+- [MingCute Icon](https://www.mingcute.com): 3,320 icons, license Apache-2.0, prefix `mingcute` [ui]
+- [Remix Icon](https://remixicon.com): 3,188 icons, license Apache-2.0, prefix `ri` [ui]
+- [Bootstrap Icons](https://icons.getbootstrap.com): 3,038 icons, license MIT, prefix `bi` + 2 more [ui]
+- [Lucide](https://lucide.dev): 1,866 icons, license ISC, prefix `lucide` [ui]
+- [IconPark](https://iconpark.oceanengine.com): 2,658 icons, license Apache-2.0, prefix `icon-park-outline` [ui]
+- [Iconoir](https://iconoir.com): 1,671 icons, license MIT, prefix `iconoir` [ui]
+- [Ionicons](https://ionic.io/ionicons): 1,357 icons, license MIT, prefix `ion` [ui]
+- [Heroicons](https://heroicons.com): 1,288 icons, license MIT, prefix `heroicons` [ui]
+- [Font Awesome 6 Free](https://fontawesome.com): 2,060 icons, license CC-BY-4.0, prefix `fa6-solid` + 2 more [ui]
+- [Unicons](https://iconscout.com/unicons): 1,215 icons, license Apache-2.0, prefix `uil` [ui]
+- [Ant Design Icons](https://ant.design/components/icons): 848 icons, license MIT, prefix `ant-design` [ui]
+- [css.gg](https://css.gg): 704 icons, license MIT, prefix `gg` [ui]
+- [Feather Icons](https://feathericons.com): 286 icons, license MIT, prefix `feather` [ui]
+- [Material Line Icons](https://icon-sets.iconify.design/line-md/): 1,218 icons, license MIT, prefix `line-md` [anim]
+- [SVG Spinners](https://icon-sets.iconify.design/svg-spinners/): 46 icons, license MIT, prefix `svg-spinners` [anim]
+- [Simple Icons](https://simpleicons.org): 3,464 icons, license CC0-1.0, prefix `simple-icons` [brand]
+- [Devicon](https://devicon.dev): 1,057 icons, license MIT, prefix `devicon` [brand]
+- [VSCode Icons](https://icon-sets.iconify.design/vscode-icons/): 1,666 icons, license MIT, prefix `vscode-icons` [brand]
+- [Codicons](https://microsoft.github.io/vscode-codicons): 653 icons, license CC-BY-4.0, prefix `codicon` [brand]
+- [Twemoji](https://github.com/twitter/twemoji): 3,988 icons, license CC-BY-4.0, prefix `twemoji` [emoji]
+- [Fluent Emoji](https://github.com/microsoft/fluentui-emoji): 3,126 icons, license MIT, prefix `fluent-emoji` [emoji]
+- [Noto Emoji](https://github.com/googlefonts/noto-emoji): 3,729 icons, license Apache-2.0, prefix `noto` [emoji]
+- [Flat Color Icons](https://icon-sets.iconify.design/flat-color-icons/): 329 icons, license MIT, prefix `flat-color-icons` [emoji]
+
+## Free illustration libraries (16, license per entry)
+
+- [unDraw](https://undraw.co/): free, no attribution ⚠ no AI training — Consistent-style illustrations with live color customizer
+- [Open Peeps](https://www.openpeeps.com/): CC0 — Hand-drawn people by Pablo Stanley
+- [Humaaans](https://humaaans.com/): CC0 — Mix-and-match human characters
+- [DiceBear](https://www.dicebear.com/): open source (per-style) — Avatar generator, dozens of styles
+- [Storyset](https://storyset.com/): free with attribution (Freepik) — Editable animated illustrations
+- [DrawKit](https://www.drawkit.com/): free with attribution (free tier) — Hand-drawn vector packs
+- [ManyPixels](https://www.manypixels.co/gallery): free, no attribution — Monocolor gallery with color picker
+- [3dicons](https://www.3dicons.com/): open source, free — Open-source 3D icons by Vijay Verma
+- [LottieFiles Free](https://lottiefiles.com/): mixed - check each asset — Large animated library
+- [IRA Design](https://iradesign.io/): MIT — Modular illustration builder by Creative Tim
+- [Lukasz Adam](https://lukaszadam.com/illustrations): CC0 — Free miscellaneous vectors
+- [absurd.design](https://absurd.design/): free with attribution (free tier) — Surreal line-art
+- [Ouch! by Icons8](https://icons8.com/ouch): free with link — Vector & 3D illustrations
+- [Doodle Ipsum](https://doodleipsum.com/): free (Blush license) — Doodle API by Blush
+- [Shapefest](https://shapefest.com/): free for commercial use — Large 3D shape library
+- [illlustrations.co](https://illlustrations.co/): open source, free — Open-source illustrations
+
+## Iconify API (open CORS, no key)
+
+```
+GET /search?query=<term>&limit=<n>&prefixes=<p1,p2>
+GET /<prefix>/<icon>.svg?color=<hex|currentColor>&height=<px>
+GET /collections?prefixes=<p1,p2>   # name, author, license, count, samples per set
+GET /collection?prefix=<p>          # all icon names in a set
+Base: https://api.iconify.design
+```
+
+## Deep links
+
+- Search results: https://icongems.kuige.me/?q=<term>  ·  Browse one set: https://icongems.kuige.me/?set=<id>
+
+## Licensing
+
+- No attribution: MIT, Apache-2.0, ISC, CC0 — most sets above
+- Attribution required: CC BY 4.0 (Solar, Font Awesome 6 Free, Twemoji, Codicons)
+- Illustrations: per-entry, see catalog. unDraw prohibits AI/ML training use.
+- Always verify on the source site before shipping.
+
+## Contact
+
+## Complete machine catalog
+
+```json
 {
  "site": "IconGems",
  "url": "https://icongems.kuige.me/",
@@ -653,3 +746,9 @@
   "note": "Verify on the source site before shipping; licenses change."
  }
 }
+```
+
+- IconGems is an independent front-end over the Iconify open-source aggregation; all trademarks belong to their owners.
+- Author: 魁歌 KuiGe — https://kuige.me/
+
+Counts are static snapshots (2026-10-07); the live Iconify API is always authoritative for current numbers.

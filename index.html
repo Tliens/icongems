@@ -19,6 +19,7 @@
 <meta name="twitter:title" content="IconGems — Free SVG Icons & Illustrations, Search & Download">
 <meta name="twitter:description" content="100,000+ free SVG icons from Google, Microsoft, Tabler, Lucide, Phosphor, Font Awesome… plus curated free illustration libraries.">
 <meta name="twitter:image" content="https://icongems.kuige.me/og-image.png">
+<link rel="alternate" type="text/plain" title="llms.txt — site guide for AI agents" href="https://icongems.kuige.me/llms.txt">
 <link rel="icon" type="image/png" href="favicon.png?v=1">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=1">
 <script type="application/ld+json">
@@ -255,6 +256,9 @@ select{background:var(--card);color:var(--ink);border:1px solid var(--line);bord
 }
 @media print{.top,#modal,footer .fnav{display:none}}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Dataset","name":"IconGems curated icon & illustration catalog","description":"Machine-readable catalog of 29 famous open-source icon sets (109,000+ icons with per-set licenses, prefixes and API endpoints) and 16 free illustration libraries, maintained by IconGems.","url":"https://icongems.kuige.me/data/catalog.json","sameAs":["https://icongems.kuige.me/","https://icongems.kuige.me/llms.txt"],"creator":{"@type":"Person","name":"KuiGe","url":"https://kuige.me/"},"distribution":[{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://icongems.kuige.me/data/catalog.json"},{"@type":"DataDownload","encodingFormat":"text/plain","contentUrl":"https://icongems.kuige.me/llms-full.txt"}]}
+</script>
 </head>
 <body>
 <div class="top"><div class="wrap">
@@ -323,9 +327,19 @@ select{background:var(--card);color:var(--ink);border:1px solid var(--line);bord
   <p class="sect-sub" data-i18n="ai_sub">Everything on this site is machine-readable: a site guide, a JSON catalog, and open APIs with permissive CORS. Feed them to your agent, IDE plugin or RAG pipeline.</p>
   <div class="aigrid">
     <div class="ai">
+      <h3>🚀 Quick start for agents</h3>
+      <p data-i18n="ai_0">Point your agent at one URL — the catalog tells it which sets exist, what each license requires and which endpoints to call. Paste the snippet below into any AI tool.</p>
+      <div class="code"><button class="cp" data-i18n="copy">Copy</button><span>Icon resources for this project — catalog, search, embed:
+1. Catalog (29 sets, licenses, endpoints): https://icongems.kuige.me/data/catalog.json
+2. Search icons: https://api.iconify.design/search?query=&lt;term&gt;&amp;prefixes=lucide,tabler
+3. Get SVG: https://api.iconify.design/&lt;prefix&gt;/&lt;name&gt;.svg?height=64
+4. Embed via @iconify/react, @iconify/vue or the iconify-icon web component.
+5. Check the license field before shipping (MIT/Apache/ISC/CC0 = no attribution).</span></div>
+    </div>
+    <div class="ai">
       <h3>🤖 llms.txt</h3>
-      <p data-i18n="ai_1">A concise, agent-friendly guide to this site — sections, endpoints and license summary in one file.</p>
-      <a href="llms.txt" target="_blank" rel="noopener">icongems.kuige.me/llms.txt ↗</a>
+      <p data-i18n="ai_1">A concise, agent-friendly guide to this site — sections, all 29 curated sets with licenses and prefixes, and the API reference in one file. llms-full.txt inlines the complete catalog.</p>
+      <a href="llms.txt" target="_blank" rel="noopener">llms.txt ↗</a> · <a href="llms-full.txt" target="_blank" rel="noopener">llms-full.txt ↗</a>
     </div>
     <div class="ai">
       <h3>🗂️ catalog.json</h3>
@@ -461,7 +475,8 @@ en:{'nav_find':'Search & Download','nav_libs':'Icon Libraries','nav_art':'Illust
 'art_note':'⚠️ Licenses differ per library and can change over time — the badge is a summary, the source site is the truth. unDraw explicitly prohibits AI/ML training use; several others require attribution.',
 'ai_h2':'Built for AI & agents, too',
 'ai_sub':'Everything on this site is machine-readable: a site guide, a JSON catalog, and open APIs with permissive CORS. Feed them to your agent, IDE plugin or RAG pipeline.',
-'ai_1':'A concise, agent-friendly guide to this site — sections, endpoints and license summary in one file.',
+'ai_0':'Point your agent at one URL — the catalog tells it which sets exist, what each license requires and which endpoints to call. Paste the snippet below into any AI tool.',
+'ai_1':'A concise, agent-friendly guide to this site — sections, all 29 curated sets with licenses and prefixes, and the API reference in one file. llms-full.txt inlines the complete catalog.',
 'ai_2':'The full curated catalog — all icon libraries and illustration sources with licenses, counts and prefixes — as plain JSON for agents and RAG.',
 'ai_3':'Open CORS, no key, no quota games — the same endpoints this page uses.',
 'ai_4':'Tell your AI which set to use, then paste the snippet from the icon panel. Well-known npm packages: lucide-react, @tabler/icons-react, @phosphor-icons/react, @heroicons/react, bootstrap-icons, material-symbols, simple-icons, ionicons — or the universal @iconify/react / @iconify/vue.',
@@ -498,7 +513,8 @@ zh:{'nav_find':'搜索与下载','nav_libs':'图标库','nav_art':'插画库','n
 'art_note':'⚠️ 各家许可证不同且可能更新——徽标只是摘要，源站才是准绳。unDraw 明确禁止用于 AI/ML 训练；另有多家要求署名。',
 'ai_h2':'同样为 AI 与 Agent 而建',
 'ai_sub':'本站的一切都是机器可读的：站点指南、JSON 目录、开放 CORS 的 API。把它们喂给你的 Agent、IDE 插件或 RAG 管道。',
-'ai_1':'一份面向 Agent 的精简站点指南——板块、接口与许可证摘要，一个文件说完。',
+'ai_0':'把一个 URL 喂给你的 Agent——目录里写清了有哪些集合、每个许可证的要求、该调哪些接口。把下面的片段粘进任何 AI 工具即可。',
+'ai_1':'一份面向 Agent 的精简站点指南——板块、全部 29 个精选集的许可证与前缀、API 参考，一个文件说完。llms-full.txt 内联了完整目录。',
 'ai_2':'完整精选目录——全部图标库与插画源，含许可证、数量与前缀，纯 JSON 格式，供 Agent 与 RAG 使用。',
 'ai_3':'开放 CORS、无需密钥、不玩配额——与本页所用完全相同的接口。',
 'ai_4':'告诉你的 AI 用哪套图标，再把图标面板里的代码片段贴给它。知名 npm 包：lucide-react、@tabler/icons-react、@phosphor-icons/react、@heroicons/react、bootstrap-icons、material-symbols、simple-icons、ionicons——或通用的 @iconify/react / @iconify/vue。',
@@ -1020,6 +1036,13 @@ async function fillCode(){
   }catch(e){out.textContent=t('err');}
 }
 document.getElementById('mCopy').onclick=async e=>{const txt=document.getElementById('mCodeTxt').textContent;await copyText(txt,e.target);};
+/* generic copy for page-level code blocks (quick start + API cheatsheet) */
+document.addEventListener('click',e=>{
+  const cp=e.target.closest('.code .cp');
+  if(!cp||cp.id==='mCopy')return;
+  const span=cp.parentElement.querySelector('span');
+  if(span)copyText(span.textContent,cp);
+});
 document.getElementById('mSvg').onclick=async e=>{
   if(!cur)return;const btn=e.target;
   try{
