@@ -90,7 +90,17 @@ h1{font-size:clamp(27px,5vw,42px);line-height:1.18;margin:0 0 13px;letter-spacin
 .finder-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 14px}
 #fstatus{font-size:13px;color:var(--mut);margin-left:auto}
 #fstatus b{color:var(--accent)}
-#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:9px}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:9px;grid-auto-flow:dense}
+/* size rhythm: big hero tiles + wide row tiles break the uniform-squares monotony */
+.ic-t.big{grid-column:span 2;padding:16px 8px 10px}
+.ic-t.big .ic-g{width:52px;height:52px}
+.ic-t.big .ic-g img{width:52px;height:52px}
+.ic-t.big .ic-n{font-size:11.5px;white-space:normal;line-height:1.25;max-height:2.6em;overflow:hidden}
+.ic-t.wide{grid-column:span 2;flex-direction:row;justify-content:flex-start;gap:11px;padding:12px 12px 12px 14px}
+.ic-t.wide .ic-g{width:24px;height:24px;flex:none}
+.ic-t.wide .ic-g img{width:24px;height:24px}
+.ic-t.wide .ic-n{flex:1;text-align:left;font-size:11.5px;direction:ltr}
+.ic-t.wide .tcopy{top:auto;bottom:6px;right:6px}
 .ic-t{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px 8px;border-radius:12px;background:var(--card);border:1px solid var(--line);cursor:pointer;color:var(--ink);transition:border-color .12s,transform .12s}
 .ic-t:hover{border-color:var(--accent);transform:translateY(-2px)}
 .ic-g{width:30px;height:30px;background:currentColor;flex:none}
@@ -101,12 +111,20 @@ h1{font-size:clamp(27px,5vw,42px);line-height:1.18;margin:0 0 13px;letter-spacin
 /* popular picks */
 .picksh{display:flex;align-items:center;gap:10px;margin:20px 0 12px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent)}
 .picksh::after{content:"";flex:1;height:1px;background:var(--line)}
-/* library sample strip */
+/* library sample strip — per-category variants so sets don't all dress alike */
 .lib-s{display:flex;gap:9px;align-items:center;margin:2px 0 4px}
 .lib-s .sw{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--chipbg);border:none;padding:0;cursor:pointer}
 .lib-s .sw:hover{background:color-mix(in srgb,var(--accent) 14%,var(--chipbg))}
 .lib-s .ic-g{width:19px;height:19px}
 .lib-s .ic-g img{width:19px;height:19px;display:block}
+.lib-s.round .sw{border-radius:50%}
+.lib-s.plain .sw{background:none;border:none;width:30px;height:30px}
+.lib-s.plain .ic-g{width:25px;height:25px}
+.lib-s.plain .ic-g img{width:25px;height:25px}
+.lib-s.anims .ic-g{animation:sway 2.4s ease-in-out infinite}
+.lib-s.anims .sw:nth-child(2n) .ic-g{animation-delay:-1.2s}
+@keyframes sway{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+@media (prefers-reduced-motion:reduce){.lib-s.anims .ic-g{animation:none}}
 /* tile hover quick copy */
 .ic-t .tcopy{position:absolute;top:6px;right:6px;width:25px;height:25px;border-radius:8px;background:var(--card);border:1px solid var(--line);color:var(--mut);font-size:13.5px;line-height:1;display:none;align-items:center;justify-content:center;cursor:pointer;padding:0}
 .ic-t:hover .tcopy,.ic-t:focus-within .tcopy{display:flex}
@@ -116,7 +134,13 @@ section.blk{padding:42px 0 8px}
 h2{font-size:24px;margin:0 0 8px;letter-spacing:-.3px}
 .sect-sub{color:var(--mut);font-size:14.5px;margin:0 0 18px;max-width:760px}
 /* library cards */
-.libgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:13px}
+.libgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:13px;grid-auto-flow:dense}
+.lib-hero{grid-column:span 2}
+.lib-hero .lib-s{max-width:300px}
+.lib-hero .sw{width:32px;height:32px}
+.lib-hero .ic-g{width:23px;height:23px}
+.lib-hero .ic-g img{width:23px;height:23px}
+@media (max-width:700px){.lib-hero{grid-column:span 1}}
 .lib{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px;display:flex;flex-direction:column;gap:7px;transition:border-color .12s}
 .lib:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}
 .lib-h{display:flex;align-items:center;gap:9px}
@@ -130,8 +154,11 @@ h2{font-size:24px;margin:0 0 8px;letter-spacing:-.3px}
 .mini:hover{color:var(--accent);border-color:var(--accent)}
 .mini.pri{background:var(--accent);border-color:var(--accent);color:#fff}
 .mini.pri:hover{filter:brightness(1.08)}
-/* illustrations */
-.artgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:13px}
+/* illustrations — featured wide cards give the wall a rhythm */
+.artgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:13px;grid-auto-flow:dense}
+.art-feat{grid-column:span 2}
+.art-feat .thumb{height:212px}
+@media (max-width:700px){.art-feat{grid-column:span 1}.art-feat .thumb{height:150px}}
 .art{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0;display:flex;flex-direction:column;overflow:hidden}
 .art .thumb{position:relative;height:118px;background:var(--chipbg);border-bottom:1px solid var(--line);overflow:hidden}
 .art .thumb img{width:100%;height:100%;object-fit:cover;display:block}
@@ -523,9 +550,11 @@ const grid=document.getElementById('grid'),fempty=document.getElementById('fempt
       fstatus=document.getElementById('fstatus'),btnMore=document.getElementById('btnMore'),
       finderhead=document.getElementById('finderhead'),catchips=document.getElementById('catchips');
 function svgUrl(p,n,params){return `${API}/${p}/${n}.svg${params?'?'+params:''}`;}
-function tileFor(full,uri){
+/* size rhythm: deterministic pattern so the wall isn't uniform squares */
+function sizeClass(i){return i%11===2?'big':(i%13===7?'wide':'');}
+function tileFor(full,uri,cls){
   const [p,n]=full.split(':');const s=SETBY[SETS.find(s=>s.p.includes(p))?.id]||{pal:0};
-  const tile=document.createElement('button');tile.className='ic-t';tile.title=full;tile.type='button';
+  const tile=document.createElement('button');tile.className='ic-t'+(cls?' '+cls:'');tile.title=full;tile.type='button';
   tile.onclick=()=>openModal(full);
   const ic=document.createElement('span');ic.className='ic-g';
   const src=uri||svgUrl(p,n,'height=64');
@@ -544,7 +573,7 @@ function tileFor(full,uri){
 function renderGrid(){
   grid.textContent='';
   const list=state.names;
-  for(const full of list)grid.appendChild(tileFor(full,PICK_URIS[full]));
+  list.forEach((full,i)=>grid.appendChild(tileFor(full,PICK_URIS[full],sizeClass(i))));
   fempty.hidden=list.length>0;
   if(state.mode==='search')fempty.textContent=list.length?'':t('nores');
 }
@@ -556,7 +585,7 @@ function renderPicks(){
   state.names=PICKS||FALLBACK_PICKS.slice(0,42);
   document.getElementById('picksh').hidden=false;
   grid.textContent='';
-  for(const full of state.names)grid.appendChild(tileFor(full,PICK_URIS[full]));
+  state.names.forEach((full,i)=>grid.appendChild(tileFor(full,PICK_URIS[full],sizeClass(i))));
   fempty.hidden=true;
   setStatus(`<b>${t('picks_t')}</b> — ${t('picks_status')}`);
   btnMore.hidden=true;
@@ -718,10 +747,12 @@ function filterLibs(){
   for(const el of document.querySelectorAll('#libgrid .lib'))
     el.hidden=!(libcat==='all'||el.dataset.cat===libcat);
 }
+let HERO_IDS=null; /* top-2 libraries get a wide "hero" card, frozen at first render */
 function buildLibs(){
   const g=document.getElementById('libgrid');g.textContent='';
+  if(!HERO_IDS)HERO_IDS=[...SETS].sort((a,b)=>(LIVE[b.id]||b.cnt)-(LIVE[a.id]||a.cnt)).slice(0,2).map(s=>s.id);
   for(const s of SETS){
-    const card=document.createElement('article');card.className='lib';card.dataset.cat=s.cat;    const h=document.createElement('div');h.className='lib-h';
+    const card=document.createElement('article');card.className='lib'+(HERO_IDS.includes(s.id)?' lib-hero':'');card.dataset.cat=s.cat;    const h=document.createElement('div');h.className='lib-h';
     const h3=document.createElement('h3');h3.textContent=s.n;
     const lic=document.createElement('span');lic.className='lic';lic.textContent=s.lic;
     h.append(h3,lic);
@@ -738,17 +769,20 @@ function buildLibs(){
   }
   filterLibs();
 }
-/* sample icon strip per library card (batched: one JSON per set → data URIs, strip appears only when ready) */
+/* sample icon strip per library card (batched: one JSON per set → data URIs, strip appears only when ready).
+   Variant styles per category: brand=circular slots, emoji=color icons on open slots, anim=gently swaying, hero=12-pack */
 async function renderLibSamples(){
   for(const s of SETS){
     const names=SAMPLES[s.id];if(!names||!names.length)continue;
     const cntEl=document.querySelector(`[data-cnt="${s.id}"]`);
     const card=cntEl?cntEl.closest('.lib'):null;
     if(!card||card.querySelector('.lib-s'))continue;
+    const hero=card.classList.contains('lib-hero');
     let uris=null;
-    try{uris=await batchUris(s.p[0],names);}catch(e){continue;}
-    const strip=document.createElement('div');strip.className='lib-s';
-    for(const n of names.slice(0,6)){
+    try{uris=await batchUris(s.p[0],names,hero?12:6);}catch(e){continue;}
+    const strip=document.createElement('div');strip.className='lib-s'
+      +(s.cat==='brand'?' round':'')+(s.cat==='emoji'?' plain':'')+(s.cat==='anim'?' anims':'')+(hero?' s-hero':'');
+    for(const n of names.slice(0,hero?12:6)){
       if(!uris[n])continue;
       const b=document.createElement('button');b.className='sw';b.type='button';b.title=`${s.p[0]}:${n}`;
       b.onclick=()=>openModal(`${s.p[0]}:${n}`);
@@ -792,8 +826,11 @@ const ART=[
  ['illlustrations.co','https://illlustrations.co/','Open source · free','PNG',0,'Open-source illustrations by Vijay Verma.','https://illlustrations.co/preview.jpg','🖼️','linear-gradient(135deg,#26321c,#131b12)']];
 function buildArt(){
   const g=document.getElementById('artgrid');g.textContent='';
-  ART.forEach(([n,url,lic,fmt,noai,d,thumb,emo,grad])=>{
-    const c=document.createElement('article');c.className='art';
+  /* featured slots: first and mid-list cards that have real thumbnails go wide */
+  const imgIdx=ART.map((a,i)=>a[6]?i:-1).filter(i=>i>=0);
+  const feat=new Set();if(imgIdx.length)feat.add(imgIdx[0]);if(imgIdx.length>4)feat.add(imgIdx[Math.min(7,imgIdx.length-1)]);
+  ART.forEach(([n,url,lic,fmt,noai,d,thumb,emo,grad],i)=>{
+    const c=document.createElement('article');c.className='art'+(feat.has(i)?' art-feat':'');
     const th=document.createElement('div');th.className='thumb';th.style.background=grad;
     if(thumb){const img=document.createElement('img');img.loading='lazy';img.alt=n+' preview';
       img.onerror=()=>img.remove();img.src=thumb;th.appendChild(img);}
@@ -902,13 +939,14 @@ async function svgFor(full,color){
 }
 /* batched sample rendering: one JSON per set → data URIs (paints all at once instead of 200+ tiny requests) */
 const batchCache={};
-async function batchUris(prefix,names){
+async function batchUris(prefix,names,limit=8){
   if(batchCache[prefix])return batchCache[prefix];
-  const r=await fetchT(`${API}/${prefix}.json?icons=${encodeURIComponent(names.slice(0,8).join(','))}`,12000);
+  const take=Math.min(limit,12);
+  const r=await fetchT(`${API}/${prefix}.json?icons=${encodeURIComponent(names.slice(0,take).join(','))}`,12000);
   const d=await r.json();
   const mono=!isPal(prefix);
   const out={};
-  for(const n of names.slice(0,8)){
+  for(const n of names.slice(0,take)){
     const alias=d.aliases&&d.aliases[n];
     const ic=d.icons&&d.icons[(alias&&alias.parent)||n];
     if(!ic)continue;
