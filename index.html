@@ -95,9 +95,22 @@ h1{font-size:clamp(27px,5vw,42px);line-height:1.18;margin:0 0 13px;letter-spacin
 .ic-t:hover{border-color:var(--accent);transform:translateY(-2px)}
 .ic-g{width:30px;height:30px;background:currentColor;flex:none}
 .ic-g img{width:30px;height:30px;display:block}
-.ic-n{font-size:10.5px;color:var(--mut);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:rtl;text-align:center}
+.ic-n{font-size:10.5px;color:var(--mut);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center}
 #fempty,#ferr{text-align:center;color:var(--mut);padding:34px 12px;font-size:14.5px}
 .more-wrap{text-align:center;padding:18px 0 4px}
+/* popular picks */
+.picksh{display:flex;align-items:center;gap:10px;margin:20px 0 12px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent)}
+.picksh::after{content:"";flex:1;height:1px;background:var(--line)}
+/* library sample strip */
+.lib-s{display:flex;gap:9px;align-items:center;margin:2px 0 4px}
+.lib-s .sw{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--chipbg);border:none;padding:0;cursor:pointer}
+.lib-s .sw:hover{background:color-mix(in srgb,var(--accent) 14%,var(--chipbg))}
+.lib-s .ic-g{width:19px;height:19px}
+.lib-s .ic-g img{width:19px;height:19px;display:block}
+/* tile hover quick copy */
+.ic-t .tcopy{position:absolute;top:6px;right:6px;width:25px;height:25px;border-radius:8px;background:var(--card);border:1px solid var(--line);color:var(--mut);font-size:13.5px;line-height:1;display:none;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.ic-t:hover .tcopy,.ic-t:focus-within .tcopy{display:flex}
+.ic-t .tcopy:hover{color:var(--accent);border-color:var(--accent)}
 /* sections */
 section.blk{padding:42px 0 8px}
 h2{font-size:24px;margin:0 0 8px;letter-spacing:-.3px}
@@ -119,7 +132,12 @@ h2{font-size:24px;margin:0 0 8px;letter-spacing:-.3px}
 .mini.pri:hover{filter:brightness(1.08)}
 /* illustrations */
 .artgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:13px}
-.art{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px;display:flex;flex-direction:column;gap:6px}
+.art{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0;display:flex;flex-direction:column;overflow:hidden}
+.art .thumb{position:relative;height:118px;background:var(--chipbg);border-bottom:1px solid var(--line);overflow:hidden}
+.art .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.art .thumb .fb{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px;opacity:.5}
+.art .thumb img+.fb{display:none}
+.art .bd{padding:14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
 .art h3{margin:0;font-size:15px;display:flex;align-items:center;gap:8px}
 .art .lic{font-size:10.5px}
 .art p{margin:0;font-size:13px;color:var(--mut)}
@@ -134,7 +152,7 @@ h2{font-size:24px;margin:0 0 8px;letter-spacing:-.3px}
 .ai p{margin:0 0 10px;font-size:13.5px;color:var(--mut)}
 .ai a{color:var(--accent);font-weight:600;text-decoration:none}
 .ai a:hover{text-decoration:underline}
-.code{position:relative;background:color-mix(in srgb,var(--ink) 92%,var(--card));color:color-mix(in srgb,var(--bg) 88%,#fff);border-radius:10px;padding:11px 13px;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow:auto;white-space:pre}
+.code{position:relative;background:color-mix(in srgb,var(--ink) 92%,var(--card));color:color-mix(in srgb,var(--bg) 88%,#fff);border-radius:10px;padding:36px 13px 12px;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow:auto;white-space:pre}
 .code .cp{position:absolute;top:7px;right:8px;background:var(--card);border:1px solid var(--line);color:var(--mut);border-radius:7px;font-size:11px;padding:2px 9px;cursor:pointer}
 .code .cp:hover{color:var(--accent);border-color:var(--accent)}
 /* FAQ */
@@ -230,6 +248,7 @@ select{background:var(--card);color:var(--ink);border:1px solid var(--line);bord
 <main>
 <section id="finder" class="wrap">
   <div class="chips" id="setchips"></div>
+  <div class="picksh" id="picksh" hidden><span data-i18n="picks_t">Popular picks</span></div>
   <div class="finder-head" id="finderhead" hidden>
     <div class="chips" id="catchips"></div>
     <span id="fstatus"></span>
@@ -369,6 +388,16 @@ const SETS=[
 ];
 const SETBY=Object.fromEntries(SETS.map(s=>[s.id,s]));
 const LIVE={}; /* live icon counts from Iconify, survive re-renders */
+const SAMPLES={}; /* per-set sample icon names from /collections, survive re-renders */
+/* curated first-paint picks — verified-stable names across big sets, replaced by live samples once /collections resolves */
+const FALLBACK_PICKS=[
+ 'material-symbols:home','material-symbols:search','material-symbols:favorite','material-symbols:notifications','material-symbols:settings','material-symbols:person',
+ 'lucide:home','lucide:search','lucide:heart','lucide:star','lucide:bell','lucide:user','lucide:camera','lucide:download',
+ 'tabler:home','tabler:heart','tabler:star','tabler:bell','tabler:settings','tabler:user',
+ 'mdi:home','mdi:heart','mdi:star','mdi:bell','mdi:cog','mdi:account',
+ 'ph:house','ph:heart','ph:star','ph:bell','ph:gear','ph:user',
+ 'bi:heart','bi:bell','bi:star','bi:house','bi:gear',
+ 'ri:home-line','ri:search-line','ri:heart-line','ri:star-line','ri:notification-3-line','ri:user-line'];
 const QUICK=['material-symbols','fluent','tabler','lucide','ph','bi','ri','heroicons','fa6','mdi'];
 
 /* ===== i18n ===== */
@@ -378,6 +407,7 @@ en:{'nav_find':'Search & Download','nav_libs':'Icon Libraries','nav_art':'Illust
 'h1':'Search 100,000+ free icons from the names you trust',
 'sub':'Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap — aggregated search, one-click SVG/PNG download, copy-ready code. Plus a hand-picked directory of free illustration libraries.',
 'st_libs':'curated libraries','st_icons':'curated icons','st_all':'searchable · SVG + PNG','st_allnum':'200,000+','st_free':'Free · no signup',
+'picks_t':'Popular picks','picks_status':'hand-picked from the famous sets — search 200,000+ more above',
 'more':'Show more','copy':'Copy','copied':'Copied ✓',
 'libs_h2':'The famous libraries, all in one place',
 'libs_sub':'Every library below is open source, famous in its own right, and searchable + downloadable on this page. Counts and licenses are fetched live from Iconify. Click “Browse” to page through a set, or search with its filter chip above.',
@@ -414,6 +444,7 @@ zh:{'nav_find':'搜索与下载','nav_libs':'图标库','nav_art':'插画库','n
 'h1':'一站搜齐 100,000+ 大厂免费图标',
 'sub':'Google Material Symbols、微软 Fluent、Tabler、Lucide、Phosphor、Font Awesome、Bootstrap——聚合搜索、一键下载 SVG/PNG、代码即复制。另附人工精选的免费插画库导航。',
 'st_libs':'个精选图标库','st_icons':'个精选图标','st_all':'全量可搜 · SVG + PNG','st_allnum':'200,000+','st_free':'免费 · 免注册',
+'picks_t':'热门精选','picks_status':'选自各大厂集合——上方搜索框可搜 200,000+ 图标',
 'more':'加载更多','copy':'复制','copied':'已复制 ✓',
 'libs_h2':'知名图标库，一站收齐',
 'libs_sub':'下面每一家人库都是开源、业内知名的集合，且都可在本页直接搜索和下载。数量与许可证由 Iconify 实时获取。点「浏览」翻整套图标，或用上方筛选芯片定向搜索。',
@@ -492,29 +523,68 @@ const grid=document.getElementById('grid'),fempty=document.getElementById('fempt
       fstatus=document.getElementById('fstatus'),btnMore=document.getElementById('btnMore'),
       finderhead=document.getElementById('finderhead'),catchips=document.getElementById('catchips');
 function svgUrl(p,n,params){return `${API}/${p}/${n}.svg${params?'?'+params:''}`;}
-function tileFor(full){
+function tileFor(full,uri){
   const [p,n]=full.split(':');const s=SETBY[SETS.find(s=>s.p.includes(p))?.id]||{pal:0};
   const tile=document.createElement('button');tile.className='ic-t';tile.title=full;tile.type='button';
   tile.onclick=()=>openModal(full);
   const ic=document.createElement('span');ic.className='ic-g';
+  const src=uri||svgUrl(p,n,'height=64');
   if(s.pal){const img=document.createElement('img');img.loading='lazy';img.alt=full;
-    img.src=svgUrl(p,n,'height=64');img.onerror=()=>{tile.remove();};ic.appendChild(img);}
-  else ic.style.cssText=`-webkit-mask:url("${svgUrl(p,n,'height=64')}") center/contain no-repeat;mask:url("${svgUrl(p,n,'height=64')}") center/contain no-repeat`;
+    img.src=src;img.onerror=()=>{tile.remove();};ic.appendChild(img);}
+  else ic.style.cssText=`-webkit-mask:url("${src}") center/contain no-repeat;mask:url("${src}") center/contain no-repeat`;
   const cap=document.createElement('span');cap.className='ic-n';cap.textContent=n;
-  tile.append(ic,cap);return tile;
+  const cp=document.createElement('span');cp.className='tcopy';cp.title='Copy SVG';cp.textContent='⧉';cp.setAttribute('aria-label','Copy SVG');
+  cp.onclick=e=>{e.stopPropagation();cp.textContent='…';
+    svgFor(full,'').then(txt=>navigator.clipboard.writeText(txt))
+      .then(()=>{cp.textContent='✓';setTimeout(()=>cp.textContent='⧉',1200);funnelMaybe();})
+      .catch(()=>{cp.textContent='✕';setTimeout(()=>cp.textContent='⧉',1200);});
+  };
+  tile.append(ic,cap,cp);return tile;
 }
 function renderGrid(){
   grid.textContent='';
   const list=state.names;
-  for(const full of list)grid.appendChild(tileFor(full));
+  for(const full of list)grid.appendChild(tileFor(full,PICK_URIS[full]));
   fempty.hidden=list.length>0;
   if(state.mode==='search')fempty.textContent=list.length?'':t('nores');
+}
+/* popular picks: the default grid so the finder never shows a dead zone */
+let PICKS=null;const PICK_URIS={};
+function renderPicks(){
+  if(state.mode==='browse')return;
+  state.mode='picks';
+  state.names=PICKS||FALLBACK_PICKS.slice(0,42);
+  document.getElementById('picksh').hidden=false;
+  grid.textContent='';
+  for(const full of state.names)grid.appendChild(tileFor(full,PICK_URIS[full]));
+  fempty.hidden=true;
+  setStatus(`<b>${t('picks_t')}</b> — ${t('picks_status')}`);
+  btnMore.hidden=true;
+}
+async function buildPicksFromSamples(){
+  const bySet=QUICK.map(id=>({id,names:(SAMPLES[id]||[]).slice(0,6)})).filter(x=>x.names.length);
+  if(!bySet.length)return;
+  await Promise.all(bySet.map(async x=>{
+    try{
+      const uris=await batchUris(SETBY[x.id].p[0],x.names);
+      for(const n of x.names)if(uris[n])PICK_URIS[`${SETBY[x.id].p[0]}:${n}`]=uris[n];
+    }catch(e){}
+  }));
+  const out=[];const seen=new Set();
+  for(let i=0;out.length<60;i++)
+    for(const x of bySet){
+      const full=`${SETBY[x.id].p[0]}:${x.names[i]}`;
+      if(x.names[i]&&!seen.has(full)&&PICK_URIS[full]){seen.add(full);out.push(full);if(out.length>=60)break;}
+    }
+  if(out.length>=24){PICKS=out;renderPicks();}
 }
 function setStatus(html){fstatus.innerHTML=html;}
 async function doSearch(){
   const q=state.q.trim();
   ferr.hidden=true;btnMore.hidden=true;
-  if(!q){state.names=[];renderGrid();setStatus('');fempty.hidden=true;return;}
+  if(!q){renderPicks();return;}
+  state.mode='search';
+  document.getElementById('picksh').hidden=true;
   setStatus(t('searching'));
   const c=new AbortController();searchCtl=c;
   try{
@@ -555,7 +625,7 @@ function renderQuick(){
 function renderSetChips(){
   const box=document.getElementById('setchips');box.textContent='';
   const mk=(label,fn,on)=>{const b=document.createElement('button');b.className='fchip'+(on?' on':'');b.textContent=label;b.onclick=fn;box.appendChild(b);};
-  mk(t('browse_all')||'All',()=>{state.filter='';toSearchMode();if(state.q.trim())doSearch();renderSetChips();},!state.filter);
+  mk(t('browse_all')||'All',()=>{state.filter='';toSearchMode();if(state.q.trim())doSearch();else renderPicks();renderSetChips();},!state.filter);
   for(const id of QUICK){const s=SETBY[id];
     mk(s.n.replace('Material Symbols','Material').replace('Bootstrap Icons','Bootstrap').replace('Font Awesome 6 Free','FA6').replace('Material Design Icons','MDI').replace('Fluent UI System Icons','Fluent'),
       ()=>{state.filter=s.p.join(',');state.limit=96;toSearchMode();doSearch();renderSetChips();},state.filter===s.p.join(','));}
@@ -569,6 +639,7 @@ async function browseSet(id){
   const s=SETBY[id];if(!s)return;
   state.mode='browse';state.browse={id,prefix:s.p[0],flat:[],catsMap:{},catList:[],shown:120,cat:''};
   state.filter='';document.getElementById('setchips').hidden=true;finderhead.hidden=false;
+  document.getElementById('picksh').hidden=true;
   catchips.textContent='';grid.textContent='';fempty.hidden=true;ferr.hidden=true;btnMore.hidden=true;
   setStatus(t('searching'));
   try{
@@ -586,7 +657,7 @@ async function browseSet(id){
 function buildCatChips(){
   catchips.textContent='';
   const back=document.createElement('button');back.className='fchip';back.textContent=t('back_search');
-  back.onclick=()=>{toSearchMode();renderSetChips();if(state.q.trim())doSearch();else{state.names=[];renderGrid();setStatus('');}};
+  back.onclick=()=>{toSearchMode();renderSetChips();if(state.q.trim())doSearch();else renderPicks();};
   catchips.appendChild(back);
   const mk=(label,on,fn)=>{const b=document.createElement('button');b.className='fchip'+(on?' on':'');b.textContent=label;b.onclick=fn;catchips.appendChild(b);};
   mk(t('browse_all'),!state.browse.cat,()=>{state.browse.cat='';state.browse.shown=120;buildCatChips();renderBrowse();});
@@ -667,8 +738,32 @@ function buildLibs(){
   }
   filterLibs();
 }
-const OFFICIAL={
- 'fluent':'https://github.com/microsoft/fluentui-system-icons','material-symbols':'https://fonts.google.com/icons',
+/* sample icon strip per library card (batched: one JSON per set → data URIs, strip appears only when ready) */
+async function renderLibSamples(){
+  for(const s of SETS){
+    const names=SAMPLES[s.id];if(!names||!names.length)continue;
+    const cntEl=document.querySelector(`[data-cnt="${s.id}"]`);
+    const card=cntEl?cntEl.closest('.lib'):null;
+    if(!card||card.querySelector('.lib-s'))continue;
+    let uris=null;
+    try{uris=await batchUris(s.p[0],names);}catch(e){continue;}
+    const strip=document.createElement('div');strip.className='lib-s';
+    for(const n of names.slice(0,6)){
+      if(!uris[n])continue;
+      const b=document.createElement('button');b.className='sw';b.type='button';b.title=`${s.p[0]}:${n}`;
+      b.onclick=()=>openModal(`${s.p[0]}:${n}`);
+      const ic=document.createElement('span');ic.className='ic-g';
+      if(s.pal){const img=document.createElement('img');img.loading='lazy';img.alt=n;img.src=uris[n];ic.appendChild(img);}
+      else ic.style.cssText=`-webkit-mask:url("${uris[n]}") center/contain no-repeat;mask:url("${uris[n]}") center/contain no-repeat`;
+      b.appendChild(ic);strip.appendChild(b);
+    }
+    if(strip.children.length){
+      const byline=card.querySelector('.lib-a');
+      if(byline)byline.after(strip);else card.appendChild(strip);
+    }
+  }
+}
+const OFFICIAL={ 'fluent':'https://github.com/microsoft/fluentui-system-icons','material-symbols':'https://fonts.google.com/icons',
  'ph':'https://phosphoricons.com','mdi':'https://pictogrammers.com/library/mdi/','tabler':'https://tabler.io/icons',
  'solar':'https://solar-icons.com','mingcute':'https://www.mingcute.com','ri':'https://remixicon.com',
  'bi':'https://icons.getbootstrap.com','lucide':'https://lucide.dev','icon-park':'https://iconpark.oceanengine.com',
@@ -677,35 +772,40 @@ const OFFICIAL={
  'gg':'https://css.gg','feather':'https://feathericons.com','simple-icons':'https://simpleicons.org',
  'devicon':'https://devicon.dev','twemoji':'https://github.com/twitter/twemoji','fluent-emoji':'https://github.com/microsoft/fluentui-emoji',
  'noto':'https://github.com/googlefonts/noto-emoji','codicon':'https://microsoft.github.io/vscode-codicons','svg-spinners':'https://icon-sets.iconify.design/svg-spinners/'};
-/* illustrations */
+/* illustrations: [name, url, license, formats, noAI, desc, verified thumb og:image | null, fallback emoji, fallback gradient] */
 const ART=[
- ['unDraw','https://undraw.co/','Free · no attribution','Vector · PNG',0,'Consistent-style SVG illustrations with a live color customizer. ⚠ Prohibits AI/ML training use.'],
- ['Open Peeps','https://www.openpeeps.com/','CC0','PNG · SVG',0,'Hand-drawn people by Pablo Stanley — build scenes freely.'],
- ['Humaaans','https://humaaans.com/','CC0','SVG',0,'Mix-and-match human characters, designed for Figma/Sketch.'],
- ['DiceBear','https://www.dicebear.com/','Open source','SVG · PNG · API',0,'Avatar generator with dozens of styles; style licenses vary.'],
- ['Storyset','https://storyset.com/','Free · attribution','SVG · animated',0,'Freepik\u2019s editable animated illustrations.'],
- ['DrawKit','https://www.drawkit.com/','Free · attribution','SVG',0,'Hand-drawn vector illustration packs, free tier.'],
- ['ManyPixels','https://www.manypixels.co/gallery','Free · no attribution','SVG · PNG',0,'Monocolor gallery with a color picker, genuinely free.'],
- ['3dicons','https://www.3dicons.com/','Open source · free','PNG · Blender',0,'Open-source 3D icons by Vijay Verma, 4 angles & colors.'],
- ['LottieFiles Free','https://lottiefiles.com/','Mixed — check each','Lottie · GIF',0,'Huge animated library; per-asset licenses vary.'],
- ['IRA Design','https://iradesign.io/','MIT','SVG · PSD',0,'Creative Tim\u2019s modular illustration builder.'],
- ['Lukasz Adam','https://lukaszadam.com/illustrations','CC0','SVG',0,'Free miscellaneous vector illustrations, no strings.'],
- ['absurd.design','https://absurd.design/','Free · attribution','SVG',0,'Surreal line-art illustrations; free tier needs credit.'],
- ['Ouch! by Icons8','https://icons8.com/ouch','Free · link required','PNG · animated',0,'Free vector & 3D illustrations with a link requirement.'],
- ['Doodle Ipsum','https://doodleipsum.com/','Free (Blush license)','PNG · API',0,'Blush\u2019s doodle API — fill sites with hand-drawn art.'],
- ['Shapefest','https://shapefest.com/','Free commercial','PNG · SVG',0,'Massive free 3D shape & illustration library.'],
- ['illlustrations.co','https://illlustrations.co/','Open source · free','PNG',0,'Open-source illustrations by Vijay Verma.']];
+ ['unDraw','https://undraw.co/','Free · no attribution','Vector · PNG',0,'Consistent-style SVG illustrations with a live color customizer. ⚠ Prohibits AI/ML training use.','https://cdn.undraw.co/static/ud24ogimage.png','🎨','linear-gradient(135deg,#1e2b3a,#101a26)'],
+ ['Open Peeps','https://www.openpeeps.com/','CC0','PNG · SVG',0,'Hand-drawn people by Pablo Stanley — build scenes freely.','https://cdn.prod.website-files.com/5e51b3b0337309d672efd94c/5e51ce05258ffe802886ef21_cover-1.png','✏️','linear-gradient(135deg,#2a1a2e,#16101c)'],
+ ['Humaaans','https://humaaans.com/','CC0','SVG',0,'Mix-and-match human characters, designed for Figma/Sketch.','https://cdn.prod.website-files.com/5bff8886c3964a992e90d465/5c050a75fc73fba30bf816f1_seo-rectangle.jpg','🧍','linear-gradient(135deg,#3a2a12,#1d160a)'],
+ ['DiceBear','https://www.dicebear.com/','Open source','SVG · PNG · API',0,'Avatar generator with dozens of styles; style licenses vary.','https://www.dicebear.com/og/default.png','🎲','linear-gradient(135deg,#12303a,#0e1a26)'],
+ ['Storyset','https://storyset.com/','Free · attribution','SVG · animated',0,'Freepik\u2019s editable animated illustrations.',null,'📖','linear-gradient(135deg,#3a1a2a,#1c1017)'],
+ ['DrawKit','https://www.drawkit.com/','Free · attribution','SVG',0,'Hand-drawn vector illustration packs, free tier.','https://cdn.prod.website-files.com/626f5d0ae6c15c780f2dd5c4/6336572b684b9428785ccd40_DrawKit%20Website%20preview.png','✒️','linear-gradient(135deg,#1a2b1e,#0f1a12)'],
+ ['ManyPixels','https://www.manypixels.co/gallery','Free · no attribution','SVG · PNG',0,'Monocolor gallery with a color picker, genuinely free.','https://cdn.prod.website-files.com/69b15b68fb5a0ea0e6ef48b2/69e9746b874d991341e8365d_b6da94470a0d676bf04e34306e5f9010_manypixels%202.0%20thumbnail.jpg','🖌️','linear-gradient(135deg,#1a2340,#101726)'],
+ ['3dicons','https://www.3dicons.com/','Open source · free','PNG · Blender',0,'Open-source 3D icons by Vijay Verma, 4 angles & colors.',null,'🧊','linear-gradient(135deg,#1c2a3a,#10161f)'],
+ ['LottieFiles Free','https://lottiefiles.com/','Mixed — check each','Lottie · GIF',0,'Huge animated library; per-asset licenses vary.',null,'🎞️','linear-gradient(135deg,#0d2b3a,#071722)'],
+ ['IRA Design','https://iradesign.io/','MIT','SVG · PSD',0,'Creative Tim\u2019s modular illustration builder.','https://raw.githack.com/ira-design/ira-design.github.io/master/assets/img/iradesign.jpg','🏗️','linear-gradient(135deg,#2b2416,#171308)'],
+ ['Lukasz Adam','https://lukaszadam.com/illustrations','CC0','SVG',0,'Free miscellaneous vector illustrations, no strings.',null,'🖊️','linear-gradient(135deg,#26321c,#131b12)'],
+ ['absurd.design','https://absurd.design/','Free · attribution','SVG',0,'Surreal line-art illustrations; free tier needs credit.',null,'🌀','linear-gradient(135deg,#141b3a,#0d1020)'],
+ ['Ouch! by Icons8','https://icons8.com/ouch','Free · link required','PNG · animated',0,'Free vector & 3D illustrations with a link requirement.',null,'😗','linear-gradient(135deg,#3a1218,#1f0a0d)'],
+ ['Doodle Ipsum','https://doodleipsum.com/','Free (Blush license)','PNG · API',0,'Blush\u2019s doodle API — fill sites with hand-drawn art.','https://doodleipsum.com/1000x750/flat?bg=e3f5f8','☁️','linear-gradient(135deg,#12303a,#0e1a26)'],
+ ['Shapefest','https://shapefest.com/','Free commercial','PNG · SVG',0,'Massive free 3D shape & illustration library.','https://framerusercontent.com/images/SiEJpGUyz9Rsx6yUkUKuXs6weg.jpg','🔷','linear-gradient(135deg,#1c2a33,#101a20)'],
+ ['illlustrations.co','https://illlustrations.co/','Open source · free','PNG',0,'Open-source illustrations by Vijay Verma.','https://illlustrations.co/preview.jpg','🖼️','linear-gradient(135deg,#26321c,#131b12)']];
 function buildArt(){
   const g=document.getElementById('artgrid');g.textContent='';
-  ART.forEach(([n,url,lic,fmt,noai,d],i)=>{
+  ART.forEach(([n,url,lic,fmt,noai,d,thumb,emo,grad])=>{
     const c=document.createElement('article');c.className='art';
+    const th=document.createElement('div');th.className='thumb';th.style.background=grad;
+    if(thumb){const img=document.createElement('img');img.loading='lazy';img.alt=n+' preview';
+      img.onerror=()=>img.remove();img.src=thumb;th.appendChild(img);}
+    const fb=document.createElement('span');fb.className='fb';fb.textContent=emo;th.appendChild(fb);
+    const bd=document.createElement('div');bd.className='bd';
     const h=document.createElement('h3');h.textContent=n;
     const l=document.createElement('span');l.className='lic';l.textContent=lic+(noai?' · no AI training':'');
     h.appendChild(l);
     const p=document.createElement('p');p.textContent=d;
     const fm=document.createElement('p');fm.className='fmt';fm.textContent=fmt;
     const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.textContent=url.replace(/^https:\/\/(www\.)?/,'')+' ↗';
-    c.append(h,p,fm,a);g.appendChild(c);
+    bd.append(h,p,fm,a);c.append(th,bd);g.appendChild(c);
   });
 }
 /* ===== modal ===== */
@@ -800,6 +900,23 @@ async function svgFor(full,color){
   const data=await iconData(p,n);
   return buildSvg(data,!isPal(p),color);
 }
+/* batched sample rendering: one JSON per set → data URIs (paints all at once instead of 200+ tiny requests) */
+const batchCache={};
+async function batchUris(prefix,names){
+  if(batchCache[prefix])return batchCache[prefix];
+  const r=await fetchT(`${API}/${prefix}.json?icons=${encodeURIComponent(names.slice(0,8).join(','))}`,12000);
+  const d=await r.json();
+  const mono=!isPal(prefix);
+  const out={};
+  for(const n of names.slice(0,8)){
+    const alias=d.aliases&&d.aliases[n];
+    const ic=d.icons&&d.icons[(alias&&alias.parent)||n];
+    if(!ic)continue;
+    const w=ic.width||d.width||d.height||24,h=ic.height||d.height||d.width||24;
+    out[n]='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}"${mono?' fill="currentColor"':''}>${ic.body}</svg>`);
+  }
+  batchCache[prefix]=out;return out;
+}
 function renderTabs(force){
   const tabs=[['svg','SVG'],['react','React'],['vue','Vue'],['html','HTML'],['css','CSS']];
   const box=document.getElementById('mTabs');box.textContent='';
@@ -868,6 +985,7 @@ function funnelMaybe(){
   sessionStorage.setItem(FUNNEL.key,'1');
 }
 /* ===== live counts ===== */
+let liveAttempts=0;
 async function liveCounts(){
   try{
     const prefs=[...new Set(SETS.flatMap(s=>s.p))].join(',');
@@ -875,13 +993,22 @@ async function liveCounts(){
     const d=await r.json();
     let sum=0;
     for(const s of SETS){
-      let c=0;for(const p of s.p)c+=(d[p]&&d[p].total)||0;
+      let c=0,samples=null;
+      for(const p of s.p){const m=d[p];if(m){c+=m.total||0;if(!samples&&m.samples)samples=m.samples;}}
       if(c){sum+=c;LIVE[s.id]=c;
+        if(samples)SAMPLES[s.id]=samples;
         const el=document.querySelector(`[data-cnt="${s.id}"]`);
         if(el)el.textContent=c.toLocaleString('en-US')+' '+t('icons_cnt');}
     }
     if(sum)document.getElementById('stIcons').textContent=sum.toLocaleString('en-US');
-  }catch(e){/* static fallback stays */}
+    buildPicksFromSamples();
+    renderLibSamples();
+    window.__liveErr=null;
+  }catch(e){
+    window.__liveErr=String(e&&e.message||e);
+    /* transient network blips happen — retry with backoff before settling for static fallback */
+    if(liveAttempts++<3)setTimeout(liveCounts,3500*liveAttempts);
+  }
 }
 /* ===== boot ===== */
 applyTheme();
@@ -894,6 +1021,7 @@ buildLibs();renderLibChips();buildArt();
 const q0=url.searchParams.get('q');const set0=url.searchParams.get('set');
 if(set0&&SETBY[set0])browseSet(set0);
 else if(q0){document.getElementById('q').value=q0;state.q=q0;doSearch();}
+else renderPicks();
 liveCounts();
 window.__IG={svgFor,iconData,state,openModal,browseSet,applyLang,closeModal,doSearch};
 </script>
