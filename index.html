@@ -102,7 +102,8 @@ h1{font-size:clamp(27px,5vw,42px);line-height:1.18;margin:0 0 13px;letter-spacin
 .fchip{background:var(--card);border:1px solid var(--line);color:var(--mut);border-radius:99px;font-size:13px;padding:5px 14px;cursor:pointer}
 .fchip:hover{color:var(--link);border-color:var(--accent)}
 .fchip.on{background:var(--accent);border-color:var(--accent);color:#0a0a0a}
-.finder-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 14px}
+#setchips{margin-bottom:14px}
+.finder-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid var(--line)}
 #fstatus{font-size:13px;color:var(--mut);margin-left:auto}
 #fstatus b{color:var(--link)}
 #grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:9px;grid-auto-flow:dense}
@@ -649,6 +650,7 @@ function renderPicks(){
   document.getElementById('picksh').hidden=false;
   grid.textContent='';
   state.names.forEach((full,i)=>grid.appendChild(tileFor(full,PICK_URIS[full],sizeClass(i))));
+  finderhead.hidden=true;
   fempty.hidden=true;
   setStatus(`<b>${t('picks_t')}</b> — ${t('picks_status')}`);
   btnMore.hidden=true;
@@ -668,7 +670,7 @@ async function buildPicksFromSamples(){
       const full=`${SETBY[x.id].p[0]}:${x.names[i]}`;
       if(x.names[i]&&!seen.has(full)&&PICK_URIS[full]){seen.add(full);out.push(full);if(out.length>=60)break;}
     }
-  if(out.length>=24){PICKS=out;renderPicks();}
+  if(out.length>=24){PICKS=out;if(state.mode==='picks')renderPicks();} /* never clobber an active search/browse */
 }
 function setStatus(html){fstatus.innerHTML=html;}
 async function doSearch(){
@@ -678,6 +680,8 @@ async function doSearch(){
   state.mode='search';
   document.body.classList.add('zen');
   document.getElementById('picksh').hidden=true;
+  catchips.textContent='';
+  finderhead.hidden=false; /* results toolbar: count line + divider above the grid */
   setStatus(t('searching'));
   const c=new AbortController();searchCtl=c;
   try{
@@ -726,7 +730,8 @@ function renderSetChips(){
 /* browse mode */
 function toSearchMode(){
   state.mode='search';state.browse=null;state.cat='';
-  finderhead.hidden=true;document.getElementById('setchips').hidden=false;
+  catchips.textContent='';
+  finderhead.hidden=false;document.getElementById('setchips').hidden=false;
 }
 async function browseSet(id){
   const s=SETBY[id];if(!s)return;
