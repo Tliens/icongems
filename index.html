@@ -966,16 +966,18 @@ document.getElementById('mNavPrev').onclick=()=>navModal(-1);
 document.getElementById('mNavNext').onclick=()=>navModal(1);
 function renderPrev(){
   const box=document.getElementById('mPrev');box.textContent='';
-  const s=cur.set;const sizes=[64,32,20];
+  const s=cur.set;const sizes=[48,32,16];
+  /* one cached URL for all sizes (height=64 == the grid tiles' URL) — recolor via background, never refetch */
+  const src=svgUrl(cur.p,cur.n,'height=64');
   for(const sz of sizes){
-    const pv=document.createElement('span');pv.className='pv';pv.style.setProperty('--s',(sz/2+14)+'px');
+    const pv=document.createElement('span');pv.className='pv';pv.style.setProperty('--s',sz+'px');
     const ic=document.createElement('span');ic.className='ic-g';
-    if(s&&s.pal){const img=document.createElement('img');img.alt=cur.n;img.src=svgUrl(cur.p,cur.n,'height='+(sz*2));ic.appendChild(img);}
+    if(s&&s.pal){const img=document.createElement('img');img.alt=cur.n;img.src=src;ic.appendChild(img);}
     else{
-      ic.style.cssText=`-webkit-mask:url("${svgUrl(cur.p,cur.n,'height='+(sz*2)+(curColor?'&color='+encodeURIComponent(curColor):''))}") center/contain no-repeat;mask:url("${svgUrl(cur.p,cur.n,'height='+(sz*2)+(curColor?'&color='+encodeURIComponent(curColor):''))}") center/contain no-repeat;`;
+      ic.style.cssText=`-webkit-mask:url("${src}") center/contain no-repeat;mask:url("${src}") center/contain no-repeat;`;
       if(curColor)ic.style.background=curColor;
     }
-    const lab=document.createElement('span');lab.textContent=sz/2+'px';
+    const lab=document.createElement('span');lab.textContent=sz+'px';
     pv.append(ic,lab);box.appendChild(pv);
   }
 }
