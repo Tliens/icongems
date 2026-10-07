@@ -1,0 +1,608 @@
+{
+ "site": "IconGems",
+ "url": "https://icongems.kuige.me/",
+ "updated": "2026-10-07",
+ "description": "Curated catalog of famous open-source icon libraries (searchable & downloadable on IconGems via the Iconify API) and free illustration libraries.",
+ "icon_sets": [
+  {
+   "id": "fluent",
+   "name": "Fluent UI System Icons",
+   "author": "Microsoft",
+   "prefixes": [
+    "fluent"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 19876,
+   "license": "MIT",
+   "official_url": "https://github.com/microsoft/fluentui-system-icons",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=fluent",
+   "svg": "https://api.iconify.design/fluent/<icon-name>.svg"
+  },
+  {
+   "id": "material-symbols",
+   "name": "Material Symbols",
+   "author": "Google",
+   "prefixes": [
+    "material-symbols"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 15717,
+   "license": "Apache-2.0",
+   "official_url": "https://fonts.google.com/icons",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=material-symbols",
+   "svg": "https://api.iconify.design/material-symbols/<icon-name>.svg"
+  },
+  {
+   "id": "ph",
+   "name": "Phosphor",
+   "author": "Phosphor Icons",
+   "prefixes": [
+    "ph"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 9072,
+   "license": "MIT",
+   "official_url": "https://phosphoricons.com",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=ph",
+   "svg": "https://api.iconify.design/ph/<icon-name>.svg"
+  },
+  {
+   "id": "mdi",
+   "name": "Material Design Icons",
+   "author": "Pictogrammers",
+   "prefixes": [
+    "mdi"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 7447,
+   "license": "Apache-2.0",
+   "official_url": "https://pictogrammers.com/library/mdi/",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=mdi",
+   "svg": "https://api.iconify.design/mdi/<icon-name>.svg"
+  },
+  {
+   "id": "tabler",
+   "name": "Tabler Icons",
+   "author": "Paweł Kuna",
+   "prefixes": [
+    "tabler"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 6220,
+   "license": "MIT",
+   "official_url": "https://tabler.io/icons",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=tabler",
+   "svg": "https://api.iconify.design/tabler/<icon-name>.svg"
+  },
+  {
+   "id": "solar",
+   "name": "Solar",
+   "author": "480 Design",
+   "prefixes": [
+    "solar"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 8706,
+   "license": "CC-BY-4.0",
+   "official_url": "https://solar-icons.com",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=solar",
+   "svg": "https://api.iconify.design/solar/<icon-name>.svg"
+  },
+  {
+   "id": "mingcute",
+   "name": "MingCute Icon",
+   "author": "MingCute Design",
+   "prefixes": [
+    "mingcute"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 3320,
+   "license": "Apache-2.0",
+   "official_url": "https://www.mingcute.com",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=mingcute",
+   "svg": "https://api.iconify.design/mingcute/<icon-name>.svg"
+  },
+  {
+   "id": "ri",
+   "name": "Remix Icon",
+   "author": "Remix Design",
+   "prefixes": [
+    "ri"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 3188,
+   "license": "Apache-2.0",
+   "official_url": "https://remixicon.com",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=ri",
+   "svg": "https://api.iconify.design/ri/<icon-name>.svg"
+  },
+  {
+   "id": "bi",
+   "name": "Bootstrap Icons",
+   "author": "Bootstrap Team",
+   "prefixes": [
+    "bi",
+    "bxs",
+    "bxl"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 3038,
+   "license": "MIT",
+   "official_url": "https://icons.getbootstrap.com",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=bi,bxs,bxl",
+   "svg": "https://api.iconify.design/bi/<icon-name>.svg"
+  },
+  {
+   "id": "lucide",
+   "name": "Lucide",
+   "author": "Lucide Contributors",
+   "prefixes": [
+    "lucide"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 1866,
+   "license": "ISC",
+   "official_url": "https://lucide.dev",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=lucide",
+   "svg": "https://api.iconify.design/lucide/<icon-name>.svg"
+  },
+  {
+   "id": "icon-park",
+   "name": "IconPark",
+   "author": "ByteDance",
+   "prefixes": [
+    "icon-park-outline"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 2658,
+   "license": "Apache-2.0",
+   "official_url": "https://iconpark.oceanengine.com",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=icon-park-outline",
+   "svg": "https://api.iconify.design/icon-park-outline/<icon-name>.svg"
+  },
+  {
+   "id": "iconoir",
+   "name": "Iconoir",
+   "author": "Luca Burgio",
+   "prefixes": [
+    "iconoir"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 1671,
+   "license": "MIT",
+   "official_url": "https://iconoir.com",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=iconoir",
+   "svg": "https://api.iconify.design/iconoir/<icon-name>.svg"
+  },
+  {
+   "id": "ion",
+   "name": "Ionicons",
+   "author": "Ionic",
+   "prefixes": [
+    "ion"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 1357,
+   "license": "MIT",
+   "official_url": "https://ionic.io/ionicons",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=ion",
+   "svg": "https://api.iconify.design/ion/<icon-name>.svg"
+  },
+  {
+   "id": "heroicons",
+   "name": "Heroicons",
+   "author": "Tailwind Labs",
+   "prefixes": [
+    "heroicons"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 1288,
+   "license": "MIT",
+   "official_url": "https://heroicons.com",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=heroicons",
+   "svg": "https://api.iconify.design/heroicons/<icon-name>.svg"
+  },
+  {
+   "id": "fa6",
+   "name": "Font Awesome 6 Free",
+   "author": "Fonticons",
+   "prefixes": [
+    "fa6-solid",
+    "fa6-regular",
+    "fa6-brands"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 2060,
+   "license": "CC-BY-4.0",
+   "official_url": "https://fontawesome.com",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=fa6-solid,fa6-regular,fa6-brands",
+   "svg": "https://api.iconify.design/fa6-solid/<icon-name>.svg"
+  },
+  {
+   "id": "uil",
+   "name": "Unicons",
+   "author": "Iconscout",
+   "prefixes": [
+    "uil"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 1215,
+   "license": "Apache-2.0",
+   "official_url": "https://iconscout.com/unicons",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=uil",
+   "svg": "https://api.iconify.design/uil/<icon-name>.svg"
+  },
+  {
+   "id": "ant-design",
+   "name": "Ant Design Icons",
+   "author": "Ant Design",
+   "prefixes": [
+    "ant-design"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 848,
+   "license": "MIT",
+   "official_url": "https://ant.design/components/icons",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=ant-design",
+   "svg": "https://api.iconify.design/ant-design/<icon-name>.svg"
+  },
+  {
+   "id": "gg",
+   "name": "css.gg",
+   "author": "Astrit",
+   "prefixes": [
+    "gg"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 704,
+   "license": "MIT",
+   "official_url": "https://css.gg",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=gg",
+   "svg": "https://api.iconify.design/gg/<icon-name>.svg"
+  },
+  {
+   "id": "feather",
+   "name": "Feather Icons",
+   "author": "Cole Bemis",
+   "prefixes": [
+    "feather"
+   ],
+   "category": "ui",
+   "palette": false,
+   "icon_count_fallback": 286,
+   "license": "MIT",
+   "official_url": "https://feathericons.com",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=feather",
+   "svg": "https://api.iconify.design/feather/<icon-name>.svg"
+  },
+  {
+   "id": "line-md",
+   "name": "Material Line Icons",
+   "author": "Vjacheslav Trushkin",
+   "prefixes": [
+    "line-md"
+   ],
+   "category": "anim",
+   "palette": false,
+   "icon_count_fallback": 1218,
+   "license": "MIT",
+   "official_url": "https://icon-sets.iconify.design/line-md/",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=line-md",
+   "svg": "https://api.iconify.design/line-md/<icon-name>.svg"
+  },
+  {
+   "id": "svg-spinners",
+   "name": "SVG Spinners",
+   "author": "Utkarsh Verma",
+   "prefixes": [
+    "svg-spinners"
+   ],
+   "category": "anim",
+   "palette": false,
+   "icon_count_fallback": 46,
+   "license": "MIT",
+   "official_url": "https://icon-sets.iconify.design/svg-spinners/",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=svg-spinners",
+   "svg": "https://api.iconify.design/svg-spinners/<icon-name>.svg"
+  },
+  {
+   "id": "simple-icons",
+   "name": "Simple Icons",
+   "author": "Simple Icons Collaborators",
+   "prefixes": [
+    "simple-icons"
+   ],
+   "category": "brand",
+   "palette": false,
+   "icon_count_fallback": 3464,
+   "license": "CC0-1.0",
+   "official_url": "https://simpleicons.org",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=simple-icons",
+   "svg": "https://api.iconify.design/simple-icons/<icon-name>.svg"
+  },
+  {
+   "id": "devicon",
+   "name": "Devicon",
+   "author": "Devicon Org",
+   "prefixes": [
+    "devicon"
+   ],
+   "category": "brand",
+   "palette": true,
+   "icon_count_fallback": 1057,
+   "license": "MIT",
+   "official_url": "https://devicon.dev",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=devicon",
+   "svg": "https://api.iconify.design/devicon/<icon-name>.svg"
+  },
+  {
+   "id": "vscode-icons",
+   "name": "VSCode Icons",
+   "author": "Roberto Huertas",
+   "prefixes": [
+    "vscode-icons"
+   ],
+   "category": "brand",
+   "palette": true,
+   "icon_count_fallback": 1666,
+   "license": "MIT",
+   "official_url": "https://icon-sets.iconify.design/vscode-icons/",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=vscode-icons",
+   "svg": "https://api.iconify.design/vscode-icons/<icon-name>.svg"
+  },
+  {
+   "id": "codicon",
+   "name": "Codicons",
+   "author": "Microsoft",
+   "prefixes": [
+    "codicon"
+   ],
+   "category": "brand",
+   "palette": false,
+   "icon_count_fallback": 653,
+   "license": "CC-BY-4.0",
+   "official_url": "https://microsoft.github.io/vscode-codicons",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=codicon",
+   "svg": "https://api.iconify.design/codicon/<icon-name>.svg"
+  },
+  {
+   "id": "twemoji",
+   "name": "Twemoji",
+   "author": "Twitter / X",
+   "prefixes": [
+    "twemoji"
+   ],
+   "category": "emoji",
+   "palette": true,
+   "icon_count_fallback": 3988,
+   "license": "CC-BY-4.0",
+   "official_url": "https://github.com/twitter/twemoji",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=twemoji",
+   "svg": "https://api.iconify.design/twemoji/<icon-name>.svg"
+  },
+  {
+   "id": "fluent-emoji",
+   "name": "Fluent Emoji",
+   "author": "Microsoft",
+   "prefixes": [
+    "fluent-emoji"
+   ],
+   "category": "emoji",
+   "palette": true,
+   "icon_count_fallback": 3126,
+   "license": "MIT",
+   "official_url": "https://github.com/microsoft/fluentui-emoji",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=fluent-emoji",
+   "svg": "https://api.iconify.design/fluent-emoji/<icon-name>.svg"
+  },
+  {
+   "id": "noto",
+   "name": "Noto Emoji",
+   "author": "Google",
+   "prefixes": [
+    "noto"
+   ],
+   "category": "emoji",
+   "palette": true,
+   "icon_count_fallback": 3729,
+   "license": "Apache-2.0",
+   "official_url": "https://github.com/googlefonts/noto-emoji",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=noto",
+   "svg": "https://api.iconify.design/noto/<icon-name>.svg"
+  },
+  {
+   "id": "flat-color-icons",
+   "name": "Flat Color Icons",
+   "author": "Icons8",
+   "prefixes": [
+    "flat-color-icons"
+   ],
+   "category": "emoji",
+   "palette": true,
+   "icon_count_fallback": 329,
+   "license": "MIT",
+   "official_url": "https://icon-sets.iconify.design/flat-color-icons/",
+   "search": "https://api.iconify.design/search?query=<term>&prefixes=flat-color-icons",
+   "svg": "https://api.iconify.design/flat-color-icons/<icon-name>.svg"
+  }
+ ],
+ "illustrations": [
+  {
+   "name": "unDraw",
+   "url": "https://undraw.co/",
+   "license": "free, no attribution (AI/ML training prohibited)",
+   "formats": [
+    "SVG",
+    "PNG"
+   ]
+  },
+  {
+   "name": "Open Peeps",
+   "url": "https://www.openpeeps.com/",
+   "license": "CC0",
+   "formats": [
+    "PNG",
+    "SVG"
+   ]
+  },
+  {
+   "name": "Humaaans",
+   "url": "https://humaaans.com/",
+   "license": "CC0",
+   "formats": [
+    "SVG"
+   ]
+  },
+  {
+   "name": "DiceBear",
+   "url": "https://www.dicebear.com/",
+   "license": "open source (per-style)",
+   "formats": [
+    "SVG",
+    "PNG",
+    "API"
+   ]
+  },
+  {
+   "name": "Storyset",
+   "url": "https://storyset.com/",
+   "license": "free with attribution (Freepik)",
+   "formats": [
+    "SVG",
+    "animated"
+   ]
+  },
+  {
+   "name": "DrawKit",
+   "url": "https://www.drawkit.com/",
+   "license": "free with attribution (free tier)",
+   "formats": [
+    "SVG"
+   ]
+  },
+  {
+   "name": "ManyPixels",
+   "url": "https://www.manypixels.co/gallery",
+   "license": "free, no attribution",
+   "formats": [
+    "SVG",
+    "PNG"
+   ]
+  },
+  {
+   "name": "3dicons",
+   "url": "https://www.3dicons.com/",
+   "license": "open source, free",
+   "formats": [
+    "PNG",
+    "Blender"
+   ]
+  },
+  {
+   "name": "LottieFiles Free",
+   "url": "https://lottiefiles.com/",
+   "license": "mixed - check each asset",
+   "formats": [
+    "Lottie",
+    "GIF"
+   ]
+  },
+  {
+   "name": "IRA Design",
+   "url": "https://iradesign.io/",
+   "license": "MIT",
+   "formats": [
+    "SVG",
+    "PSD"
+   ]
+  },
+  {
+   "name": "Lukasz Adam Illustrations",
+   "url": "https://lukaszadam.com/illustrations",
+   "license": "CC0",
+   "formats": [
+    "SVG"
+   ]
+  },
+  {
+   "name": "absurd.design",
+   "url": "https://absurd.design/",
+   "license": "free with attribution (free tier)",
+   "formats": [
+    "SVG"
+   ]
+  },
+  {
+   "name": "Ouch! by Icons8",
+   "url": "https://icons8.com/ouch",
+   "license": "free with link",
+   "formats": [
+    "PNG",
+    "animated"
+   ]
+  },
+  {
+   "name": "Doodle Ipsum",
+   "url": "https://doodleipsum.com/",
+   "license": "free (Blush license)",
+   "formats": [
+    "PNG",
+    "API"
+   ]
+  },
+  {
+   "name": "Shapefest",
+   "url": "https://shapefest.com/",
+   "license": "free for commercial use",
+   "formats": [
+    "PNG",
+    "SVG"
+   ]
+  },
+  {
+   "name": "illlustrations.co",
+   "url": "https://illlustrations.co/",
+   "license": "open source, free",
+   "formats": [
+    "PNG"
+   ]
+  }
+ ],
+ "iconify_api": {
+  "search": "https://api.iconify.design/search?query=<term>&limit=<n>&prefixes=<comma-separated>",
+  "svg": "https://api.iconify.design/<prefix>/<icon>.svg?color=<hex|currentColor>&height=<px>",
+  "set_metadata": "https://api.iconify.design/collections?prefixes=<comma-separated>",
+  "set_browse": "https://api.iconify.design/collection?prefix=<prefix>",
+  "cors": "access-control-allow-origin: *"
+ },
+ "license_summary": {
+  "no_attribution": [
+   "MIT",
+   "Apache-2.0",
+   "ISC",
+   "CC0-1.0"
+  ],
+  "attribution_required": [
+   "CC-BY-4.0"
+  ],
+  "note": "Verify on the source site before shipping; licenses change."
+ }
+}

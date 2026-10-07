@@ -1,0 +1,44 @@
+# IconGems
+
+> Free search & download front-end for 100,000+ open-source SVG icons from famous libraries (Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap, Remix Icon, IconPark, Ionicons, Heroicons…), plus a curated, license-verified directory of free illustration libraries (unDraw, Open Peeps, Humaaans, DiceBear…).
+> Built for designers, developers, product managers — and AI agents. Bilingual (EN / ZH), no signup, no tracking of your searches.
+
+## URL
+
+- English (default): https://icongems.kuige.me/
+- Chinese: https://icongems.kuige.me/?lang=zh
+- Machine-readable catalog (all sets + illustrations + licenses): https://icongems.kuige.me/data/catalog.json
+
+## What each page section does
+
+- `#finder` — aggregated icon search. Type a query; results render as SVG tiles. Click a tile to open the detail panel: copy SVG / React / Vue / HTML / CSS snippets, download SVG, render & download PNG (64–512 px), recolor.
+- `#libs` — 29 curated famous libraries with live icon counts, exact license badges (MIT / Apache-2.0 / ISC / CC0 / CC BY 4.0), official links and a per-set browser.
+- `#art` — 16 curated free illustration libraries with license summaries and official links.
+- `#ai` — agent resources: this file, catalog.json, Iconify API cheatsheet, AI codegen tips, license notes.
+- `#faq` — licensing and usage questions.
+
+## Iconify API (used by this site; open CORS, no key)
+
+```
+GET https://api.iconify.design/search?query=<term>&limit=<n>&prefixes=<set,prefix,comma,separated>
+GET https://api.iconify.design/<prefix>/<icon-name>.svg?color=<hex|currentColor>&height=<px>
+GET https://api.iconify.design/collections?prefixes=<prefixes>   # name, author, license, icon count per set
+GET https://api.iconify.design/collection?prefix=<prefix>        # all icon names in a set, grouped by category
+```
+
+Agent recipes:
+
+- Find icons: `GET /search?query=rocket&prefixes=lucide,tabler` → list of `prefix:name`.
+- Fetch inline SVG: `GET /{prefix}/{name}.svg?height=64` (add `color=%230b9d87` to recolor).
+- Verify a set's license before bulk use: `GET /collections?prefixes=lucide`.
+
+## Licensing summary
+
+- No attribution needed: MIT, Apache-2.0, ISC, CC0 sets (most sets on IconGems).
+- Attribution required: CC BY 4.0 sets — Solar, Font Awesome 6 Free, Twemoji, Codicons.
+- Illustrations: per-library licenses vary; unDraw explicitly prohibits AI/ML training use. Always verify on the source site — see `data/catalog.json` for the exact links.
+
+## Source & contact
+
+- Author: 魁歌 KuiGe — https://kuige.me/
+- IconGems is an independent search front-end over the Iconify open-source aggregation; all library names and trademarks belong to their respective owners.

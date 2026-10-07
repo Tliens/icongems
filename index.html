@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IconGems — Free SVG Icons & Illustrations, Search & Download</title>
+<meta name="description" content="Search and download 100,000+ free SVG icons from Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome and more. Copy SVG/React/Vue code, export SVG & PNG, plus a curated directory of free illustration libraries. For designers, developers, PMs and AI. No signup.">
+<link rel="canonical" href="https://icongems.kuige.me/">
+<link rel="alternate" hreflang="en" href="https://icongems.kuige.me/">
+<link rel="alternate" hreflang="zh" href="https://icongems.kuige.me/?lang=zh">
+<link rel="alternate" hreflang="x-default" href="https://icongems.kuige.me/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="IconGems">
+<meta property="og:title" content="IconGems — Free SVG Icons & Illustrations, Search & Download">
+<meta property="og:description" content="100,000+ free SVG icons from Google, Microsoft, Tabler, Lucide, Phosphor, Font Awesome… Copy code, download SVG/PNG, plus curated free illustration libraries.">
+<meta property="og:url" content="https://icongems.kuige.me/">
+<meta property="og:image" content="https://icongems.kuige.me/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IconGems — Free SVG Icons & Illustrations, Search & Download">
+<meta name="twitter:description" content="100,000+ free SVG icons from Google, Microsoft, Tabler, Lucide, Phosphor, Font Awesome… plus curated free illustration libraries.">
+<meta name="twitter:image" content="https://icongems.kuige.me/og-image.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232cc9b0'/%3E%3Cstop offset='1' stop-color='%23078b78'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Cpath d='M10 38c8-14 22-20 34-16 6 2 10 7 10 12 0 6-5 10-11 10-8 0-12-6-9-11 2-4 8-5 10-1' fill='none' stroke='%23ffffff' stroke-width='5' stroke-linecap='round'/%3E%3Crect x='40' y='28' width='12' height='12' rx='3' fill='%23ffffff'/%3E%3Ccircle cx='22' cy='34' r='3.4' fill='%23071518'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"IconGems","url":"https://icongems.kuige.me/","applicationCategory":"DesignApplication","operatingSystem":"Any modern browser","description":"Free search and download of 100,000+ open-source SVG icons from famous libraries (Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap and more), plus a curated directory of free illustration libraries. Copy SVG/React/Vue code, export SVG and PNG.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Search 200,000+ icons across 200+ open-source sets","Download SVG and PNG directly","Copy SVG / React / Vue / HTML / CSS snippets","Curated famous icon libraries with license badges","Curated free illustration libraries","Machine-readable catalog and llms.txt for AI agents"],"inLanguage":["en","zh"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Are these icons free for commercial use?","acceptedAnswer":{"@type":"Answer","text":"Yes — every library featured here is open source. MIT, Apache-2.0, ISC and CC0 sets can be used in commercial products without attribution. CC BY 4.0 sets (Solar, Font Awesome Free, Twemoji) are also free for commercial work but ask you to credit the authors. Each card shows the exact license; always confirm on the source site before shipping."}},
+{"@type":"Question","name":"How do downloads work? What formats do I get?","acceptedAnswer":{"@type":"Answer","text":"Click any icon to open its detail panel: copy SVG, React, Vue, HTML or CSS snippets, download the SVG file, or render and download a PNG (64–512 px) right in your browser. No signup, no watermark."}},
+{"@type":"Question","name":"Where do the icons come from?","acceptedAnswer":{"@type":"Answer","text":"IconGems searches via the Iconify API, which aggregates 200+ open-source icon sets — Google Material Symbols, Microsoft Fluent UI, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap and more. Icons are always served fresh from upstream; IconGems is a search front-end, not a host."}},
+{"@type":"Question","name":"Do I have to give credit anywhere?","acceptedAnswer":{"@type":"Answer","text":"For MIT / Apache-2.0 / ISC / CC0 libraries: no attribution required (keeping the license notice in your project is good practice). For CC BY 4.0 libraries (Solar, Font Awesome Free icons, Twemoji): attribution is required. Illustration libraries vary — each card in the illustrations section links to the exact license."}},
+{"@type":"Question","name":"Can I use these icons with AI code generation?","acceptedAnswer":{"@type":"Answer","text":"Yes. Permissively licensed icon sets (MIT/Apache/ISC/CC0) are fine to reference in AI prompts, code generation and shipped products. This site also publishes llms.txt and a machine-readable catalog at /data/catalog.json for AI agents. Note: some illustration libraries (e.g. unDraw) explicitly prohibit using their artwork for AI/ML training — check each source's terms before bulk ingestion."}},
+{"@type":"Question","name":"Is IconGems affiliated with Google, Microsoft or the other brands?","acceptedAnswer":{"@type":"Answer","text":"No. IconGems is an independent search front-end over open-source icon collections. All library names and trademarks belong to their respective owners, and every card links back to the official source."}}
+]}
+</script>
+<style>
+:root{
+  --bg:#f3faf8; --card:#ffffff; --ink:#18302b; --mut:#5e7a73;
+  --accent:#0b9d87; --accent2:#a8762a; --line:rgba(24,48,43,.13);
+  --glow:rgba(11,157,135,.10); --chipbg:rgba(24,48,43,.04);
+}
+html.dark{
+  --bg:#071518; --card:#0c2024; --ink:#e6f2ee; --mut:#8daba3;
+  --accent:#2cc9b0; --accent2:#e0b25b; --line:rgba(230,242,238,.12);
+  --glow:rgba(44,201,176,.11); --chipbg:rgba(230,242,238,.05);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+[hidden]{display:none!important}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.6;
+  transition:background .25s,color .25s;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+/* topbar */
+.top{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;height:58px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:17px;text-decoration:none;color:var(--ink);flex:none}
+.brand .mark{width:27px;height:27px;border-radius:8px;display:block}
+nav.main{display:flex;align-items:center;gap:15px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+nav.main::-webkit-scrollbar{display:none}
+.navlink{color:var(--mut);text-decoration:none;font-size:14px;white-space:nowrap}
+.navlink:hover{color:var(--accent)}
+.kuige-entry{color:var(--mut);text-decoration:none;font-size:13.5px;padding:4px 10px;border:1px solid var(--line);border-radius:99px;white-space:nowrap}
+.kuige-entry:hover{color:var(--accent);border-color:var(--accent)}
+.iconbtn{background:none;border:1px solid var(--line);border-radius:9px;color:var(--mut);font-size:14px;padding:5px 10px;cursor:pointer;width:auto;flex:none}
+.iconbtn:hover{color:var(--accent);border-color:var(--accent)}
+/* hero */
+.hero{text-align:center;padding:52px 0 20px}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+h1{font-size:clamp(27px,5vw,42px);line-height:1.18;margin:0 0 13px;letter-spacing:-.5px}
+.sub{color:var(--mut);font-size:16.5px;max-width:660px;margin:0 auto 22px}
+.stats{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+.stat{font-size:13px;color:var(--accent);border:1px solid var(--line);background:var(--card);border-radius:99px;padding:4px 13px}
+.stat b{font-variant-numeric:tabular-nums}
+/* search */
+.searchrow{display:flex;gap:10px;max-width:680px;margin:0 auto 12px}
+#q{flex:1;min-width:0;font-size:16px;padding:13px 18px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);outline:none;transition:border-color .15s}
+#q:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--glow)}
+.quick{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-bottom:6px}
+.qchip{background:var(--chipbg);border:1px solid var(--line);color:var(--mut);border-radius:99px;font-size:12.5px;padding:4px 12px;cursor:pointer}
+.qchip:hover{color:var(--accent);border-color:var(--accent)}
+/* finder */
+#finder{padding:26px 0 8px}
+.chips{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.fchip{background:var(--card);border:1px solid var(--line);color:var(--mut);border-radius:99px;font-size:13px;padding:5px 14px;cursor:pointer}
+.fchip:hover{color:var(--accent);border-color:var(--accent)}
+.fchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.finder-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 14px}
+#fstatus{font-size:13px;color:var(--mut);margin-left:auto}
+#fstatus b{color:var(--accent)}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:9px}
+.ic-t{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px 8px;border-radius:12px;background:var(--card);border:1px solid var(--line);cursor:pointer;color:var(--ink);transition:border-color .12s,transform .12s}
+.ic-t:hover{border-color:var(--accent);transform:translateY(-2px)}
+.ic-g{width:30px;height:30px;background:currentColor;flex:none}
+.ic-g img{width:30px;height:30px;display:block}
+.ic-n{font-size:10.5px;color:var(--mut);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:rtl;text-align:center}
+#fempty,#ferr{text-align:center;color:var(--mut);padding:34px 12px;font-size:14.5px}
+.more-wrap{text-align:center;padding:18px 0 4px}
+/* sections */
+section.blk{padding:42px 0 8px}
+h2{font-size:24px;margin:0 0 8px;letter-spacing:-.3px}
+.sect-sub{color:var(--mut);font-size:14.5px;margin:0 0 18px;max-width:760px}
+/* library cards */
+.libgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:13px}
+.lib{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px;display:flex;flex-direction:column;gap:7px;transition:border-color .12s}
+.lib:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}
+.lib-h{display:flex;align-items:center;gap:9px}
+.lib-h h3{margin:0;font-size:15.5px;flex:1;min-width:0}
+.lic{flex:none;font-size:11px;font-weight:600;color:var(--accent2);border:1px solid color-mix(in srgb,var(--accent2) 45%,transparent);border-radius:99px;padding:1px 9px;white-space:nowrap}
+.lib-a{margin:0;font-size:12.5px;color:var(--accent);font-weight:600}
+.lib-d{margin:0;font-size:13px;color:var(--mut);flex:1}
+.lib-f{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:2px}
+.cnt{font-size:12.5px;color:var(--mut);font-variant-numeric:tabular-nums}
+.mini{background:none;border:1px solid var(--line);color:var(--mut);border-radius:8px;font-size:12px;padding:3px 10px;cursor:pointer;text-decoration:none;display:inline-block}
+.mini:hover{color:var(--accent);border-color:var(--accent)}
+.mini.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+.mini.pri:hover{filter:brightness(1.08)}
+/* illustrations */
+.artgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:13px}
+.art{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px;display:flex;flex-direction:column;gap:6px}
+.art h3{margin:0;font-size:15px;display:flex;align-items:center;gap:8px}
+.art .lic{font-size:10.5px}
+.art p{margin:0;font-size:13px;color:var(--mut)}
+.art .fmt{font-size:11.5px;color:var(--accent2)}
+.art a{color:var(--accent);font-size:12.5px;text-decoration:none;font-weight:600}
+.art a:hover{text-decoration:underline}
+.note-line{font-size:13px;color:var(--mut);background:var(--chipbg);border:1px dashed var(--line);border-radius:10px;padding:10px 14px;margin:14px 0 0}
+/* AI section */
+.aigrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:13px}
+.ai{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:17px 18px}
+.ai h3{margin:0 0 6px;font-size:15.5px}
+.ai p{margin:0 0 10px;font-size:13.5px;color:var(--mut)}
+.ai a{color:var(--accent);font-weight:600;text-decoration:none}
+.ai a:hover{text-decoration:underline}
+.code{position:relative;background:color-mix(in srgb,var(--ink) 92%,var(--card));color:color-mix(in srgb,var(--bg) 88%,#fff);border-radius:10px;padding:11px 13px;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow:auto;white-space:pre}
+.code .cp{position:absolute;top:7px;right:8px;background:var(--card);border:1px solid var(--line);color:var(--mut);border-radius:7px;font-size:11px;padding:2px 9px;cursor:pointer}
+.code .cp:hover{color:var(--accent);border-color:var(--accent)}
+/* FAQ */
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600;font-size:15px}
+details p{color:var(--mut);font-size:14px;margin:9px 0 0}
+/* footer */
+footer{border-top:1px solid var(--line);margin-top:44px;padding:26px 0 34px;font-size:13px;color:var(--mut)}
+footer .fnav{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+footer a{color:var(--mut);text-decoration:none}
+footer a:hover{color:var(--accent)}
+.codename{opacity:.85;margin-top:10px}
+/* modal */
+#modal{position:fixed;inset:0;z-index:120;background:rgba(4,14,12,.62);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:18px}
+.mbox{background:var(--card);border:1px solid var(--line);border-radius:18px;max-width:640px;width:100%;max-height:92vh;overflow:auto;padding:22px 24px;position:relative;box-shadow:0 18px 60px rgba(0,0,0,.4)}
+.mx{position:absolute;top:10px;right:12px;background:none;border:none;color:var(--mut);font-size:22px;cursor:pointer;line-height:1}
+.mx:hover{color:var(--accent)}
+.m-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-right:30px}
+.m-head h3{margin:0;font-size:18px;word-break:break-all}
+.m-set{font-size:13px;color:var(--mut)}
+.m-set a{color:var(--accent);text-decoration:none;font-weight:600}
+.m-set a:hover{text-decoration:underline}
+.m-prev{display:flex;align-items:flex-end;gap:18px;justify-content:center;padding:18px 0 6px;flex-wrap:wrap}
+.m-prev .pv{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:11px;color:var(--mut)}
+.m-prev .pv .ic-g{width:var(--s);height:var(--s)}
+.m-prev .pv img{width:var(--s);height:var(--s);display:block}
+.colors{display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px 0 2px}
+.sw2{width:24px;height:24px;border-radius:50%;border:2px solid var(--line);cursor:pointer;padding:0}
+.sw2.on{outline:2.5px solid var(--accent);outline-offset:1.5px}
+.sw2.custom{background:conic-gradient(red,yellow,lime,cyan,blue,magenta,red);position:relative;overflow:hidden}
+.sw2.custom input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 9px}
+.tab{background:var(--chipbg);border:1px solid var(--line);color:var(--mut);border-radius:9px;font-size:12.5px;padding:4px 13px;cursor:pointer}
+.tab:hover{color:var(--accent);border-color:var(--accent)}
+.tab.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.m-actions{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0 4px}
+.btn{border:none;border-radius:11px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;color:#fff;background:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--mut)}
+.btn.ghost:hover{color:var(--accent);border-color:var(--accent)}
+.psize{font-size:13px;color:var(--mut);display:inline-flex;align-items:center;gap:7px}
+select{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:4px 8px;font-size:13px}
+.m-api{font-size:11.5px;color:var(--mut);word-break:break-all;margin-top:10px}
+.m-api a{color:var(--accent)}
+/* matrix funnel row (in-modal, non-blocking) */
+.mxf{margin-top:16px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:11px;align-items:center;flex-wrap:wrap;background:var(--chipbg)}
+.mxf-t{font-weight:600;font-size:13.5px}
+.mxf-w{font-size:12.5px;color:var(--mut);flex:1;min-width:160px}
+.mxf .btn{padding:7px 14px;font-size:13px}
+.mxf .mxf-x{background:none;border:none;color:var(--mut);cursor:pointer;font-size:16px;padding:0 2px}
+@media (max-width:640px){
+  nav.main{gap:11px}
+  .searchrow{flex-direction:column}
+  #grid{grid-template-columns:repeat(auto-fill,minmax(74px,1fr))}
+}
+@media print{.top,#modal,footer .fnav{display:none}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <a class="brand" href="./" title="IconGems">
+    <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2cc9b0"/><stop offset="1" stop-color="#078b78"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#lg)"/><path d="M10 38c8-14 22-20 34-16 6 2 10 7 10 12 0 6-5 10-11 10-8 0-12-6-9-11 2-4 8-5 10-1" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><rect x="40" y="28" width="12" height="12" rx="3" fill="#fff"/><circle cx="22" cy="34" r="3.4" fill="#071518"/></svg>
+    <span>IconGems</span>
+  </a>
+  <nav class="main">
+    <a class="navlink" href="#finder" data-i18n="nav_find">Search & Download</a>
+    <a class="navlink" href="#libs" data-i18n="nav_libs">Icon Libraries</a>
+    <a class="navlink" href="#art" data-i18n="nav_art">Illustrations</a>
+    <a class="navlink" href="#ai" data-i18n="nav_ai">For AI</a>
+    <a class="navlink" href="#faq" data-i18n="nav_faq">FAQ</a>
+    <a class="kuige-entry navlink" href="https://kuige.me/" target="_blank" rel="noopener" title="kuige.me">魁歌 · 独立开发者</a>
+    <button class="iconbtn" id="btnLang" title="Language">中文</button>
+    <button class="iconbtn" id="btnTheme" title="Theme: auto">🌗</button>
+  </nav>
+</div></div>
+
+<header class="hero wrap">
+  <p class="eyebrow" data-i18n="eyebrow">Free icons &amp; illustrations · for designers, developers, PMs &amp; AI</p>
+  <h1 data-i18n="h1">Search 100,000+ free icons from the names you trust</h1>
+  <p class="sub" data-i18n="sub">Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap — aggregated search, one-click SVG/PNG download, copy-ready code. Plus a hand-picked directory of free illustration libraries.</p>
+  <div class="searchrow">
+    <input id="q" type="search" data-i18n-ph="q_ph" placeholder="Search icons — try “rocket”, “home”, “user”…" autocomplete="off" enterkeyhint="search">
+  </div>
+  <div class="quick" id="quick"></div>
+  <div class="stats">
+    <span class="stat"><b id="stLibs">29</b> <span data-i18n="st_libs">curated libraries</span></span>
+    <span class="stat"><b id="stIcons">100,000+</b> <span data-i18n="st_icons">curated icons</span></span>
+    <span class="stat"><b data-i18n="st_allnum">200,000+</b> <span data-i18n="st_all">searchable · SVG + PNG</span></span>
+    <span class="stat" data-i18n="st_free">Free · no signup</span>
+  </div>
+</header>
+
+<main>
+<section id="finder" class="wrap">
+  <div class="chips" id="setchips"></div>
+  <div class="finder-head" id="finderhead" hidden>
+    <div class="chips" id="catchips"></div>
+    <span id="fstatus"></span>
+  </div>
+  <div id="grid"></div>
+  <div id="fempty" hidden></div>
+  <div id="ferr" hidden></div>
+  <div class="more-wrap"><button class="mini" id="btnMore" hidden data-i18n="more">Show more</button></div>
+</section>
+
+<section id="libs" class="wrap blk">
+  <h2 data-i18n="libs_h2">The famous libraries, all in one place</h2>
+  <p class="sect-sub" data-i18n="libs_sub">Every library below is open source, famous in its own right, and searchable + downloadable on this page. Counts and licenses are fetched live from Iconify. Click “Browse” to page through a set, or search with its filter chip above.</p>
+  <div class="chips" id="libchips" style="margin-bottom:16px"></div>
+  <div class="libgrid" id="libgrid"></div>
+</section>
+
+<section id="art" class="wrap blk">
+  <h2 data-i18n="art_h2">Free illustration libraries worth bookmarking</h2>
+  <p class="sect-sub" data-i18n="art_sub">Illustrations are too varied to aggregate fairly, so here is a curated, verified directory — every entry is free for commercial use under its stated terms. Licenses change; always confirm on the source site.</p>
+  <div class="artgrid" id="artgrid"></div>
+  <p class="note-line" data-i18n="art_note">⚠️ Licenses differ per library and can change over time — the badge is a summary, the source site is the truth. unDraw explicitly prohibits AI/ML training use; several others require attribution.</p>
+</section>
+
+<section id="ai" class="wrap blk">
+  <h2 data-i18n="ai_h2">Built for AI &amp; agents, too</h2>
+  <p class="sect-sub" data-i18n="ai_sub">Everything on this site is machine-readable: a site guide, a JSON catalog, and open APIs with permissive CORS. Feed them to your agent, IDE plugin or RAG pipeline.</p>
+  <div class="aigrid">
+    <div class="ai">
+      <h3>🤖 llms.txt</h3>
+      <p data-i18n="ai_1">A concise, agent-friendly guide to this site — sections, endpoints and license summary in one file.</p>
+      <a href="llms.txt" target="_blank" rel="noopener">icongems.kuige.me/llms.txt ↗</a>
+    </div>
+    <div class="ai">
+      <h3>🗂️ catalog.json</h3>
+      <p data-i18n="ai_2">The full curated catalog — all icon libraries and illustration sources with licenses, counts and prefixes — as plain JSON for agents and RAG.</p>
+      <a href="data/catalog.json" target="_blank" rel="noopener">/data/catalog.json ↗</a>
+    </div>
+    <div class="ai">
+      <h3>⚡ Iconify API cheatsheet</h3>
+      <p data-i18n="ai_3">Open CORS, no key, no quota games — the same endpoints this page uses.</p>
+      <div class="code" id="apiCode"><button class="cp" data-i18n="copy">Copy</button><span id="apiCodeTxt">curl "https://api.iconify.design/search?query=rocket&limit=24"
+curl "https://api.iconify.design/search?query=rocket&prefixes=lucide,tabler"
+curl "https://api.iconify.design/lucide/rocket.svg?color=%230b9d87&height=64"
+curl "https://api.iconify.design/collections?prefixes=lucide,tabler"</span></div>
+    </div>
+    <div class="ai">
+      <h3>🧩 AI codegen tips</h3>
+      <p data-i18n="ai_4">Tell your AI which set to use, then paste the snippet from the icon panel. Well-known npm packages: <b>lucide-react</b>, <b>@tabler/icons-react</b>, <b>@phosphor-icons/react</b>, <b>@heroicons/react</b>, <b>bootstrap-icons</b>, <b>material-symbols</b>, <b>simple-icons</b>, <b>ionicons</b> — or the universal <b>@iconify/react</b> / <b>@iconify/vue</b>.</p>
+    </div>
+    <div class="ai">
+      <h3>⚖️ Licenses &amp; AI</h3>
+      <p data-i18n="ai_5">MIT / Apache-2.0 / ISC / CC0 icon sets are safe to reference in AI prompts and generated code. CC BY 4.0 sets need attribution. Careful with illustrations: some libraries (e.g. unDraw) prohibit AI/ML training use — check before bulk ingestion.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="wrap blk">
+  <h2 data-i18n="faq_h2">FAQ</h2>
+  <details><summary data-i18n="faq1_q">Are these icons free for commercial use?</summary><p data-i18n="faq1_a">Yes — every library featured here is open source. MIT, Apache-2.0, ISC and CC0 sets can be used in commercial products without attribution. CC BY 4.0 sets (Solar, Font Awesome Free, Twemoji) are also free for commercial work but ask you to credit the authors. Each card shows the exact license; always confirm on the source site before shipping.</p></details>
+  <details><summary data-i18n="faq2_q">How do downloads work? What formats do I get?</summary><p data-i18n="faq2_a">Click any icon to open its detail panel: copy SVG, React, Vue, HTML or CSS snippets, download the SVG file, or render and download a PNG (64–512 px) right in your browser. No signup, no watermark.</p></details>
+  <details><summary data-i18n="faq3_q">Where do the icons come from?</summary><p data-i18n="faq3_a">IconGems searches via the Iconify API, which aggregates 200+ open-source icon sets — Google Material Symbols, Microsoft Fluent UI, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap and more. Icons are always served fresh from upstream; IconGems is a search front-end, not a host.</p></details>
+  <details><summary data-i18n="faq4_q">Do I have to give credit anywhere?</summary><p data-i18n="faq4_a">For MIT / Apache-2.0 / ISC / CC0 libraries: no attribution required (keeping the license notice in your project is good practice). For CC BY 4.0 libraries (Solar, Font Awesome Free icons, Twemoji): attribution is required. Illustration libraries vary — each card in the illustrations section links to the exact license.</p></details>
+  <details><summary data-i18n="faq5_q">Can I use these icons with AI code generation?</summary><p data-i18n="faq5_a">Yes. Permissively licensed icon sets (MIT/Apache/ISC/CC0) are fine to reference in AI prompts, code generation and shipped products. This site also publishes llms.txt and a machine-readable catalog at /data/catalog.json for AI agents. Note: some illustration libraries (e.g. unDraw) explicitly prohibit using their artwork for AI/ML training — check each source's terms before bulk ingestion.</p></details>
+  <details><summary data-i18n="faq6_q">Is IconGems affiliated with Google, Microsoft or the other brands?</summary><p data-i18n="faq6_a">No. IconGems is an independent search front-end over open-source icon collections. All library names and trademarks belong to their respective owners, and every card links back to the official source.</p></details>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <div class="fnav">
+    <a href="https://kuige.me/" target="_blank" rel="noopener">kuige.me</a>
+    <a href="llms.txt" target="_blank" rel="noopener">llms.txt</a>
+    <a href="data/catalog.json" target="_blank" rel="noopener">catalog.json</a>
+    <a href="https://iconify.design/" target="_blank" rel="noopener" data-i18n="f_iconify">Powered by Iconify</a>
+  </div>
+  <div>© 2026 <a href="https://kuige.me/" target="_blank" rel="noopener">魁歌 KuiGe</a> · IconGems — <span data-i18n="f_tag">free icons &amp; illustrations, from the names you trust</span></div>
+  <div class="codename" data-i18n="codename">本站代号：螭吻 — 龙生九子，螭吻好吞：吞尽天下图标，吐成一库。(Chiwen, ninth of the dragon's nine sons — it swallows every icon under heaven and spits out one library.)</div>
+</div></footer>
+
+<div id="modal" hidden>
+  <div class="mbox" role="dialog" aria-modal="true">
+    <button class="mx" id="mClose" title="Close (Esc)">×</button>
+    <div class="m-head"><h3 id="mName">icon</h3><span class="lic" id="mLic">MIT</span></div>
+    <p class="m-set" id="mSet"></p>
+    <div class="m-prev" id="mPrev"></div>
+    <div class="colors" id="mColors"></div>
+    <div class="tabs" id="mTabs"></div>
+    <div class="code" id="mCode"><button class="cp" id="mCopy" data-i18n="copy">Copy</button><span id="mCodeTxt"></span></div>
+    <div class="m-actions">
+      <button class="btn" id="mSvg" data-i18n="dl_svg">Download SVG</button>
+      <button class="btn ghost" id="mPng" data-i18n="dl_png">Download PNG</button>
+      <span class="psize"><span data-i18n="psize">PNG size</span> <select id="mPngSize"><option>128</option><option>256</option><option>512</option><option>64</option></select></span>
+    </div>
+    <p class="m-api" id="mApi"></p>
+    <div class="mxf" id="mxFunnel" hidden></div>
+  </div>
+</div>
+
+<script type="module">
+/* ===== IconGems — single-file, no build ===== */
+const API='https://api.iconify.design';
+const FUNNEL={key:'funnel_icongems_shareforge_v1',card:{url:'https://shareforge.kuige.me/?from=icongems',
+  zh:{title:'图标配好了，做张分享图？',why:'把截图变成各平台尺寸的分享卡片',btn:'打开 ShareForge'},
+  en:{title:'Icons ready — need a share image?',why:'Turn screenshots into social-sized share cards',btn:'Open ShareForge'}}};
+
+/* curated sets: id, family prefixes, category, palette, fallback count, license, author */
+const SETS=[
+ {id:'fluent',p:['fluent'],cat:'ui',pal:0,cnt:19876,lic:'MIT',n:'Fluent UI System Icons',a:'Microsoft'},
+ {id:'material-symbols',p:['material-symbols'],cat:'ui',pal:0,cnt:15717,lic:'Apache-2.0',n:'Material Symbols',a:'Google'},
+ {id:'ph',p:['ph'],cat:'ui',pal:0,cnt:9072,lic:'MIT',n:'Phosphor',a:'Phosphor Icons'},
+ {id:'mdi',p:['mdi'],cat:'ui',pal:0,cnt:7447,lic:'Apache-2.0',n:'Material Design Icons',a:'Pictogrammers'},
+ {id:'tabler',p:['tabler'],cat:'ui',pal:0,cnt:6220,lic:'MIT',n:'Tabler Icons',a:'Paweł Kuna'},
+ {id:'solar',p:['solar'],cat:'ui',pal:0,cnt:8706,lic:'CC BY 4.0',n:'Solar',a:'480 Design'},
+ {id:'mingcute',p:['mingcute'],cat:'ui',pal:0,cnt:3320,lic:'Apache-2.0',n:'MingCute Icon',a:'MingCute Design'},
+ {id:'ri',p:['ri'],cat:'ui',pal:0,cnt:3188,lic:'Apache-2.0',n:'Remix Icon',a:'Remix Design'},
+ {id:'bi',p:['bi','bxs','bxl'],cat:'ui',pal:0,cnt:3038,lic:'MIT',n:'Bootstrap Icons',a:'Bootstrap Team'},
+ {id:'lucide',p:['lucide'],cat:'ui',pal:0,cnt:1866,lic:'ISC',n:'Lucide',a:'Lucide Contributors'},
+ {id:'icon-park',p:['icon-park-outline'],cat:'ui',pal:0,cnt:2658,lic:'Apache-2.0',n:'IconPark',a:'ByteDance'},
+ {id:'iconoir',p:['iconoir'],cat:'ui',pal:0,cnt:1671,lic:'MIT',n:'Iconoir',a:'Luca Burgio'},
+ {id:'ion',p:['ion'],cat:'ui',pal:0,cnt:1357,lic:'MIT',n:'Ionicons',a:'Ionic'},
+ {id:'heroicons',p:['heroicons'],cat:'ui',pal:0,cnt:1288,lic:'MIT',n:'Heroicons',a:'Tailwind Labs'},
+ {id:'fa6',p:['fa6-solid','fa6-regular','fa6-brands'],cat:'ui',pal:0,cnt:2060,lic:'CC BY 4.0',n:'Font Awesome 6 Free',a:'Fonticons'},
+ {id:'uil',p:['uil'],cat:'ui',pal:0,cnt:1215,lic:'Apache-2.0',n:'Unicons',a:'Iconscout'},
+ {id:'ant-design',p:['ant-design'],cat:'ui',pal:0,cnt:848,lic:'MIT',n:'Ant Design Icons',a:'Ant Design'},
+ {id:'gg',p:['gg'],cat:'ui',pal:0,cnt:704,lic:'MIT',n:'css.gg',a:'Astrit'},
+ {id:'feather',p:['feather'],cat:'ui',pal:0,cnt:286,lic:'MIT',n:'Feather Icons',a:'Cole Bemis'},
+ {id:'line-md',p:['line-md'],cat:'anim',pal:0,cnt:1218,lic:'MIT',n:'Material Line Icons',a:'Vjacheslav Trushkin'},
+ {id:'svg-spinners',p:['svg-spinners'],cat:'anim',pal:0,cnt:46,lic:'MIT',n:'SVG Spinners',a:'Utkarsh Verma'},
+ {id:'simple-icons',p:['simple-icons'],cat:'brand',pal:0,cnt:3464,lic:'CC0',n:'Simple Icons',a:'Simple Icons Collaborators'},
+ {id:'devicon',p:['devicon'],cat:'brand',pal:1,cnt:1057,lic:'MIT',n:'Devicon',a:'Devicon Org'},
+ {id:'vscode-icons',p:['vscode-icons'],cat:'brand',pal:1,cnt:1666,lic:'MIT',n:'VSCode Icons',a:'Roberto Huertas'},
+ {id:'codicon',p:['codicon'],cat:'brand',pal:0,cnt:653,lic:'CC BY 4.0',n:'Codicons',a:'Microsoft'},
+ {id:'twemoji',p:['twemoji'],cat:'emoji',pal:1,cnt:3988,lic:'CC BY 4.0',n:'Twemoji',a:'Twitter / X'},
+ {id:'fluent-emoji',p:['fluent-emoji'],cat:'emoji',pal:1,cnt:3126,lic:'MIT',n:'Fluent Emoji',a:'Microsoft'},
+ {id:'noto',p:['noto'],cat:'emoji',pal:1,cnt:3729,lic:'Apache-2.0',n:'Noto Emoji',a:'Google'},
+ {id:'flat-color-icons',p:['flat-color-icons'],cat:'emoji',pal:1,cnt:329,lic:'MIT',n:'Flat Color Icons',a:'Icons8'},
+];
+const SETBY=Object.fromEntries(SETS.map(s=>[s.id,s]));
+const LIVE={}; /* live icon counts from Iconify, survive re-renders */
+const QUICK=['material-symbols','fluent','tabler','lucide','ph','bi','ri','heroicons','fa6','mdi'];
+
+/* ===== i18n ===== */
+const L={
+en:{'nav_find':'Search & Download','nav_libs':'Icon Libraries','nav_art':'Illustrations','nav_ai':'For AI','nav_faq':'FAQ',
+'eyebrow':'Free icons & illustrations · for designers, developers, PMs & AI',
+'h1':'Search 100,000+ free icons from the names you trust',
+'sub':'Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap — aggregated search, one-click SVG/PNG download, copy-ready code. Plus a hand-picked directory of free illustration libraries.',
+'st_libs':'curated libraries','st_icons':'curated icons','st_all':'searchable · SVG + PNG','st_allnum':'200,000+','st_free':'Free · no signup',
+'more':'Show more','copy':'Copy','copied':'Copied ✓',
+'libs_h2':'The famous libraries, all in one place',
+'libs_sub':'Every library below is open source, famous in its own right, and searchable + downloadable on this page. Counts and licenses are fetched live from Iconify. Click “Browse” to page through a set, or search with its filter chip above.',
+'art_h2':'Free illustration libraries worth bookmarking',
+'art_sub':'Illustrations are too varied to aggregate fairly, so here is a curated, verified directory — every entry is free for commercial use under its stated terms. Licenses change; always confirm on the source site.',
+'art_note':'⚠️ Licenses differ per library and can change over time — the badge is a summary, the source site is the truth. unDraw explicitly prohibits AI/ML training use; several others require attribution.',
+'ai_h2':'Built for AI & agents, too',
+'ai_sub':'Everything on this site is machine-readable: a site guide, a JSON catalog, and open APIs with permissive CORS. Feed them to your agent, IDE plugin or RAG pipeline.',
+'ai_1':'A concise, agent-friendly guide to this site — sections, endpoints and license summary in one file.',
+'ai_2':'The full curated catalog — all icon libraries and illustration sources with licenses, counts and prefixes — as plain JSON for agents and RAG.',
+'ai_3':'Open CORS, no key, no quota games — the same endpoints this page uses.',
+'ai_4':'Tell your AI which set to use, then paste the snippet from the icon panel. Well-known npm packages: lucide-react, @tabler/icons-react, @phosphor-icons/react, @heroicons/react, bootstrap-icons, material-symbols, simple-icons, ionicons — or the universal @iconify/react / @iconify/vue.',
+'ai_5':'MIT / Apache-2.0 / ISC / CC0 icon sets are safe to reference in AI prompts and generated code. CC BY 4.0 sets need attribution. Careful with illustrations: some libraries (e.g. unDraw) prohibit AI/ML training use — check before bulk ingestion.',
+'faq_h2':'FAQ',
+'faq1_q':'Are these icons free for commercial use?','faq1_a':'Yes — every library featured here is open source. MIT, Apache-2.0, ISC and CC0 sets can be used in commercial products without attribution. CC BY 4.0 sets (Solar, Font Awesome Free, Twemoji) are also free for commercial work but ask you to credit the authors. Each card shows the exact license; always confirm on the source site before shipping.',
+'faq2_q':'How do downloads work? What formats do I get?','faq2_a':'Click any icon to open its detail panel: copy SVG, React, Vue, HTML or CSS snippets, download the SVG file, or render and download a PNG (64–512 px) right in your browser. No signup, no watermark.',
+'faq3_q':'Where do the icons come from?','faq3_a':'IconGems searches via the Iconify API, which aggregates 200+ open-source icon sets — Google Material Symbols, Microsoft Fluent UI, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap and more. Icons are always served fresh from upstream; IconGems is a search front-end, not a host.',
+'faq4_q':'Do I have to give credit anywhere?','faq4_a':'For MIT / Apache-2.0 / ISC / CC0 libraries: no attribution required (keeping the license notice in your project is good practice). For CC BY 4.0 libraries (Solar, Font Awesome Free icons, Twemoji): attribution is required. Illustration libraries vary — each card in the illustrations section links to the exact license.',
+'faq5_q':'Can I use these icons with AI code generation?','faq5_a':'Yes. Permissively licensed icon sets (MIT/Apache/ISC/CC0) are fine to reference in AI prompts, code generation and shipped products. This site also publishes llms.txt and a machine-readable catalog at /data/catalog.json for AI agents. Note: some illustration libraries (e.g. unDraw) explicitly prohibit using their artwork for AI/ML training — check each source\u2019s terms before bulk ingestion.',
+'faq6_q':'Is IconGems affiliated with Google, Microsoft or the other brands?','faq6_a':'No. IconGems is an independent search front-end over open-source icon collections. All library names and trademarks belong to their respective owners, and every card links back to the official source.',
+'f_iconify':'Powered by Iconify','f_tag':'free icons & illustrations, from the names you trust',
+'codename':'本站代号：螭吻 — 龙生九子，螭吻好吞：吞尽天下图标，吐成一库。(Chiwen, ninth of the dragon\u2019s nine sons — it swallows every icon under heaven and spits out one library.)',
+'q_ph':'Search icons — try “rocket”, “home”, “user”…',
+'searching':'Searching…','results':'icons found','nores':'No icons found — try a shorter English keyword (e.g. “home”, “user”, “arrow”).','err':'Search failed — check your connection and try again.','retry':'Retry',
+'showing':'Showing','of':'of','browse_all':'All','back_search':'← Back to search','load_more':'Load more','icons':'icons',
+'dl_svg':'Download SVG','dl_png':'Download PNG','psize':'PNG size',
+'browse':'Browse','official':'Official ↗','icons_cnt':'icons','by':'by',
+'color':'Color','multicolor':'Multicolor icon — keeps its original colors','current':'follows theme',
+'live':'live via api.iconify.design',
+'title_en':'IconGems — Free SVG Icons & Illustrations, Search & Download',
+'desc_en':'Search and download 100,000+ free SVG icons from Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome and more. Copy SVG/React/Vue code, export SVG & PNG, plus a curated directory of free illustration libraries. For designers, developers, PMs and AI. No signup.'},
+zh:{'nav_find':'搜索与下载','nav_libs':'图标库','nav_art':'插画库','nav_ai':'For AI','nav_faq':'常见问题',
+'eyebrow':'免费图标与插画 · 设计师 / 程序员 / 产品经理 / AI',
+'h1':'一站搜齐 100,000+ 大厂免费图标',
+'sub':'Google Material Symbols、微软 Fluent、Tabler、Lucide、Phosphor、Font Awesome、Bootstrap——聚合搜索、一键下载 SVG/PNG、代码即复制。另附人工精选的免费插画库导航。',
+'st_libs':'个精选图标库','st_icons':'个精选图标','st_all':'全量可搜 · SVG + PNG','st_allnum':'200,000+','st_free':'免费 · 免注册',
+'more':'加载更多','copy':'复制','copied':'已复制 ✓',
+'libs_h2':'知名图标库，一站收齐',
+'libs_sub':'下面每一家人库都是开源、业内知名的集合，且都可在本页直接搜索和下载。数量与许可证由 Iconify 实时获取。点「浏览」翻整套图标，或用上方筛选芯片定向搜索。',
+'art_h2':'值得收藏的免费插画库',
+'art_sub':'插画风格千差万别，不宜强行聚合——这里是一份经过核验的精选目录：每一家在所列条款下均可免费商用。许可证可能变化，请以源站为准。',
+'art_note':'⚠️ 各家许可证不同且可能更新——徽标只是摘要，源站才是准绳。unDraw 明确禁止用于 AI/ML 训练；另有多家要求署名。',
+'ai_h2':'同样为 AI 与 Agent 而建',
+'ai_sub':'本站的一切都是机器可读的：站点指南、JSON 目录、开放 CORS 的 API。把它们喂给你的 Agent、IDE 插件或 RAG 管道。',
+'ai_1':'一份面向 Agent 的精简站点指南——板块、接口与许可证摘要，一个文件说完。',
+'ai_2':'完整精选目录——全部图标库与插画源，含许可证、数量与前缀，纯 JSON 格式，供 Agent 与 RAG 使用。',
+'ai_3':'开放 CORS、无需密钥、不玩配额——与本页所用完全相同的接口。',
+'ai_4':'告诉你的 AI 用哪套图标，再把图标面板里的代码片段贴给它。知名 npm 包：lucide-react、@tabler/icons-react、@phosphor-icons/react、@heroicons/react、bootstrap-icons、material-symbols、simple-icons、ionicons——或通用的 @iconify/react / @iconify/vue。',
+'ai_5':'MIT / Apache-2.0 / ISC / CC0 的图标集可放心用于 AI 提示词与生成代码。CC BY 4.0 需要署名。插画要小心：部分库（如 unDraw）禁止用于 AI/ML 训练——批量收录前先查条款。',
+'faq_h2':'常见问题',
+'faq1_q':'这些图标可以免费商用吗？','faq1_a':'可以——本站收录的每一家都是开源库。MIT、Apache-2.0、ISC、CC0 许可的集合可直接用于商业产品，无需署名。CC BY 4.0 的集合（Solar、Font Awesome Free、Twemoji）同样可以商用，但需要注明出处。每张卡片都标了确切许可证；上线前请到源站确认最新条款。',
+'faq2_q':'下载是怎么工作的？能拿到什么格式？','faq2_a':'点击任意图标打开详情面板：复制 SVG / React / Vue / HTML / CSS 代码，下载 SVG 文件，或在浏览器里直接渲染并下载 PNG（64–512 px）。免注册、无水印。',
+'faq3_q':'这些图标来自哪里？','faq3_a':'IconGems 通过 Iconify API 搜索，它聚合了 200+ 开源图标集——Google Material Symbols、微软 Fluent UI、Tabler、Lucide、Phosphor、Font Awesome、Bootstrap 等等。图标始终从上游实时获取；IconGems 是搜索前端，不是托管方。',
+'faq4_q':'需要署名吗？','faq4_a':'MIT / Apache-2.0 / ISC / CC0 库：无需署名（在项目里保留许可证声明是好习惯）。CC BY 4.0 库（Solar、Font Awesome Free 图标、Twemoji）：需要署名。插画库各有不同——插画板块每张卡片都链接到确切许可证。',
+'faq5_q':'可以把这些图标用在 AI 生成 / 代码生成里吗？','faq5_a':'可以。宽松许可（MIT/Apache/ISC/CC0）的图标集可放心用于 AI 提示词、代码生成与上线产品。本站还提供 llms.txt 与机器可读目录 /data/catalog.json 供 AI 使用。注意：部分插画库（如 unDraw）明确禁止将作品用于 AI/ML 训练——批量收录前请逐家核对条款。',
+'faq6_q':'IconGems 与 Google、微软等品牌有 affiliation 吗？','faq6_a':'没有。IconGems 是独立的开源图标集合搜索前端。所有库名与商标归各自所有者，每张卡片都链接回官方源。',
+'f_iconify':'由 Iconify 驱动','f_tag':'免费图标与插画，来自你信任的大厂',
+'codename':'本站代号：螭吻 — 龙生九子，螭吻好吞：吞尽天下图标，吐成一库。(Chiwen, ninth of the dragon\u2019s nine sons — it swallows every icon under heaven and spits out one library.)',
+'q_ph':'搜索图标——试试 “rocket”、“home”、“user”…',
+'searching':'搜索中…','results':'个图标','nores':'没有找到——试试更短的英文关键词（如 “home”、“user”、“arrow”）。','err':'搜索失败——请检查网络后重试。','retry':'重试',
+'showing':'显示','of':'/ 共','browse_all':'全部','back_search':'← 返回搜索','load_more':'加载更多','icons':'个图标',
+'dl_svg':'下载 SVG','dl_png':'下载 PNG','psize':'PNG 尺寸',
+'browse':'浏览','official':'官方 ↗','icons_cnt':'个图标','by':'出品',
+'color':'颜色','multicolor':'多彩图标——保留原始配色','current':'跟随主题',
+'live':'实时 · api.iconify.design',
+'title_en':'IconGems — 免费图标与插画库 · 10万+ SVG 在线搜索下载',
+'desc_en':'一站式搜索下载 10 万+ 免费开源 SVG 图标：Google Material Symbols、微软 Fluent、Tabler、Lucide、Phosphor、Font Awesome 等，可复制 SVG/React/Vue 代码、导出 SVG/PNG，另附精选免费插画库导航。面向设计师、程序员、产品经理与 AI。'}};
+let lang='en';
+const t=k=>(L[lang]&&L[lang][k])??L.en[k]??k;
+function applyLang(l){
+  lang=l;document.documentElement.lang=l==='zh'?'zh':'en';
+  for(const el of document.querySelectorAll('[data-i18n]'))el.textContent=t(el.dataset.i18n);
+  for(const el of document.querySelectorAll('[data-i18n-ph]'))el.placeholder=t(el.dataset.i18nPh);
+  document.title=t('title_en');
+  document.querySelector('meta[name="description"]').content=t('desc_en');
+  localStorage.setItem('icongems-lang',l);
+  const u=new URL(location.href);
+  if(l==='zh')u.searchParams.set('lang','zh');else u.searchParams.delete('lang');
+  history.replaceState(null,'',u);
+  renderQuick();renderSetChips();
+  if(document.getElementById('libgrid').children.length)buildLibs();
+  renderLibChips();buildArt();
+}
+/* ===== theme ===== */
+let theme=localStorage.getItem('icongems-theme')||'auto';
+function applyTheme(){
+  const dark=theme==='dark'||(theme==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches);
+  document.documentElement.classList.toggle('dark',dark);
+  const bt=document.getElementById('btnTheme');
+  bt.textContent=theme==='auto'?'🌗':theme==='light'?'☀️':'🌙';
+  bt.title='Theme: '+theme;
+}
+document.getElementById('btnTheme').onclick=()=>{
+  theme=theme==='auto'?'light':theme==='light'?'dark':'auto';
+  localStorage.setItem('icongems-theme',theme);applyTheme();renderGrid();
+};
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(theme==='auto'){applyTheme();renderGrid();}});
+/* ===== helpers ===== */
+function fetchT(url,ms=8000){const c=new AbortController();const id=setTimeout(()=>c.abort(),ms);
+  return fetch(url,{signal:c.signal}).finally(()=>clearTimeout(id));}
+async function copyText(txt,btn){
+  try{await navigator.clipboard.writeText(txt);}
+  catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(_){}ta.remove();}
+  if(btn){const old=btn.textContent;btn.textContent=t('copied');setTimeout(()=>btn.textContent=old,1500);}
+  funnelMaybe();
+}
+const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+/* ===== finder state ===== */
+const state={mode:'search',q:'',filter:'',cat:'',limit:96,names:[],browse:null,page:0};
+const grid=document.getElementById('grid'),fempty=document.getElementById('fempty'),ferr=document.getElementById('ferr'),
+      fstatus=document.getElementById('fstatus'),btnMore=document.getElementById('btnMore'),
+      finderhead=document.getElementById('finderhead'),catchips=document.getElementById('catchips');
+function svgUrl(p,n,params){return `${API}/${p}/${n}.svg${params?'?'+params:''}`;}
+function tileFor(full){
+  const [p,n]=full.split(':');const s=SETBY[SETS.find(s=>s.p.includes(p))?.id]||{pal:0};
+  const tile=document.createElement('button');tile.className='ic-t';tile.title=full;tile.type='button';
+  tile.onclick=()=>openModal(full);
+  const ic=document.createElement('span');ic.className='ic-g';
+  if(s.pal){const img=document.createElement('img');img.loading='lazy';img.alt=full;
+    img.src=svgUrl(p,n,'height=64');img.onerror=()=>{tile.remove();};ic.appendChild(img);}
+  else ic.style.cssText=`-webkit-mask:url("${svgUrl(p,n,'height=64')}") center/contain no-repeat;mask:url("${svgUrl(p,n,'height=64')}") center/contain no-repeat`;
+  const cap=document.createElement('span');cap.className='ic-n';cap.textContent=n;
+  tile.append(ic,cap);return tile;
+}
+function renderGrid(){
+  grid.textContent='';
+  const list=state.names;
+  for(const full of list)grid.appendChild(tileFor(full));
+  fempty.hidden=list.length>0;
+  if(state.mode==='search')fempty.textContent=list.length?'':t('nores');
+}
+function setStatus(html){fstatus.innerHTML=html;}
+async function doSearch(){
+  const q=state.q.trim();
+  ferr.hidden=true;btnMore.hidden=true;
+  if(!q){state.names=[];renderGrid();setStatus('');fempty.hidden=true;return;}
+  setStatus(t('searching'));
+  const c=new AbortController();searchCtl=c;
+  try{
+    const params=new URLSearchParams({query:q,limit:String(state.limit)});
+    if(state.filter)params.set('prefixes',state.filter);
+    const r=await fetchT(`${API}/search?${params}`);
+    if(searchCtl!==c)return;
+    const d=await r.json();
+    state.names=d.icons||[];
+    renderGrid();
+    const total=d.total??state.names.length;
+    setStatus(`<b>${state.names.length.toLocaleString('en-US')}</b> / ${total.toLocaleString('en-US')} ${t('results')} · ${t('live')}`);
+    btnMore.hidden=!(state.names.length>=state.limit&&state.limit<999);
+  }catch(e){if(searchCtl!==c)return;renderGrid();setStatus('');ferr.hidden=false;ferr.innerHTML=`${t('err')} <button class="mini" id="btnRetry">${t('retry')}</button>`;
+    document.getElementById('btnRetry').onclick=doSearch;}
+}
+let searchCtl=null,deb=null;
+function scheduleSearch(){clearTimeout(deb);deb=setTimeout(doSearch,320);}
+document.getElementById('q').addEventListener('input',e=>{
+  state.q=e.target.value;state.limit=96;
+  if(state.mode==='browse')toSearchMode();
+  scheduleSearch();
+});
+document.getElementById('btnMore').onclick=()=>{
+  if(state.mode==='browse'&&state.browse){state.browse.shown+=240;renderBrowse();return;}
+  state.limit=state.limit>=384?999:384;doSearch();
+};
+/* quick chips */
+const QUICKQ=['home','user','settings','heart','search','arrow-right','bell','download','cloud','star'];
+function renderQuick(){
+  const box=document.getElementById('quick');box.textContent='';
+  for(const w of QUICKQ){const b=document.createElement('button');b.className='qchip';b.textContent=w;
+    b.onclick=()=>{const q=document.getElementById('q');q.value=w;state.q=w;state.limit=96;
+      if(state.mode==='browse')toSearchMode();doSearch();q.focus();};
+    box.appendChild(b);}
+}
+/* set filter chips */
+function renderSetChips(){
+  const box=document.getElementById('setchips');box.textContent='';
+  const mk=(label,fn,on)=>{const b=document.createElement('button');b.className='fchip'+(on?' on':'');b.textContent=label;b.onclick=fn;box.appendChild(b);};
+  mk(t('browse_all')||'All',()=>{state.filter='';toSearchMode();if(state.q.trim())doSearch();renderSetChips();},!state.filter);
+  for(const id of QUICK){const s=SETBY[id];
+    mk(s.n.replace('Material Symbols','Material').replace('Bootstrap Icons','Bootstrap').replace('Font Awesome 6 Free','FA6').replace('Material Design Icons','MDI').replace('Fluent UI System Icons','Fluent'),
+      ()=>{state.filter=s.p.join(',');state.limit=96;toSearchMode();doSearch();renderSetChips();},state.filter===s.p.join(','));}
+}
+/* browse mode */
+function toSearchMode(){
+  state.mode='search';state.browse=null;state.cat='';
+  finderhead.hidden=true;document.getElementById('setchips').hidden=false;
+}
+async function browseSet(id){
+  const s=SETBY[id];if(!s)return;
+  state.mode='browse';state.browse={id,prefix:s.p[0],flat:[],catsMap:{},catList:[],shown:120,cat:''};
+  state.filter='';document.getElementById('setchips').hidden=true;finderhead.hidden=false;
+  catchips.textContent='';grid.textContent='';fempty.hidden=true;ferr.hidden=true;btnMore.hidden=true;
+  setStatus(t('searching'));
+  try{
+    const r=await fetchT(`${API}/collection?prefix=${s.p[0]}`,12000);
+    const d=await r.json();
+    const cats=d.categories||{};const unc=d.uncategorized||[];const al=d.aliases||{};
+    const flat=[...unc,...Object.keys(al)];
+    for(const c of Object.keys(cats))flat.push(...cats[c]);
+    state.browse.flat=[...new Set(flat)];
+    state.browse.catsMap=cats;state.browse.catList=Object.keys(cats);
+    buildCatChips();
+    renderBrowse();
+  }catch(e){ferr.hidden=false;ferr.textContent=t('err');setStatus('');}
+}
+function buildCatChips(){
+  catchips.textContent='';
+  const back=document.createElement('button');back.className='fchip';back.textContent=t('back_search');
+  back.onclick=()=>{toSearchMode();renderSetChips();if(state.q.trim())doSearch();else{state.names=[];renderGrid();setStatus('');}};
+  catchips.appendChild(back);
+  const mk=(label,on,fn)=>{const b=document.createElement('button');b.className='fchip'+(on?' on':'');b.textContent=label;b.onclick=fn;catchips.appendChild(b);};
+  mk(t('browse_all'),!state.browse.cat,()=>{state.browse.cat='';state.browse.shown=120;buildCatChips();renderBrowse();});
+  for(const c of state.browse.catList)mk(c,state.browse.cat===c,()=>{state.browse.cat=c;state.browse.shown=120;buildCatChips();renderBrowse();});
+}
+function renderBrowse(){
+  const b=state.browse;const s=SETBY[b.id];
+  const names=b.cat?(b.catsMap[b.cat]||[]):b.flat;
+  const shown=names.slice(0,b.shown);
+  state.names=shown;renderGrid();
+  setStatus(`<b>${shown.length.toLocaleString('en-US')}</b> ${t('of')} ${names.length.toLocaleString('en-US')} ${t('icons')} · ${esc(s.n)} · ${t('live')}`);
+  btnMore.hidden=b.shown>=names.length;
+}
+document.addEventListener('click',e=>{
+  const bk=e.target.closest('[data-browse]');if(bk)browseSet(bk.dataset.browse);
+});
+/* library cards */
+const LIBCATS=[['all','All'],['ui','UI & General'],['brand','Brands & Dev'],['emoji','Emoji & Color'],['anim','Animated']];
+let libcat='all';
+const LIBDESC={
+ 'fluent':['Microsoft\u2019s official icon system behind Windows, Office and Teams — 5 styles.','微软官方图标系统，Windows / Office / Teams 背后的同款——5 种风格。'],
+ 'material-symbols':['Google\u2019s latest Material Design set, with rounded & sharp variants.','Google 最新的 Material Design 图标集，另有 Rounded / Sharp 变体。'],
+ 'ph':['6 weights (thin→fill), the designer favorite for flexible stroke.','6 档粗细（thin→fill），设计师最爱的灵活线性图标。'],
+ 'mdi':['The community Material set with the widest coverage on earth.','社区 Material 集，地球上覆盖面最广的图标库。'],
+ 'tabler':['6,000+ pixel-perfect stroke icons by Paweł Kuna, MIT licensed.','Paweł Kuna 出品的 6,000+ 像素级线性图标，MIT 许可。'],
+ 'solar':['8,700+ linear & bold icons by 480 Design. CC BY — credit required.','480 Design 出品 8,700+ 线性/加粗图标。CC BY——需署名。'],
+ 'mingcute':['Clean, cute, expressive — a product-designer favorite.','干净、可爱、有表现力——产品设计师的心头好。'],
+ 'ri':['Open-source neutral-style icons by Remix Design.','Remix Design 出品的中性风格开源图标。'],
+ 'bi':['Built for Bootstrap — plus filled & brand sub-sets.','为 Bootstrap 而生——另有 Filled 与 Brands 子集。'],
+ 'lucide':['Community fork of Feather; the default choice for modern web UI.','Feather 的社区分支；现代 Web UI 的默认之选。'],
+ 'icon-park':['ByteDance\u2019s icon system with adjustable stroke & multiple themes.','字节跳动出品，支持描边调节与多主题的图标系统。'],
+ 'iconoir':['A fast-growing open-source library with a distinct voice.','增长迅速的开源图标库，风格自成一派。'],
+ 'ion':['Beautifully crafted icons from the Ionic mobile framework.','Ionic 移动框架出品的精美图标。'],
+ 'heroicons':['Hand-crafted by the Tailwind CSS team.','Tailwind CSS 团队亲手打造。'],
+ 'fa6':['The web\u2019s most famous icon family — solid, regular & brands.','Web 上最负盛名的图标家族——Solid / Regular / Brands。'],
+ 'uil':['1,200+ line & solid icons from Iconscout, Apache licensed.','Iconscout 出品 1,200+ 线性/实底图标，Apache 许可。'],
+ 'ant-design':['Icons for the Ant Design ecosystem.','Ant Design 生态的官方图标。'],
+ 'gg':['Tiny minimal icons that even work as pure CSS.','极简小图标——甚至能以纯 CSS 实现。'],
+ 'feather':['The classic minimalist set that started the stroke-icon trend.','开创线性图标潮流的经典极简集合。'],
+ 'line-md':['Material-style icons with smooth built-in animations.','Material 风格图标，自带流畅动效。'],
+ 'svg-spinners':['Loading spinners as pure SVG — animate without CSS.','纯 SVG 加载指示器——无需 CSS 即可转动。'],
+ 'simple-icons':['3,400+ brand logos with official hex colors, CC0.','3,400+ 品牌logo，附官方色值，CC0 许可。'],
+ 'devicon':['Programming languages, tools & framework logos.','编程语言、工具与框架的 logo 集。'],
+ 'vscode-icons':['File-type icons for VS Code.','VS Code 的文件类型图标。'],
+ 'codicon':['Microsoft\u2019s product icons for VS Code.','微软为 VS Code 打造的产品图标。'],
+ 'twemoji':['Twitter/X\u2019s open emoji set, CC BY.','Twitter/X 的开源 emoji 集，CC BY 许可。'],
+ 'fluent-emoji':['Microsoft\u2019s playful 3D / color / flat emoji.','微软的 3D / 彩色 / 扁平三态 emoji。'],
+ 'noto':['Google\u2019s emoji family, monochrome + color.','Google 的 emoji 家族，黑白 + 彩色。'],
+ 'flat-color-icons':['Classic flat colorful icons by Icons8, MIT.','Icons8 出品的经典扁平彩色图标，MIT。']};
+function renderLibChips(){
+  const box=document.getElementById('libchips');box.textContent='';
+  for(const [id,label] of LIBCATS){
+    const b=document.createElement('button');b.className='fchip'+(libcat===id?' on':'');
+    b.textContent=id==='all'?(lang==='zh'?'全部':label):label;
+    b.onclick=()=>{libcat=id;renderLibChips();filterLibs();};box.appendChild(b);}
+}
+function filterLibs(){
+  for(const el of document.querySelectorAll('#libgrid .lib'))
+    el.hidden=!(libcat==='all'||el.dataset.cat===libcat);
+}
+function buildLibs(){
+  const g=document.getElementById('libgrid');g.textContent='';
+  for(const s of SETS){
+    const card=document.createElement('article');card.className='lib';card.dataset.cat=s.cat;    const h=document.createElement('div');h.className='lib-h';
+    const h3=document.createElement('h3');h3.textContent=s.n;
+    const lic=document.createElement('span');lic.className='lic';lic.textContent=s.lic;
+    h.append(h3,lic);
+    const a=document.createElement('p');a.className='lib-a';a.textContent=`${t('by')} ${s.a}`;
+    const d=document.createElement('p');d.className='lib-d';d.textContent=(LIBDESC[s.id]||['',''])[0];d.dataset.d=s.id;
+    const f=document.createElement('div');f.className='lib-f';
+    const cnt=document.createElement('span');cnt.className='cnt';cnt.dataset.cnt=s.id;cnt.textContent=((LIVE[s.id]||s.cnt)).toLocaleString('en-US')+' '+t('icons_cnt');
+    const browse=document.createElement('button');browse.className='mini pri';browse.textContent=t('browse');browse.dataset.browse=s.id;
+    const off=document.createElement('a');off.className='mini';off.textContent=t('official');
+    off.href=OFFICIAL[s.id]||`https://icon-sets.iconify.design/${s.p[0]}/`;off.target='_blank';off.rel='noopener';
+    f.append(cnt,browse,off);
+    card.append(h,a,d,f);
+    g.appendChild(card);
+  }
+  filterLibs();
+}
+const OFFICIAL={
+ 'fluent':'https://github.com/microsoft/fluentui-system-icons','material-symbols':'https://fonts.google.com/icons',
+ 'ph':'https://phosphoricons.com','mdi':'https://pictogrammers.com/library/mdi/','tabler':'https://tabler.io/icons',
+ 'solar':'https://solar-icons.com','mingcute':'https://www.mingcute.com','ri':'https://remixicon.com',
+ 'bi':'https://icons.getbootstrap.com','lucide':'https://lucide.dev','icon-park':'https://iconpark.oceanengine.com',
+ 'iconoir':'https://iconoir.com','ion':'https://ionic.io/ionicons','heroicons':'https://heroicons.com',
+ 'fa6':'https://fontawesome.com','uil':'https://iconscout.com/unicons','ant-design':'https://ant.design/components/icons',
+ 'gg':'https://css.gg','feather':'https://feathericons.com','simple-icons':'https://simpleicons.org',
+ 'devicon':'https://devicon.dev','twemoji':'https://github.com/twitter/twemoji','fluent-emoji':'https://github.com/microsoft/fluentui-emoji',
+ 'noto':'https://github.com/googlefonts/noto-emoji','codicon':'https://microsoft.github.io/vscode-codicons','svg-spinners':'https://icon-sets.iconify.design/svg-spinners/'};
+/* illustrations */
+const ART=[
+ ['unDraw','https://undraw.co/','Free · no attribution','Vector · PNG',0,'Consistent-style SVG illustrations with a live color customizer. ⚠ Prohibits AI/ML training use.'],
+ ['Open Peeps','https://www.openpeeps.com/','CC0','PNG · SVG',0,'Hand-drawn people by Pablo Stanley — build scenes freely.'],
+ ['Humaaans','https://humaaans.com/','CC0','SVG',0,'Mix-and-match human characters, designed for Figma/Sketch.'],
+ ['DiceBear','https://www.dicebear.com/','Open source','SVG · PNG · API',0,'Avatar generator with dozens of styles; style licenses vary.'],
+ ['Storyset','https://storyset.com/','Free · attribution','SVG · animated',0,'Freepik\u2019s editable animated illustrations.'],
+ ['DrawKit','https://www.drawkit.com/','Free · attribution','SVG',0,'Hand-drawn vector illustration packs, free tier.'],
+ ['ManyPixels','https://www.manypixels.co/gallery','Free · no attribution','SVG · PNG',0,'Monocolor gallery with a color picker, genuinely free.'],
+ ['3dicons','https://www.3dicons.com/','Open source · free','PNG · Blender',0,'Open-source 3D icons by Vijay Verma, 4 angles & colors.'],
+ ['LottieFiles Free','https://lottiefiles.com/','Mixed — check each','Lottie · GIF',0,'Huge animated library; per-asset licenses vary.'],
+ ['IRA Design','https://iradesign.io/','MIT','SVG · PSD',0,'Creative Tim\u2019s modular illustration builder.'],
+ ['Lukasz Adam','https://lukaszadam.com/illustrations','CC0','SVG',0,'Free miscellaneous vector illustrations, no strings.'],
+ ['absurd.design','https://absurd.design/','Free · attribution','SVG',0,'Surreal line-art illustrations; free tier needs credit.'],
+ ['Ouch! by Icons8','https://icons8.com/ouch','Free · link required','PNG · animated',0,'Free vector & 3D illustrations with a link requirement.'],
+ ['Doodle Ipsum','https://doodleipsum.com/','Free (Blush license)','PNG · API',0,'Blush\u2019s doodle API — fill sites with hand-drawn art.'],
+ ['Shapefest','https://shapefest.com/','Free commercial','PNG · SVG',0,'Massive free 3D shape & illustration library.'],
+ ['illlustrations.co','https://illlustrations.co/','Open source · free','PNG',0,'Open-source illustrations by Vijay Verma.']];
+function buildArt(){
+  const g=document.getElementById('artgrid');g.textContent='';
+  ART.forEach(([n,url,lic,fmt,noai,d],i)=>{
+    const c=document.createElement('article');c.className='art';
+    const h=document.createElement('h3');h.textContent=n;
+    const l=document.createElement('span');l.className='lic';l.textContent=lic+(noai?' · no AI training':'');
+    h.appendChild(l);
+    const p=document.createElement('p');p.textContent=d;
+    const fm=document.createElement('p');fm.className='fmt';fm.textContent=fmt;
+    const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.textContent=url.replace(/^https:\/\/(www\.)?/,'')+' ↗';
+    c.append(h,p,fm,a);g.appendChild(c);
+  });
+}
+/* ===== modal ===== */
+const modal=document.getElementById('modal');
+let cur=null; /* {p,n,set} */
+let curColor='';let curTab='svg';
+function openModal(full){
+  const [p,n]=full.split(':');
+  const fam=SETS.find(s=>s.p.includes(p));
+  cur={p,n,set:fam};
+  curColor='';curTab='svg';
+  document.getElementById('mName').textContent=n;
+  document.getElementById('mLic').textContent=fam?fam.lic:'—';
+  const setEl=document.getElementById('mSet');
+  setEl.textContent='';
+  if(fam){
+    setEl.append(document.createTextNode(fam.n+' · '+(fam.lic)+' · '));
+    const a=document.createElement('a');a.href=OFFICIAL[fam.id]||`https://icon-sets.iconify.design/${p}/`;a.target='_blank';a.rel='noopener';
+    a.textContent=lang==='zh'?'官方页面 ↗':'official page ↗';setEl.appendChild(a);
+  }else{
+    setEl.append(document.createTextNode(p+' · '));
+    const a=document.createElement('a');a.href=`https://icon-sets.iconify.design/${p}/`;a.target='_blank';a.rel='noopener';a.textContent='Iconify ↗';setEl.appendChild(a);
+  }
+  renderPrev();renderColors();renderTabs(true);
+  const api=svgUrl(p,n,curColor?'color='+encodeURIComponent(curColor):'');
+  document.getElementById('mApi').innerHTML=`API: <a href="${esc(api)}" target="_blank" rel="noopener">${esc(api)}</a>`;
+  document.getElementById('mxFunnel').hidden=true;
+  modal.hidden=false;document.body.style.overflow='hidden';
+}
+function closeModal(){modal.hidden=true;document.body.style.overflow='';}
+document.getElementById('mClose').onclick=closeModal;
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)closeModal();});
+function renderPrev(){
+  const box=document.getElementById('mPrev');box.textContent='';
+  const s=cur.set;const sizes=[64,32,20];
+  for(const sz of sizes){
+    const pv=document.createElement('span');pv.className='pv';pv.style.setProperty('--s',(sz/2+14)+'px');
+    const ic=document.createElement('span');ic.className='ic-g';
+    if(s&&s.pal){const img=document.createElement('img');img.alt=cur.n;img.src=svgUrl(cur.p,cur.n,'height='+(sz*2));ic.appendChild(img);}
+    else{
+      ic.style.cssText=`-webkit-mask:url("${svgUrl(cur.p,cur.n,'height='+(sz*2)+(curColor?'&color='+encodeURIComponent(curColor):''))}") center/contain no-repeat;mask:url("${svgUrl(cur.p,cur.n,'height='+(sz*2)+(curColor?'&color='+encodeURIComponent(curColor):''))}") center/contain no-repeat;`;
+      if(curColor)ic.style.background=curColor;
+    }
+    const lab=document.createElement('span');lab.textContent=sz/2+'px';
+    pv.append(ic,lab);box.appendChild(pv);
+  }
+}
+function renderColors(){
+  const box=document.getElementById('mColors');box.textContent='';
+  const s=cur.set;
+  if(s&&s.pal){
+    const hint=document.createElement('span');hint.style.cssText='font-size:12.5px;color:var(--mut)';
+    hint.textContent=t('multicolor');box.appendChild(hint);return;
+  }
+  const lab=document.createElement('span');lab.style.cssText='font-size:12.5px;color:var(--mut)';lab.textContent=t('color');box.appendChild(lab);
+  const swatches=['','#0b9d87','#e5484d','#e0b25b','#2f6df6','#8b5cf6','#111111','#ffffff'];
+  for(const c of swatches){
+    const b=document.createElement('button');b.className='sw2'+(curColor===c?' on':'');b.type='button';
+    if(!c){b.style.cssText='background:transparent';b.title=t('current');b.textContent='A';b.style.fontSize='11px';b.style.color='var(--ink)';b.style.fontWeight='700';}
+    else b.style.background=c;
+    b.onclick=()=>{curColor=c;renderColors();renderPrev();renderTabs(true);};
+    box.appendChild(b);
+  }
+  const custom=document.createElement('label');custom.className='sw2 custom';custom.title='custom';
+  const inp=document.createElement('input');inp.type='color';inp.value=curColor&&curColor.startsWith('#')&&curColor.length===7?curColor:'#0b9d87';
+  inp.oninput=()=>{curColor=inp.value;renderColors();renderPrev();renderTabs(true);};
+  custom.appendChild(inp);box.appendChild(custom);
+}
+const OFFPKG={lucide:'lucide-react / lucide-vue-next',tabler:'@tabler/icons-react',ph:'@phosphor-icons/react',heroicons:'@heroicons/react',bi:'bootstrap-icons',mdi:'@mdi/js + @mdi/react','material-symbols':'material-symbols (font)',ri:'remixicon / react-icons',ion:'ionicons','ant-design':'@ant-design/icons','simple-icons':'simple-icons',fa6:'@fortawesome/fontawesome-free'};
+/* client-side SVG building via Iconify JSON API — avoids cross-origin .svg fetch entirely */
+const jsonCache={};
+const isPal=p=>{const fam=SETS.find(s=>s.p.includes(p));return !!(fam&&fam.pal);};
+async function iconData(p,n){
+  const key=p+'/'+n;
+  if(jsonCache[key])return jsonCache[key];
+  const r=await fetchT(`${API}/${p}.json?icons=${encodeURIComponent(n)}`);
+  const d=await r.json();
+  const alias=d.aliases&&d.aliases[n];
+  const ic=d.icons&&d.icons[(alias&&alias.parent)||n];
+  if(!ic)throw new Error('icon missing');
+  const data={body:ic.body,w:alias&&alias.width||ic.width||d.width||d.height||24,h:alias&&alias.height||ic.height||d.height||d.width||24};
+  jsonCache[key]=data;return data;
+}
+function buildSvg(data,mono,color){
+  let svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${data.w} ${data.h}" width="${data.w}" height="${data.h}"${mono?' fill="currentColor"':''}>${data.body}</svg>`;
+  if(color&&mono)svg=svg.split('currentColor').join(color);
+  return svg;
+}
+async function svgFor(full,color){
+  const [p,n]=full.split(':');
+  const data=await iconData(p,n);
+  return buildSvg(data,!isPal(p),color);
+}
+function renderTabs(force){
+  const tabs=[['svg','SVG'],['react','React'],['vue','Vue'],['html','HTML'],['css','CSS']];
+  const box=document.getElementById('mTabs');box.textContent='';
+  for(const [id,label] of tabs){
+    const b=document.createElement('button');b.className='tab'+(curTab===id?' on':'');b.textContent=label;
+    b.onclick=()=>{curTab=id;renderTabs();};box.appendChild(b);
+  }
+  if(force&&curTab==='svg')fillCode();
+  else fillCode();
+}
+async function fillCode(){
+  if(!cur)return;
+  const out=document.getElementById('mCodeTxt');
+  const {p,n}=cur;const full=`${p}:${n}`;const icon=svgUrl(p,n,curColor?'color='+encodeURIComponent(curColor):'');
+  try{
+    if(curTab==='svg'){out.textContent=(await svgFor(full,curColor)).replace(/></g,'>\n<');}
+    else if(curTab==='react'){out.textContent=`// npm i @iconify/react\nimport { Icon } from '@iconify/react';\n\n<Icon icon="${full}" width="1em" height="1em" />`+(OFFPKG[cur.set?.id]?`\n\n// official package: ${OFFPKG[cur.set.id]}`:'');}
+    else if(curTab==='vue'){out.textContent=`<!-- npm i @iconify/vue -->\n<script setup>\nimport { Icon } from '@iconify/vue';\n<\/script>\n\n<Icon icon="${full}" />`+(OFFPKG[cur.set?.id]?`\n\n<!-- official package: ${OFFPKG[cur.set.id]} -->`:'');}
+    else if(curTab==='html'){out.textContent=`<script src="https://cdn.jsdelivr.net/npm/iconify-icon@2/dist/iconify-icon.min.js"><\/script>\n\n<iconify-icon icon="${full}" width="1em" height="1em"></iconify-icon>`;}
+    else{out.textContent=`/* CSS mask — the icon inherits text color */\n.i-${n.replace(/[^a-z0-9-]/gi,'')} {\n  width: 1em;\n  aspect-ratio: 1;\n  background: currentColor;\n  -webkit-mask: url(${icon}) center / contain no-repeat;\n  mask: url(${icon}) center / contain no-repeat;\n}`;}
+  }catch(e){out.textContent=t('err');}
+}
+document.getElementById('mCopy').onclick=async e=>{const txt=document.getElementById('mCodeTxt').textContent;await copyText(txt,e.target);};
+document.getElementById('mSvg').onclick=async e=>{
+  if(!cur)return;const btn=e.target;
+  try{
+    const txt=await svgFor(cur.p+':'+cur.n,curColor);
+    const blob=new Blob([txt],{type:'image/svg+xml'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${cur.n}-${cur.p}.svg`;
+    a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+    funnelMaybe();
+  }catch(err){btn.textContent='✕';setTimeout(()=>btn.textContent=t('dl_svg'),1500);}
+};
+document.getElementById('mPng').onclick=async e=>{
+  if(!cur)return;const btn=e.target;
+  const size=+document.getElementById('mPngSize').value||128;
+  try{
+    const txt=await svgFor(cur.p+':'+cur.n,curColor);
+    const url=URL.createObjectURL(new Blob([txt],{type:'image/svg+xml'}));
+    const img=new Image();
+    await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src=url;});
+    const cv=document.createElement('canvas');const pad=0;
+    const r=Math.min(size/img.naturalWidth,size/img.naturalHeight)||1;
+    cv.width=Math.round(img.naturalWidth*r)||size;cv.height=Math.round(img.naturalHeight*r)||size;
+    cv.getContext('2d').drawImage(img,0,0,cv.width,cv.height);
+    URL.revokeObjectURL(url);
+    const blob=await new Promise(res=>cv.toBlob(res,'image/png'));
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${cur.n}-${cur.p}-${cv.width}px.png`;
+    a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+    funnelMaybe();
+  }catch(err){btn.textContent='✕';setTimeout(()=>btn.textContent=t('dl_png'),1500);}
+};
+/* funnel (matrix) */
+function funnelMaybe(){
+  if(sessionStorage.getItem(FUNNEL.key))return;
+  const box=document.getElementById('mxFunnel');
+  const c=lang==='zh'?FUNNEL.card.zh:FUNNEL.card.en;
+  box.textContent='';
+  const t1=document.createElement('span');t1.className='mxf-t';t1.textContent=c.title;
+  const w=document.createElement('span');w.className='mxf-w';w.textContent=c.why;
+  const a=document.createElement('a');a.className='btn';a.href=FUNNEL.card.url;a.textContent=c.btn;
+  const x=document.createElement('button');x.className='mxf-x';x.textContent='×';x.title='close';
+  x.onclick=()=>{box.hidden=true;};
+  a.onclick=()=>{sessionStorage.setItem(FUNNEL.key,'1');};
+  box.append(t1,w,a,x);box.hidden=false;
+  sessionStorage.setItem(FUNNEL.key,'1');
+}
+/* ===== live counts ===== */
+async function liveCounts(){
+  try{
+    const prefs=[...new Set(SETS.flatMap(s=>s.p))].join(',');
+    const r=await fetchT(`${API}/collections?prefixes=${prefs}`,12000);
+    const d=await r.json();
+    let sum=0;
+    for(const s of SETS){
+      let c=0;for(const p of s.p)c+=(d[p]&&d[p].total)||0;
+      if(c){sum+=c;LIVE[s.id]=c;
+        const el=document.querySelector(`[data-cnt="${s.id}"]`);
+        if(el)el.textContent=c.toLocaleString('en-US')+' '+t('icons_cnt');}
+    }
+    if(sum)document.getElementById('stIcons').textContent=sum.toLocaleString('en-US');
+  }catch(e){/* static fallback stays */}
+}
+/* ===== boot ===== */
+applyTheme();
+const url=new URL(location.href);
+const langParam=url.searchParams.get('lang');
+lang=langParam?langParam:(localStorage.getItem('icongems-lang')||((navigator.language||'en').startsWith('zh')?'zh':'en'));
+applyLang(lang);
+document.getElementById('btnLang').onclick=()=>{applyLang(lang==='zh'?'en':'zh');if(cur)renderTabs(true);};
+buildLibs();renderLibChips();buildArt();
+const q0=url.searchParams.get('q');const set0=url.searchParams.get('set');
+if(set0&&SETBY[set0])browseSet(set0);
+else if(q0){document.getElementById('q').value=q0;state.q=q0;doSearch();}
+liveCounts();
+window.__IG={svgFor,iconData,state,openModal,browseSet,applyLang,closeModal,doSearch};
+</script>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "948f2535a9dd4775a436c677b3c950e4"}'></script>
+</body>
+</html>
