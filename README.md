@@ -13,9 +13,14 @@ Free search & download for 100,000+ open-source SVG icons from famous libraries 
 
 ## For AI
 
-- [`/llms.txt`](https://icongems.kuige.me/llms.txt) — agent-friendly site guide
-- [`/data/catalog.json`](https://icongems.kuige.me/data/catalog.json) — full machine-readable catalog (sets, licenses, endpoints)
-- Iconify API cheatsheet with open CORS — same endpoints the page itself uses
+- [`/llms.txt`](https://icongems.kuige.me/llms.txt) — agent-friendly site guide (llmstxt.org format): quick-start recipe, all 29 curated sets with licenses & prefixes, API reference
+- [`/llms-full.txt`](https://icongems.kuige.me/llms-full.txt) — the complete guide with the full catalog inlined
+- [`/data/catalog.json`](https://icongems.kuige.me/data/catalog.json) — machine-readable catalog (sets, licenses, endpoints, page map)
+- robots.txt explicitly welcomes AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended…)
+- `Dataset` JSON-LD for structured discovery
+- The whole fetch path (robots.txt → llms.txt → catalog/API) works without JavaScript
+
+Regenerate the machine layer after changing curated data: `python3 scripts/gen-data.py` (single source for catalog.json, llms.txt, llms-full.txt).
 
 ## Tech
 
