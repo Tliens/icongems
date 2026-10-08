@@ -1,20 +1,28 @@
 # IconGems
 
-> Free search & download for 109,813+ open-source SVG icons from 29 famous libraries (Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap, ByteDance IconPark…) plus 16 curated free illustration libraries. Bilingual EN/ZH. Built for designers, developers, PMs — and AI agents: every asset below is machine-readable, key-less and CORS-open.
+> A free RESOURCE site (not a link directory): 3,448 MIT-licensed mascot logos from IP as Logo — previews self-hosted, original 1254px PNGs one click away, ZIP batches — plus search & download for 109,813+ open-source SVG icons from 29 famous libraries (Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap, ByteDance IconPark…). Bilingual EN/ZH. Every asset is machine-readable, key-less and CORS-open.
 
 ## Quick start for agents
 
-1. Pick a set from the catalog (check `license` first): https://icongems.kuige.me/data/catalog.json
-2. Search: `GET https://api.iconify.design/search?query=<term>&prefixes=<prefix(es)>`
-3. Get SVG: `GET https://api.iconify.design/<prefix>/<name>.svg?height=64` (`&color=%23hex` to recolor)
-4. Ship: MIT/Apache/ISC/CC0 sets need no attribution; CC BY 4.0 sets do. Full details in llms-full.txt.
+1. Mascot logos (MIT): manifest https://icongems.kuige.me/data/ipas-logos.json → preview `https://icongems.kuige.me/ipas/display/<key>.webp` → original `https://cdn.ipaslogo.com/logos/<key>.png`
+2. Pick an icon set from the catalog (check `license` first): https://icongems.kuige.me/data/catalog.json
+3. Search: `GET https://api.iconify.design/search?query=<term>&prefixes=<prefix(es)>`
+4. Get SVG: `GET https://api.iconify.design/<prefix>/<name>.svg?height=64` (`&color=%23hex` to recolor)
+5. Ship: MIT/Apache/ISC/CC0 assets need no attribution; CC BY 4.0 sets do. Full details in llms-full.txt.
 
 ## Site
 
-- [IconGems](https://icongems.kuige.me/): the human interface — aggregated search, one-click SVG/PNG download, copy-ready React/Vue/HTML/CSS
+- [IconGems](https://icongems.kuige.me/): the human interface — mascot library (default tab), aggregated icon search, one-click SVG/PNG download, copy-ready React/Vue/HTML/CSS
 - [llms-full.txt](https://icongems.kuige.me/llms-full.txt): this guide with the complete catalog inlined
 
-## Curated icon sets (29 sets, 109,813 icons, counts as of 2026-10-07)
+## Mascot logos — IP as Logo (3,448, MIT, categories keyword-derived)
+
+- Manifest (category + background color per logo): https://icongems.kuige.me/data/ipas-logos.json
+- Previews (512px WebP, hosted here): https://icongems.kuige.me/ipas/display/<key>.webp
+- Originals (1254x1254 PNG, source CDN, open CORS): https://cdn.ipaslogo.com/logos/<key>.png
+- Source: https://ipaslogo.com/ · skill: https://github.com/s1dashu/ip-as-logo-skill
+
+## Curated icon sets (29 sets, 109,813 icons, counts as of 2026-10-08)
 
 - [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons): 19,876 icons, license MIT, prefix `fluent` [ui]
 - [Material Symbols](https://fonts.google.com/icons): 15,717 icons, license Apache-2.0, prefix `material-symbols` [ui]
@@ -46,7 +54,7 @@
 - [Noto Emoji](https://github.com/googlefonts/noto-emoji): 3,729 icons, license Apache-2.0, prefix `noto` [emoji]
 - [Flat Color Icons](https://icon-sets.iconify.design/flat-color-icons/): 329 icons, license MIT, prefix `flat-color-icons` [emoji]
 
-## Free illustration libraries (16, license per entry)
+## Free illustration libraries (16, small external links at the end of the page — per-entry license)
 
 - [unDraw](https://undraw.co/): free, no attribution ⚠ no AI training — Consistent-style illustrations with live color customizer
 - [Open Peeps](https://www.openpeeps.com/): CC0 — Hand-drawn people by Pablo Stanley
@@ -81,8 +89,8 @@ Base: https://api.iconify.design
 
 ## Licensing
 
-- No attribution: MIT, Apache-2.0, ISC, CC0 — most sets above
-- Attribution required: CC BY 4.0 (Solar, Font Awesome 6 Free, Twemoji, Codicons)
+- No attribution: MIT, Apache-2.0, ISC, CC0 — all mascot logos + most icon sets above
+- Attribution required: CC BY 4.0 (Solar, Font Awesome Free, Twemoji, Codicons)
 - Illustrations: per-entry, see catalog. unDraw prohibits AI/ML training use.
 - Always verify on the source site before shipping.
 

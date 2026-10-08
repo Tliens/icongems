@@ -4,12 +4,14 @@
 Regenerates: data/catalog.json, llms.txt, llms-full.txt
 Run: python3 scripts/gen-data.py
 Counts are the verified static fallbacks (page upgrades them live from Iconify).
+The mascot library block is derived from data/ipas-logos.json (built by scripts/ipas-data.py
+from the ipaslogo.com app manifest); rerun that first if the collection changes.
 """
 import json, os
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://icongems.kuige.me"
-UPDATED = "2026-10-07"
+UPDATED = "2026-10-08"
 
 # id, name, author, prefixes, category, palette, count, license, official_url
 SETS = [
@@ -71,17 +73,33 @@ art_json=[{"name":n,"url":u,"license":lic,"formats":f.split(" · "),"aiTraining"
           for n,u,lic,f,ai,d in ART]
 total=sum(s[6] for s in SETS)
 
+# mascot library (IP as Logo) — derived from data/ipas-logos.json
+ipas=json.load(open(BASE+"/data/ipas-logos.json"))
+ipas_json={
+ "id":"ip-as-logo","name":"IP as Logo","author":"s1dashu / ipaslogo.com",
+ "license":"MIT","official_url":"https://ipaslogo.com/",
+ "skill_url":"https://github.com/s1dashu/ip-as-logo-skill",
+ "logo_count":ipas["count"],"categories":ipas["cats"],"category_counts":ipas["cat_counts"],
+ "original_png":"https://cdn.ipaslogo.com/logos/<key>.png",
+ "preview_webp_hosted":SITE+"/ipas/display/<key>.webp",
+ "manifest":SITE+"/data/ipas-logos.json",
+ "manifest_shape":"{logos: {<key>: [category, background-color]}}, key = <hash>-<slug>",
+ "note":"Rounded neo-skeuomorphic mascot logos. Categories are keyword-derived (source category API unreachable from CN networks); names are slug-derived. Previews are hosted by IconGems; original 1254px PNGs stream from the project CDN (open CORS).",
+}
+
 cat={
  "site":"IconGems","url":SITE+"/","updated":UPDATED,
  "llms":SITE+"/llms.txt","llmsFull":SITE+"/llms-full.txt",
- "description":"Curated catalog of famous open-source icon libraries (searchable & downloadable on IconGems via the Iconify API) and free illustration libraries.",
- "pageMap":{"search_and_download":SITE+"/#finder","icon_libraries":SITE+"/#libs","illustrations":SITE+"/#art","for_ai":SITE+"/#ai","faq":SITE+"/#faq"},
+ "description":"Resource site (not a link directory): the full IP as Logo mascot library (3,448 MIT-licensed logos, previews self-hosted, originals one click away) plus a curated catalog of famous open-source icon libraries (searchable & downloadable via the Iconify API) and free illustration libraries.",
+ "pageMap":{"mascot_logos":SITE+"/#mascots","search_and_download":SITE+"/#finder","icon_libraries":SITE+"/#libs","more_resources":SITE+"/#more","for_ai":SITE+"/#ai","faq":SITE+"/#faq"},
  "quickstart":[
-  "Read this catalog to pick a set that fits (check license first).",
+  "Mascots: read "+SITE+"/data/ipas-logos.json, preview at /ipas/display/<key>.webp, original PNG at https://cdn.ipaslogo.com/logos/<key>.png (MIT).",
+  "Read this catalog to pick an icon set that fits (check license first).",
   "Search icons: GET https://api.iconify.design/search?query=<term>&prefixes=<prefix(es)>",
   "Get inline SVG: GET https://api.iconify.design/<prefix>/<name>.svg (add ?color=%23hex&height=64)",
   "Embed in web apps via @iconify/react, @iconify/vue or <iconify-icon> web component.",
  ],
+ "mascot_logos":ipas_json,
  "icon_sets":sets_json,
  "illustrations":art_json,
  "iconify_api":{
@@ -97,20 +115,26 @@ with open(BASE+'/data/catalog.json','w') as f: json.dump(cat,f,indent=1,ensure_a
 # ---------- llms.txt (index, per llmstxt.org) ----------
 L=[]
 L.append("# IconGems\n")
-L.append(f"> Free search & download for {total:,}+ open-source SVG icons from 29 famous libraries (Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap, ByteDance IconPark…) plus 16 curated free illustration libraries. Bilingual EN/ZH. Built for designers, developers, PMs — and AI agents: every asset below is machine-readable, key-less and CORS-open.\n")
+L.append(f"> A free RESOURCE site (not a link directory): 3,448 MIT-licensed mascot logos from IP as Logo — previews self-hosted, original 1254px PNGs one click away, ZIP batches — plus search & download for {total:,}+ open-source SVG icons from 29 famous libraries (Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap, ByteDance IconPark…). Bilingual EN/ZH. Every asset is machine-readable, key-less and CORS-open.\n")
 L.append("## Quick start for agents\n")
-L.append("1. Pick a set from the catalog (check `license` first): "+SITE+"/data/catalog.json")
-L.append("2. Search: `GET https://api.iconify.design/search?query=<term>&prefixes=<prefix(es)>`")
-L.append("3. Get SVG: `GET https://api.iconify.design/<prefix>/<name>.svg?height=64` (`&color=%23hex` to recolor)")
-L.append("4. Ship: MIT/Apache/ISC/CC0 sets need no attribution; CC BY 4.0 sets do. Full details in llms-full.txt.\n")
+L.append("1. Mascot logos (MIT): manifest "+SITE+"/data/ipas-logos.json → preview `"+SITE+"/ipas/display/<key>.webp` → original `https://cdn.ipaslogo.com/logos/<key>.png`")
+L.append("2. Pick an icon set from the catalog (check `license` first): "+SITE+"/data/catalog.json")
+L.append("3. Search: `GET https://api.iconify.design/search?query=<term>&prefixes=<prefix(es)>`")
+L.append("4. Get SVG: `GET https://api.iconify.design/<prefix>/<name>.svg?height=64` (`&color=%23hex` to recolor)")
+L.append("5. Ship: MIT/Apache/ISC/CC0 assets need no attribution; CC BY 4.0 sets do. Full details in llms-full.txt.\n")
 L.append("## Site\n")
-L.append(f"- [IconGems]({SITE}/): the human interface — aggregated search, one-click SVG/PNG download, copy-ready React/Vue/HTML/CSS")
+L.append(f"- [IconGems]({SITE}/): the human interface — mascot library (default tab), aggregated icon search, one-click SVG/PNG download, copy-ready React/Vue/HTML/CSS")
 L.append("- [llms-full.txt]("+SITE+"/llms-full.txt): this guide with the complete catalog inlined\n")
+L.append("## Mascot logos — IP as Logo (3,448, MIT, categories keyword-derived)\n")
+L.append(f"- Manifest (category + background color per logo): {SITE}/data/ipas-logos.json")
+L.append("- Previews (512px WebP, hosted here): "+SITE+"/ipas/display/<key>.webp")
+L.append("- Originals (1254x1254 PNG, source CDN, open CORS): https://cdn.ipaslogo.com/logos/<key>.png")
+L.append("- Source: https://ipaslogo.com/ · skill: https://github.com/s1dashu/ip-as-logo-skill\n")
 L.append("## Curated icon sets (29 sets, %s icons, counts as of %s)\n" % (f"{total:,}",UPDATED))
 for i,n,a,p,c,pl,cnt,lic,u in SETS:
     L.append(f"- [{n}]({u}): {cnt:,} icons, license {lic}, prefix `{p[0]}`{' + '+str(len(p)-1)+' more' if len(p)>1 else ''} [{c}]")
 L.append("")
-L.append("## Free illustration libraries (16, license per entry)\n")
+L.append("## Free illustration libraries (16, small external links at the end of the page — per-entry license)\n")
 for n,u,lic,f,ai,d in ART:
     tag=" ⚠ no AI training" if "prohibited" in ai else ""
     L.append(f"- [{n}]({u}): {lic}{tag} — {d}")
@@ -120,8 +144,8 @@ L.append("```\nGET /search?query=<term>&limit=<n>&prefixes=<p1,p2>\nGET /<prefix
 L.append("## Deep links\n")
 L.append(f"- Search results: {SITE}/?q=<term>  ·  Browse one set: {SITE}/?set=<id>\n")
 L.append("## Licensing\n")
-L.append("- No attribution: MIT, Apache-2.0, ISC, CC0 — most sets above")
-L.append("- Attribution required: CC BY 4.0 (Solar, Font Awesome 6 Free, Twemoji, Codicons)")
+L.append("- No attribution: MIT, Apache-2.0, ISC, CC0 — all mascot logos + most icon sets above")
+L.append("- Attribution required: CC BY 4.0 (Solar, Font Awesome Free, Twemoji, Codicons)")
 L.append("- Illustrations: per-entry, see catalog. unDraw prohibits AI/ML training use.")
 L.append("- Always verify on the source site before shipping.\n")
 L.append("## Contact\n")

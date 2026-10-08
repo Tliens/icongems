@@ -1,23 +1,55 @@
 {
  "site": "IconGems",
  "url": "https://icongems.kuige.me/",
- "updated": "2026-10-07",
+ "updated": "2026-10-08",
  "llms": "https://icongems.kuige.me/llms.txt",
  "llmsFull": "https://icongems.kuige.me/llms-full.txt",
- "description": "Curated catalog of famous open-source icon libraries (searchable & downloadable on IconGems via the Iconify API) and free illustration libraries.",
+ "description": "Resource site (not a link directory): the full IP as Logo mascot library (3,448 MIT-licensed logos, previews self-hosted, originals one click away) plus a curated catalog of famous open-source icon libraries (searchable & downloadable via the Iconify API) and free illustration libraries.",
  "pageMap": {
+  "mascot_logos": "https://icongems.kuige.me/#mascots",
   "search_and_download": "https://icongems.kuige.me/#finder",
   "icon_libraries": "https://icongems.kuige.me/#libs",
-  "illustrations": "https://icongems.kuige.me/#art",
+  "more_resources": "https://icongems.kuige.me/#more",
   "for_ai": "https://icongems.kuige.me/#ai",
   "faq": "https://icongems.kuige.me/#faq"
  },
  "quickstart": [
-  "Read this catalog to pick a set that fits (check license first).",
+  "Mascots: read https://icongems.kuige.me/data/ipas-logos.json, preview at /ipas/display/<key>.webp, original PNG at https://cdn.ipaslogo.com/logos/<key>.png (MIT).",
+  "Read this catalog to pick an icon set that fits (check license first).",
   "Search icons: GET https://api.iconify.design/search?query=<term>&prefixes=<prefix(es)>",
   "Get inline SVG: GET https://api.iconify.design/<prefix>/<name>.svg (add ?color=%23hex&height=64)",
   "Embed in web apps via @iconify/react, @iconify/vue or <iconify-icon> web component."
  ],
+ "mascot_logos": {
+  "id": "ip-as-logo",
+  "name": "IP as Logo",
+  "author": "s1dashu / ipaslogo.com",
+  "license": "MIT",
+  "official_url": "https://ipaslogo.com/",
+  "skill_url": "https://github.com/s1dashu/ip-as-logo-skill",
+  "logo_count": 3448,
+  "categories": [
+   "animals",
+   "nature",
+   "food",
+   "objects",
+   "symbols",
+   "other"
+  ],
+  "category_counts": {
+   "animals": 2046,
+   "objects": 660,
+   "nature": 372,
+   "food": 254,
+   "symbols": 112,
+   "other": 4
+  },
+  "original_png": "https://cdn.ipaslogo.com/logos/<key>.png",
+  "preview_webp_hosted": "https://icongems.kuige.me/ipas/display/<key>.webp",
+  "manifest": "https://icongems.kuige.me/data/ipas-logos.json",
+  "manifest_shape": "{logos: {<key>: [category, background-color]}}, key = <hash>-<slug>",
+  "note": "Rounded neo-skeuomorphic mascot logos. Categories are keyword-derived (source category API unreachable from CN networks); names are slug-derived. Previews are hosted by IconGems; original 1254px PNGs stream from the project CDN (open CORS)."
+ },
  "icon_sets": [
   {
    "id": "fluent",

@@ -1,20 +1,28 @@
 # IconGems
 
-> Free search & download for 109,813+ open-source SVG icons from 29 famous libraries (Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap, ByteDance IconPark…) plus 16 curated free illustration libraries. Bilingual EN/ZH. Built for designers, developers, PMs — and AI agents: every asset below is machine-readable, key-less and CORS-open.
+> A free RESOURCE site (not a link directory): 3,448 MIT-licensed mascot logos from IP as Logo — previews self-hosted, original 1254px PNGs one click away, ZIP batches — plus search & download for 109,813+ open-source SVG icons from 29 famous libraries (Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap, ByteDance IconPark…). Bilingual EN/ZH. Every asset is machine-readable, key-less and CORS-open.
 
 ## Quick start for agents
 
-1. Pick a set from the catalog (check `license` first): https://icongems.kuige.me/data/catalog.json
-2. Search: `GET https://api.iconify.design/search?query=<term>&prefixes=<prefix(es)>`
-3. Get SVG: `GET https://api.iconify.design/<prefix>/<name>.svg?height=64` (`&color=%23hex` to recolor)
-4. Ship: MIT/Apache/ISC/CC0 sets need no attribution; CC BY 4.0 sets do. Full details in llms-full.txt.
+1. Mascot logos (MIT): manifest https://icongems.kuige.me/data/ipas-logos.json → preview `https://icongems.kuige.me/ipas/display/<key>.webp` → original `https://cdn.ipaslogo.com/logos/<key>.png`
+2. Pick an icon set from the catalog (check `license` first): https://icongems.kuige.me/data/catalog.json
+3. Search: `GET https://api.iconify.design/search?query=<term>&prefixes=<prefix(es)>`
+4. Get SVG: `GET https://api.iconify.design/<prefix>/<name>.svg?height=64` (`&color=%23hex` to recolor)
+5. Ship: MIT/Apache/ISC/CC0 assets need no attribution; CC BY 4.0 sets do. Full details in llms-full.txt.
 
 ## Site
 
-- [IconGems](https://icongems.kuige.me/): the human interface — aggregated search, one-click SVG/PNG download, copy-ready React/Vue/HTML/CSS
+- [IconGems](https://icongems.kuige.me/): the human interface — mascot library (default tab), aggregated icon search, one-click SVG/PNG download, copy-ready React/Vue/HTML/CSS
 - [llms-full.txt](https://icongems.kuige.me/llms-full.txt): this guide with the complete catalog inlined
 
-## Curated icon sets (29 sets, 109,813 icons, counts as of 2026-10-07)
+## Mascot logos — IP as Logo (3,448, MIT, categories keyword-derived)
+
+- Manifest (category + background color per logo): https://icongems.kuige.me/data/ipas-logos.json
+- Previews (512px WebP, hosted here): https://icongems.kuige.me/ipas/display/<key>.webp
+- Originals (1254x1254 PNG, source CDN, open CORS): https://cdn.ipaslogo.com/logos/<key>.png
+- Source: https://ipaslogo.com/ · skill: https://github.com/s1dashu/ip-as-logo-skill
+
+## Curated icon sets (29 sets, 109,813 icons, counts as of 2026-10-08)
 
 - [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons): 19,876 icons, license MIT, prefix `fluent` [ui]
 - [Material Symbols](https://fonts.google.com/icons): 15,717 icons, license Apache-2.0, prefix `material-symbols` [ui]
@@ -46,7 +54,7 @@
 - [Noto Emoji](https://github.com/googlefonts/noto-emoji): 3,729 icons, license Apache-2.0, prefix `noto` [emoji]
 - [Flat Color Icons](https://icon-sets.iconify.design/flat-color-icons/): 329 icons, license MIT, prefix `flat-color-icons` [emoji]
 
-## Free illustration libraries (16, license per entry)
+## Free illustration libraries (16, small external links at the end of the page — per-entry license)
 
 - [unDraw](https://undraw.co/): free, no attribution ⚠ no AI training — Consistent-style illustrations with live color customizer
 - [Open Peeps](https://www.openpeeps.com/): CC0 — Hand-drawn people by Pablo Stanley
@@ -81,8 +89,8 @@ Base: https://api.iconify.design
 
 ## Licensing
 
-- No attribution: MIT, Apache-2.0, ISC, CC0 — most sets above
-- Attribution required: CC BY 4.0 (Solar, Font Awesome 6 Free, Twemoji, Codicons)
+- No attribution: MIT, Apache-2.0, ISC, CC0 — all mascot logos + most icon sets above
+- Attribution required: CC BY 4.0 (Solar, Font Awesome Free, Twemoji, Codicons)
 - Illustrations: per-entry, see catalog. unDraw prohibits AI/ML training use.
 - Always verify on the source site before shipping.
 
@@ -94,23 +102,55 @@ Base: https://api.iconify.design
 {
  "site": "IconGems",
  "url": "https://icongems.kuige.me/",
- "updated": "2026-10-07",
+ "updated": "2026-10-08",
  "llms": "https://icongems.kuige.me/llms.txt",
  "llmsFull": "https://icongems.kuige.me/llms-full.txt",
- "description": "Curated catalog of famous open-source icon libraries (searchable & downloadable on IconGems via the Iconify API) and free illustration libraries.",
+ "description": "Resource site (not a link directory): the full IP as Logo mascot library (3,448 MIT-licensed logos, previews self-hosted, originals one click away) plus a curated catalog of famous open-source icon libraries (searchable & downloadable via the Iconify API) and free illustration libraries.",
  "pageMap": {
+  "mascot_logos": "https://icongems.kuige.me/#mascots",
   "search_and_download": "https://icongems.kuige.me/#finder",
   "icon_libraries": "https://icongems.kuige.me/#libs",
-  "illustrations": "https://icongems.kuige.me/#art",
+  "more_resources": "https://icongems.kuige.me/#more",
   "for_ai": "https://icongems.kuige.me/#ai",
   "faq": "https://icongems.kuige.me/#faq"
  },
  "quickstart": [
-  "Read this catalog to pick a set that fits (check license first).",
+  "Mascots: read https://icongems.kuige.me/data/ipas-logos.json, preview at /ipas/display/<key>.webp, original PNG at https://cdn.ipaslogo.com/logos/<key>.png (MIT).",
+  "Read this catalog to pick an icon set that fits (check license first).",
   "Search icons: GET https://api.iconify.design/search?query=<term>&prefixes=<prefix(es)>",
   "Get inline SVG: GET https://api.iconify.design/<prefix>/<name>.svg (add ?color=%23hex&height=64)",
   "Embed in web apps via @iconify/react, @iconify/vue or <iconify-icon> web component."
  ],
+ "mascot_logos": {
+  "id": "ip-as-logo",
+  "name": "IP as Logo",
+  "author": "s1dashu / ipaslogo.com",
+  "license": "MIT",
+  "official_url": "https://ipaslogo.com/",
+  "skill_url": "https://github.com/s1dashu/ip-as-logo-skill",
+  "logo_count": 3448,
+  "categories": [
+   "animals",
+   "nature",
+   "food",
+   "objects",
+   "symbols",
+   "other"
+  ],
+  "category_counts": {
+   "animals": 2046,
+   "objects": 660,
+   "nature": 372,
+   "food": 254,
+   "symbols": 112,
+   "other": 4
+  },
+  "original_png": "https://cdn.ipaslogo.com/logos/<key>.png",
+  "preview_webp_hosted": "https://icongems.kuige.me/ipas/display/<key>.webp",
+  "manifest": "https://icongems.kuige.me/data/ipas-logos.json",
+  "manifest_shape": "{logos: {<key>: [category, background-color]}}, key = <hash>-<slug>",
+  "note": "Rounded neo-skeuomorphic mascot logos. Categories are keyword-derived (source category API unreachable from CN networks); names are slug-derived. Previews are hosted by IconGems; original 1254px PNGs stream from the project CDN (open CORS)."
+ },
  "icon_sets": [
   {
    "id": "fluent",
@@ -751,4 +791,4 @@ Base: https://api.iconify.design
 - IconGems is an independent front-end over the Iconify open-source aggregation; all trademarks belong to their owners.
 - Author: 魁歌 KuiGe — https://kuige.me/
 
-Counts are static snapshots (2026-10-07); the live Iconify API is always authoritative for current numbers.
+Counts are static snapshots (2026-10-08); the live Iconify API is always authoritative for current numbers.
