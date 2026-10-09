@@ -30,6 +30,6 @@ A free **resource site** (downloads happen right here — outbound links are a t
 
 ## Tech
 
-Single-file `index.html` (no build, no dependencies). Theme: auto/light/dark. Bilingual EN/ZH with `?lang=` deep links. Top-level tabs: Mascot Logos (default) ↔ Icon Search (`?tab=icons`). Mascot previews are self-hosted WebP; mascot originals stream from cdn.ipaslogo.com (open CORS) as blobs; ZIP batches are built in-browser (store method). Icon search & downloads fetch live from api.iconify.design (open CORS, no key). Codename: **螭吻 (Chiwen)** — the ninth dragon son who swallows everything and spits it back as one library.
+Single-file `index.html` (no build, no dependencies). Theme: auto/light/dark. Bilingual EN/ZH with `?lang=` deep links. Top-level tabs: Mascot Logos (default) ↔ Icon Search (`?tab=icons`). Mascot previews are self-hosted WebP; mascot originals stream from cdn.ipaslogo.com (open CORS) as blobs; ZIP batches are built in-browser (store method). Icon search & downloads fetch live from api.iconify.design (open CORS, no key).
 
 Part of [kuige.me](https://kuige.me/) · KuiGe's free tool collection.

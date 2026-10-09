@@ -68,22 +68,14 @@ body{
 .cok{color:#34c759!important}
 button svg{display:block}
 /* obsidian surfaces: navbar, hero band and footer stay brand-black in BOTH themes (black-gold identity) */
-html:not(.dark) .aibar,html:not(.dark) .top,html:not(.dark) .heroband,html:not(.dark) footer{
+html:not(.dark) .aibar,html:not(.dark) .heroband{
   --bg:#0a0a0a; --card:#1a1a1a; --ink:#f5f5f5; --mut:#9b9b9b; --line:#2a2a2a;
   --chipbg:rgba(255,255,255,.07); --link:#e8c766; --glow:rgba(201,162,39,.2);
 }
-.top{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--nav-bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);color:var(--ink)}
 .heroband{background:var(--nav-bg);color:var(--ink)}
 /* topbar */
-.top .wrap{display:flex;align-items:center;gap:14px;height:58px}
-.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:17px;text-decoration:none;color:var(--ink);flex:none}
-.brand .mark{width:28px;height:28px;display:block}
-nav.main{display:flex;align-items:center;gap:15px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
-nav.main::-webkit-scrollbar{display:none}
 .navlink{color:var(--mut);text-decoration:none;font-size:14px;white-space:nowrap}
 .navlink:hover{color:var(--link)}
-.kuige-entry{color:var(--mut);text-decoration:none;font-size:13.5px;padding:4px 10px;border:1px solid var(--line);border-radius:99px;white-space:nowrap}
-.kuige-entry:hover{color:var(--link);border-color:var(--accent)}
 .iconbtn{background:none;border:1px solid var(--line);border-radius:9px;color:var(--mut);font-size:14px;padding:5px 10px;cursor:pointer;width:auto;flex:none}
 .iconbtn:hover{color:var(--link);border-color:var(--accent)}
 /* hero */
@@ -205,11 +197,6 @@ details{background:var(--card);border:1px solid var(--line);border-radius:12px;p
 summary{cursor:pointer;font-weight:600;font-size:15px}
 details p{color:var(--mut);font-size:14px;margin:9px 0 0}
 /* footer */
-footer{background:var(--nav-bg);border-top:1px solid var(--line);margin-top:44px;padding:26px 0 34px;font-size:13px;color:var(--mut)}
-footer .fnav{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px}
-footer a{color:var(--mut);text-decoration:none}
-footer a:hover{color:var(--link)}
-.codename{opacity:.85;margin-top:10px}
 /* modal */
 #modal{position:fixed;inset:0;z-index:120;background:rgba(4,14,12,.62);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:18px}
 .mbox{background:var(--card);border:1px solid var(--line);border-radius:18px;max-width:640px;width:100%;max-height:92vh;overflow:auto;padding:22px 24px;position:relative;box-shadow:0 18px 60px rgba(0,0,0,.4)}
@@ -318,7 +305,7 @@ html:not(.dark) .m-tile{filter:saturate(.85)}
 .mm-big img{width:82%;height:82%;object-fit:contain}
 .mm-meta{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;font-size:12.5px;color:var(--mut);margin-bottom:4px}
 @media (max-width:640px){
-  nav.main{gap:9px}
+  .kg-nav{gap:9px}
   #grid{grid-template-columns:repeat(auto-fill,minmax(74px,1fr))}
   #mgrid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:9px}
   .m-tile{border-radius:20%}
@@ -331,7 +318,28 @@ html:not(.dark) .m-tile{filter:saturate(.85)}
   h1{font-size:clamp(20px,6vw,26px)}
   .hero .sub{white-space:normal}
 }
-@media print{.top,#modal,footer .fnav{display:none}}
+/* ── KuiGe 站群统一基座 ───────────────────── */
+:root{--kg-ink:#1f2430;--kg-sub:#6b7280;--kg-accent:#f2603c;--kg-line:#e8e6e1;--kg-bg:#faf9f7}
+.kg-top{position:sticky;top:0;z-index:60;background:rgba(250,249,247,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--kg-line)}
+.kg-top-in{max-width:1120px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.kg-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--kg-ink);font-weight:700;font-size:17px}
+.kg-brand img{width:32px;height:32px;border-radius:9px;display:block}
+.kg-brand small{font-weight:500;color:var(--kg-sub);font-size:12px}
+.kg-nav{display:flex;align-items:center;gap:14px;font-size:14px}
+.kg-nav a{color:var(--kg-sub);text-decoration:none}
+.kg-nav a:hover{color:var(--kg-ink)}
+.kg-entry{background:var(--kg-ink);color:#fff!important;padding:6px 14px;border-radius:999px;text-decoration:none;font-size:13px}
+.kg-entry:hover{background:var(--kg-accent)}
+.kg-foot{background:var(--kg-bg);border-top:1px solid var(--kg-line);color:var(--kg-sub);font-size:13px;margin-top:0}
+.kg-foot-in{max-width:1120px;margin:0 auto;padding:36px 20px 28px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.kg-foot img{width:44px;height:44px;border-radius:12px;margin-bottom:2px}
+.kg-foot-brand{color:var(--kg-ink);font-weight:700;font-size:15px;margin:0}
+.kg-foot-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px}
+.kg-foot-links a{color:var(--kg-sub);text-decoration:none}
+.kg-foot-links a:hover{color:var(--kg-accent)}
+.kg-foot-copy{margin:4px 0 0;color:#9ca3af;font-size:12px}
+@media(max-width:640px){.kg-nav a:not(.kg-entry){display:none}}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Dataset","name":"IconGems curated mascot, icon & illustration catalog","description":"Machine-readable catalogs maintained by IconGems: the full IP as Logo mascot manifest (3,448 MIT-licensed mascot logos with per-logo category and background color, previews hosted at /ipas/display/), 29 famous open-source icon sets (109,000+ icons with per-set licenses, prefixes and API endpoints) and 16 free illustration libraries.","url":"https://icongems.kuige.me/data/catalog.json","sameAs":["https://icongems.kuige.me/","https://icongems.kuige.me/llms.txt"],"creator":{"@type":"Person","name":"KuiGe","url":"https://kuige.me/"},"distribution":[{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://icongems.kuige.me/data/catalog.json"},{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://icongems.kuige.me/data/ipas-logos.json"},{"@type":"DataDownload","encodingFormat":"text/plain","contentUrl":"https://icongems.kuige.me/llms-full.txt"}]}
@@ -347,24 +355,26 @@ html:not(.dark) .m-tile{filter:saturate(.85)}
   <a href="data/ipas-logos.json">ipas-logos.json</a>
   <a href="#ai" data-i18n="aibar_more">API &amp; recipes ↓</a>
 </div></div>
-<div class="top"><div class="wrap">
-  <a class="brand" href="./" title="IconGems">
-    <img class="mark" src="logo.png?v=2" alt="IconGems logo">
-    <span>IconGems</span>
-  </a>
-  <nav class="main">
-    <div class="navseg" role="tablist" aria-label="Library">
-      <button class="vtab on" id="tabIpas" role="tab" aria-selected="true" title="Mascot Logos"><span data-i18n="tab_ipas">Mascot Logos</span><small id="tabIpasN">3,448</small></button>
-      <button class="vtab" id="tabIcons" role="tab" aria-selected="false" title="Icon Search"><span data-i18n="tab_icons">Icon Search</span><small data-i18n="tab_icons_n">200,000+</small></button>
-    </div>
-    <a class="navlink" href="#libs" data-needview="icons" data-i18n="nav_libs">Icon Libraries</a>
-    <a class="navlink" href="#ai" data-i18n="nav_ai">For AI</a>
-    <a class="navlink" href="#faq" data-i18n="nav_faq">FAQ</a>
-    <a class="kuige-entry navlink" href="https://kuige.me/" target="_blank" rel="noopener" title="kuige.me"><img src="https://kuige.me/logo.png" alt="" width="16" height="16" style="width:16px;height:16px;border-radius:50%;vertical-align:-3px;margin-right:6px">魁歌</a>
-    <button class="iconbtn" id="btnLang" title="Language">中文</button>
-    <button class="iconbtn" id="btnTheme" title="Theme: auto">🌗</button>
-  </nav>
-</div></div>
+<header class="kg-top">
+  <div class="kg-top-in">
+    <a class="kg-brand" href="./" title="IconGems">
+      <img src="favicon.png?v=2" alt="IconGems 吉祥物">
+      <span>IconGems<small>free icons &amp; mascot logos</small></span>
+    </a>
+    <nav class="kg-nav">
+      <div class="navseg" role="tablist" aria-label="Library">
+        <button class="vtab on" id="tabIpas" role="tab" aria-selected="true" title="Mascot Logos"><span data-i18n="tab_ipas">Mascot Logos</span><small id="tabIpasN">3,448</small></button>
+        <button class="vtab" id="tabIcons" role="tab" aria-selected="false" title="Icon Search"><span data-i18n="tab_icons">Icon Search</span><small data-i18n="tab_icons_n">200,000+</small></button>
+      </div>
+      <a class="navlink" href="#libs" data-needview="icons" data-i18n="nav_libs">Icon Libraries</a>
+      <a class="navlink" href="#ai" data-i18n="nav_ai">For AI</a>
+      <a class="navlink" href="#faq" data-i18n="nav_faq">FAQ</a>
+      <a class="kg-entry" href="https://kuige.me/" target="_blank" rel="noopener">魁歌 · 全部作品</a>
+      <button class="iconbtn" id="btnLang" title="Language">中文</button>
+      <button class="iconbtn" id="btnTheme" title="Theme: auto">🌗</button>
+    </nav>
+  </div>
+</header>
 
 <div class="heroband">
 <header class="hero wrap">
@@ -504,17 +514,24 @@ curl "https://api.iconify.design/collections?prefixes=lucide,tabler"</span></div
   <p class="note-line" data-i18n="art_note">⚠️ Licenses differ per library and can change over time — the tag is a summary, the source site is the truth. unDraw explicitly prohibits AI/ML training use; several others require attribution.</p>
 </section>
 
-<footer><div class="wrap">
-  <div class="fnav">
-    <a href="https://kuige.me/" target="_blank" rel="noopener">kuige.me</a>
-    <a href="llms.txt" target="_blank" rel="noopener">llms.txt</a>
-    <a href="data/catalog.json" target="_blank" rel="noopener">catalog.json</a>
-    <a href="https://ipaslogo.com/" target="_blank" rel="noopener">IP as Logo</a>
-    <a href="https://iconify.design/" target="_blank" rel="noopener" data-i18n="f_iconify">Powered by Iconify</a>
+<footer class="kg-foot">
+  <div class="kg-foot-in">
+    <img src="favicon.png?v=2" alt="IconGems吉祥物">
+    <p class="kg-foot-brand">IconGems</p>
+    <nav class="kg-foot-links">
+      <a href="https://kuige.me/" target="_blank" rel="noopener">魁歌主页</a>
+      <a href="https://skillgems.kuige.me/" target="_blank" rel="noopener">SkillGems</a>
+      <a href="https://songgems.kuige.me/" target="_blank" rel="noopener">SongGems</a>
+      <a href="https://github-gems.kuige.me/" target="_blank" rel="noopener">GitHub Gems</a>
+      <a href="https://xhot.kuige.me/" target="_blank" rel="noopener">X 热榜</a>
+      <a href="llms.txt" target="_blank" rel="noopener">llms.txt</a>
+      <a href="data/catalog.json" target="_blank" rel="noopener">catalog.json</a>
+      <a href="https://ipaslogo.com/" target="_blank" rel="noopener">IP as Logo</a>
+      <a href="https://iconify.design/" target="_blank" rel="noopener" data-i18n="f_iconify">Powered by Iconify</a>
+    </nav>
+    <p class="kg-foot-copy">© 2026 魁歌 KuiGe · 用 AI 构建 · <a href="https://kuige.me/" style="color:inherit">kuige.me</a></p>
   </div>
-  <div>© 2026 <a href="https://kuige.me/" target="_blank" rel="noopener">魁歌 KuiGe</a> · IconGems — <span data-i18n="f_tag">free icons &amp; illustrations, from the names you trust</span></div>
-  <div class="codename" data-i18n="codename">本站代号：螭吻 — 龙生九子，螭吻好吞：吞尽天下图标，吐成一库。(Chiwen, ninth of the dragon's nine sons — it swallows every icon under heaven and spits out one library.)</div>
-</div></footer>
+</footer>
 
 <div id="modal" hidden>
   <div class="mbox" role="dialog" aria-modal="true">
@@ -653,7 +670,6 @@ en:{'nav_find':'Icon Search','nav_libs':'Icon Libraries','nav_ipas':'Mascot Logo
 'faq5_q':'Can I use these icons with AI code generation?','faq5_a':'Yes. Permissively licensed icon sets (MIT/Apache/ISC/CC0) are fine to reference in AI prompts, code generation and shipped products. This site also publishes llms.txt and a machine-readable catalog at /data/catalog.json for AI agents. Note: some illustration libraries (e.g. unDraw) explicitly prohibit using their artwork for AI/ML training — check each source\u2019s terms before bulk ingestion.',
 'faq6_q':'Is IconGems affiliated with Google, Microsoft or the other brands?','faq6_a':'No. IconGems is an independent search front-end over open-source icon collections. All library names and trademarks belong to their respective owners, and every card links back to the official source.',
 'f_iconify':'Powered by Iconify','f_tag':'free icons & illustrations, from the names you trust',
-'codename':'本站代号：螭吻 — 龙生九子，螭吻好吞：吞尽天下图标，吐成一库。(Chiwen, ninth of the dragon\u2019s nine sons — it swallows every icon under heaven and spits out one library.)',
 'q_ph':'Search icons — try “rocket”, “home”, “user”…',
 'searching':'Searching…','results':'icons found','nores':'No icons found — try a shorter English keyword (e.g. “home”, “user”, “arrow”).','err':'Search failed — check your connection and try again.','retry':'Retry',
 'showing':'Showing','of':'of','browse_all':'All','back_search':'← Back to search','load_more':'Load more','icons':'icons',
@@ -710,7 +726,6 @@ zh:{'nav_find':'图标搜索','nav_libs':'图标库','nav_ipas':'吉祥物','nav
 'faq5_q':'可以把这些图标用在 AI 生成 / 代码生成里吗？','faq5_a':'可以。宽松许可（MIT/Apache/ISC/CC0）的图标集可放心用于 AI 提示词、代码生成与上线产品。本站还提供 llms.txt 与机器可读目录 /data/catalog.json 供 AI 使用。注意：部分插画库（如 unDraw）明确禁止将作品用于 AI/ML 训练——批量收录前请逐家核对条款。',
 'faq6_q':'IconGems 与 Google、微软等品牌有 affiliation 吗？','faq6_a':'没有。IconGems 是独立的开源图标集合搜索前端。所有库名与商标归各自所有者，每张卡片都链接回官方源。',
 'f_iconify':'由 Iconify 驱动','f_tag':'免费图标与插画，来自你信任的大厂',
-'codename':'本站代号：螭吻 — 龙生九子，螭吻好吞：吞尽天下图标，吐成一库。(Chiwen, ninth of the dragon\u2019s nine sons — it swallows every icon under heaven and spits out one library.)',
 'q_ph':'搜索图标——试试 “rocket”、“home”、“user”…',
 'searching':'搜索中…','results':'个图标','nores':'没有找到——试试更短的英文关键词（如 “home”、“user”、“arrow”）。','err':'搜索失败——请检查网络后重试。','retry':'重试',
 'showing':'显示','of':'/ 共','browse_all':'全部','back_search':'← 返回搜索','load_more':'加载更多','icons':'个图标',
