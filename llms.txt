@@ -1,86 +1,87 @@
 # IconGems
 
-> A free RESOURCE site (not a link directory): 3,448 MIT-licensed mascot logos from IP as Logo — previews self-hosted, original 1254px PNGs one click away, ZIP batches — plus search & download for 109,813+ open-source SVG icons from 29 famous libraries (Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap, ByteDance IconPark…). Bilingual EN/ZH. Every asset is machine-readable, key-less and CORS-open.
+> A free RESOURCE site where every asset lives on this domain: 3,448 MIT-licensed mascot logos from IP as Logo (1024px originals self-hosted, browser-side PNG export, ZIP batches) plus complete self-hosted snapshots of 131,751 open-source SVG icons from 29 famous libraries (Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome, Bootstrap, ByteDance IconPark…). Bilingual EN/ZH. Machine-readable end to end — search, SVG and PNG resolve with zero third-party requests.
 
 ## Quick start for agents
 
-1. Mascot logos (MIT): manifest https://icongems.kuige.me/data/ipas-logos.json → preview `https://icongems.kuige.me/ipas/display/<key>.webp` → original `https://cdn.ipaslogo.com/logos/<key>.png`
-2. Pick an icon set from the catalog (check `license` first): https://icongems.kuige.me/data/catalog.json
-3. Search: `GET https://api.iconify.design/search?query=<term>&prefixes=<prefix(es)>`
-4. Get SVG: `GET https://api.iconify.design/<prefix>/<name>.svg?height=64` (`&color=%23hex` to recolor)
+1. Mascot logos (MIT): manifest https://icongems.kuige.me/data/ipas-logos.json → preview `https://icongems.kuige.me/ipas/display/<key>.webp` → 1024px original `https://icongems.kuige.me/ipas/full/<key>.webp`
+2. Icon names & chunk layout: `GET https://icongems.kuige.me/data/icon-index.json`
+3. Icon SVG data: `GET https://icongems.kuige.me/icons/<prefix>.<k>.json` — Icon data is hash-chunked: for icon <prefix>:<name>, k = djb2_utf8(name) % K (K = byPrefix.<prefix>.k in the index; djb2_utf8: h=5381; for each UTF-8 byte b: h=(h*33+b) mod 2^32). Fetch https://icongems.kuige.me/icons/<prefix>.<k>.json and read .icons[<name>] = {body, width?, height?}; set-level width/height are the fallback dimensions. SVG = <svg xmlns viewBox="0 0 W H"> + body + </svg>.
+4. Build SVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 W H">{body}</svg>` (mono sets: add fill="currentColor" or your color)
 5. Ship: MIT/Apache/ISC/CC0 assets need no attribution; CC BY 4.0 sets do. Full details in llms-full.txt.
 
 ## Site
 
-- [IconGems](https://icongems.kuige.me/): the human interface — mascot library (default tab), aggregated icon search, one-click SVG/PNG download, copy-ready React/Vue/HTML/CSS
+- [IconGems](https://icongems.kuige.me/): the human interface — mascot library (default tab), local icon search, one-click SVG/PNG download, copy-ready React/Vue/HTML/CSS
 - [llms-full.txt](https://icongems.kuige.me/llms-full.txt): this guide with the complete catalog inlined
 
-## Mascot logos — IP as Logo (3,448, MIT, categories keyword-derived)
+## Mascot logos — IP as Logo (3,448, MIT, categories keyword-derived, fully self-hosted)
 
 - Manifest (category + background color per logo): https://icongems.kuige.me/data/ipas-logos.json
 - Previews (512px WebP, hosted here): https://icongems.kuige.me/ipas/display/<key>.webp
-- Originals (1254x1254 PNG, source CDN, open CORS): https://cdn.ipaslogo.com/logos/<key>.png
-- Source: https://ipaslogo.com/ · skill: https://github.com/s1dashu/ip-as-logo-skill
+- Originals (1024px WebP with alpha, hosted here; PNG export converts in-browser): https://icongems.kuige.me/ipas/full/<key>.webp
+- Source project: https://ipaslogo.com/ · skill: https://github.com/s1dashu/ip-as-logo-skill
 
-## Curated icon sets (29 sets, 109,813 icons, counts as of 2026-10-08)
+## Curated icon sets (29 sets, 131,751 icons, self-hosted snapshot of 2026-10-24)
 
-- [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons): 19,876 icons, license MIT, prefix `fluent` [ui]
-- [Material Symbols](https://fonts.google.com/icons): 15,717 icons, license Apache-2.0, prefix `material-symbols` [ui]
-- [Phosphor](https://phosphoricons.com): 9,072 icons, license MIT, prefix `ph` [ui]
-- [Material Design Icons](https://pictogrammers.com/library/mdi/): 7,447 icons, license Apache-2.0, prefix `mdi` [ui]
-- [Tabler Icons](https://tabler.io/icons): 6,220 icons, license MIT, prefix `tabler` [ui]
-- [Solar](https://solar-icons.com): 8,706 icons, license CC-BY-4.0, prefix `solar` [ui]
-- [MingCute Icon](https://www.mingcute.com): 3,320 icons, license Apache-2.0, prefix `mingcute` [ui]
-- [Remix Icon](https://remixicon.com): 3,188 icons, license Apache-2.0, prefix `ri` [ui]
-- [Bootstrap Icons](https://icons.getbootstrap.com): 3,038 icons, license MIT, prefix `bi` + 2 more [ui]
-- [Lucide](https://lucide.dev): 1,866 icons, license ISC, prefix `lucide` [ui]
+- [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons): 20,779 icons, license MIT, prefix `fluent` [ui]
+- [Material Symbols](https://fonts.google.com/icons): 24,611 icons, license Apache-2.0, prefix `material-symbols` [ui]
+- [Phosphor](https://phosphoricons.com): 9,198 icons, license MIT, prefix `ph` [ui]
+- [Material Design Icons](https://pictogrammers.com/library/mdi/): 14,001 icons, license Apache-2.0, prefix `mdi` [ui]
+- [Tabler Icons](https://tabler.io/icons): 6,480 icons, license MIT, prefix `tabler` [ui]
+- [Solar](https://solar-icons.com): 9,132 icons, license CC-BY-4.0, prefix `solar` [ui]
+- [MingCute Icon](https://www.mingcute.com): 3,364 icons, license Apache-2.0, prefix `mingcute` [ui]
+- [Remix Icon](https://remixicon.com): 3,244 icons, license Apache-2.0, prefix `ri` [ui]
+- [Bootstrap Icons](https://icons.getbootstrap.com): 3,056 icons, license MIT, prefix `bi` + 2 more [ui]
+- [Lucide](https://lucide.dev): 2,198 icons, license ISC, prefix `lucide` [ui]
 - [IconPark](https://iconpark.oceanengine.com): 2,658 icons, license Apache-2.0, prefix `icon-park-outline` [ui]
-- [Iconoir](https://iconoir.com): 1,671 icons, license MIT, prefix `iconoir` [ui]
-- [Ionicons](https://ionic.io/ionicons): 1,357 icons, license MIT, prefix `ion` [ui]
-- [Heroicons](https://heroicons.com): 1,288 icons, license MIT, prefix `heroicons` [ui]
-- [Font Awesome 6 Free](https://fontawesome.com): 2,060 icons, license CC-BY-4.0, prefix `fa6-solid` + 2 more [ui]
-- [Unicons](https://iconscout.com/unicons): 1,215 icons, license Apache-2.0, prefix `uil` [ui]
-- [Ant Design Icons](https://ant.design/components/icons): 848 icons, license MIT, prefix `ant-design` [ui]
-- [css.gg](https://css.gg): 704 icons, license MIT, prefix `gg` [ui]
+- [Iconoir](https://iconoir.com): 2,020 icons, license MIT, prefix `iconoir` [ui]
+- [Ionicons](https://ionic.io/ionicons): 2,607 icons, license MIT, prefix `ion` [ui]
+- [Heroicons](https://heroicons.com): 1,297 icons, license MIT, prefix `heroicons` [ui]
+- [Font Awesome 6 Free](https://fontawesome.com): 2,090 icons, license CC-BY-4.0, prefix `fa6-solid` + 2 more [ui]
+- [Unicons](https://iconscout.com/unicons): 1,244 icons, license Apache-2.0, prefix `uil` [ui]
+- [Ant Design Icons](https://ant.design/components/icons): 1,888 icons, license MIT, prefix `ant-design` [ui]
+- [css.gg](https://css.gg): 705 icons, license MIT, prefix `gg` [ui]
 - [Feather Icons](https://feathericons.com): 286 icons, license MIT, prefix `feather` [ui]
-- [Material Line Icons](https://icon-sets.iconify.design/line-md/): 1,218 icons, license MIT, prefix `line-md` [anim]
+- [Material Line Icons](https://icon-sets.iconify.design/line-md/): 1,279 icons, license MIT, prefix `line-md` [anim]
 - [SVG Spinners](https://icon-sets.iconify.design/svg-spinners/): 46 icons, license MIT, prefix `svg-spinners` [anim]
-- [Simple Icons](https://simpleicons.org): 3,464 icons, license CC0-1.0, prefix `simple-icons` [brand]
-- [Devicon](https://devicon.dev): 1,057 icons, license MIT, prefix `devicon` [brand]
-- [VSCode Icons](https://icon-sets.iconify.design/vscode-icons/): 1,666 icons, license MIT, prefix `vscode-icons` [brand]
-- [Codicons](https://microsoft.github.io/vscode-codicons): 653 icons, license CC-BY-4.0, prefix `codicon` [brand]
-- [Twemoji](https://github.com/twitter/twemoji): 3,988 icons, license CC-BY-4.0, prefix `twemoji` [emoji]
-- [Fluent Emoji](https://github.com/microsoft/fluentui-emoji): 3,126 icons, license MIT, prefix `fluent-emoji` [emoji]
-- [Noto Emoji](https://github.com/googlefonts/noto-emoji): 3,729 icons, license Apache-2.0, prefix `noto` [emoji]
+- [Simple Icons](https://simpleicons.org): 3,751 icons, license CC0-1.0, prefix `simple-icons` [brand]
+- [Devicon](https://devicon.dev): 1,072 icons, license MIT, prefix `devicon` [brand]
+- [VSCode Icons](https://icon-sets.iconify.design/vscode-icons/): 1,720 icons, license MIT, prefix `vscode-icons` [brand]
+- [Codicons](https://microsoft.github.io/vscode-codicons): 664 icons, license CC-BY-4.0, prefix `codicon` [brand]
+- [Twemoji](https://github.com/twitter/twemoji): 4,728 icons, license CC-BY-4.0, prefix `twemoji` [emoji]
+- [Fluent Emoji](https://github.com/microsoft/fluentui-emoji): 3,181 icons, license MIT, prefix `fluent-emoji` [emoji]
+- [Noto Emoji](https://github.com/googlefonts/noto-emoji): 4,123 icons, license Apache-2.0, prefix `noto` [emoji]
 - [Flat Color Icons](https://icon-sets.iconify.design/flat-color-icons/): 329 icons, license MIT, prefix `flat-color-icons` [emoji]
 
-## Free illustration libraries (16, small external links at the end of the page — per-entry license)
+## Free illustration libraries (16 off-site links at the end of the page — per-entry license)
 
-- [unDraw](https://undraw.co/): free, no attribution ⚠ no AI training — Consistent-style illustrations with live color customizer
-- [Open Peeps](https://www.openpeeps.com/): CC0 — Hand-drawn people by Pablo Stanley
-- [Humaaans](https://humaaans.com/): CC0 — Mix-and-match human characters
-- [DiceBear](https://www.dicebear.com/): open source (per-style) — Avatar generator, dozens of styles
-- [Storyset](https://storyset.com/): free with attribution (Freepik) — Editable animated illustrations
-- [DrawKit](https://www.drawkit.com/): free with attribution (free tier) — Hand-drawn vector packs
-- [ManyPixels](https://www.manypixels.co/gallery): free, no attribution — Monocolor gallery with color picker
-- [3dicons](https://www.3dicons.com/): open source, free — Open-source 3D icons by Vijay Verma
-- [LottieFiles Free](https://lottiefiles.com/): mixed - check each asset — Large animated library
-- [IRA Design](https://iradesign.io/): MIT — Modular illustration builder by Creative Tim
-- [Lukasz Adam](https://lukaszadam.com/illustrations): CC0 — Free miscellaneous vectors
-- [absurd.design](https://absurd.design/): free with attribution (free tier) — Surreal line-art
-- [Ouch! by Icons8](https://icons8.com/ouch): free with link — Vector & 3D illustrations
-- [Doodle Ipsum](https://doodleipsum.com/): free (Blush license) — Doodle API by Blush
-- [Shapefest](https://shapefest.com/): free for commercial use — Large 3D shape library
-- [illlustrations.co](https://illlustrations.co/): open source, free — Open-source illustrations
+- [unDraw](https://undraw.co/): free, no attribution ⚠ no AI training — Consistent-style illustrations with live color customizer (off-site)
+- [Open Peeps](https://www.openpeeps.com/): CC0 — Hand-drawn people by Pablo Stanley (off-site)
+- [Humaaans](https://humaaans.com/): CC0 — Mix-and-match human characters (off-site)
+- [DiceBear](https://www.dicebear.com/): open source (per-style) — Avatar generator, dozens of styles (off-site)
+- [Storyset](https://storyset.com/): free with attribution (Freepik) — Editable animated illustrations (off-site)
+- [DrawKit](https://www.drawkit.com/): free with attribution (free tier) — Hand-drawn vector packs (off-site)
+- [ManyPixels](https://www.manypixels.co/gallery): free, no attribution — Monocolor gallery with color picker (off-site)
+- [3dicons](https://www.3dicons.com/): open source, free — Open-source 3D icons by Vijay Verma (off-site)
+- [LottieFiles Free](https://lottiefiles.com/): mixed - check each asset — Large animated library (off-site)
+- [IRA Design](https://iradesign.io/): MIT — Modular illustration builder by Creative Tim (off-site)
+- [Lukasz Adam](https://lukaszadam.com/illustrations): CC0 — Free miscellaneous vectors (off-site)
+- [absurd.design](https://absurd.design/): free with attribution (free tier) — Surreal line-art (off-site)
+- [Ouch! by Icons8](https://icons8.com/ouch): free with link — Vector & 3D illustrations (off-site)
+- [Doodle Ipsum](https://doodleipsum.com/): free (Blush license) — Doodle API by Blush (off-site)
+- [Shapefest](https://shapefest.com/): free for commercial use — Large 3D shape library (off-site)
+- [illlustrations.co](https://illlustrations.co/): open source, free — Open-source illustrations (off-site)
 
-## Iconify API (open CORS, no key)
+## Local data endpoints (all on this domain, CORS-open, no key)
 
 ```
-GET /search?query=<term>&limit=<n>&prefixes=<p1,p2>
-GET /<prefix>/<icon>.svg?color=<hex|currentColor>&height=<px>
-GET /collections?prefixes=<p1,p2>   # name, author, license, count, samples per set
-GET /collection?prefix=<p>          # all icon names in a set
-Base: https://api.iconify.design
+GET /data/icon-index.json            # all icon names grouped by prefix + chunk layout
+GET /icons/<prefix>.<k>.json         # SVG bodies, hash chunk (see recipe in quick start)
+GET /data/ipas-logos.json            # mascot manifest: {logos: {<key>: [category, bg]}}
+GET /ipas/display/<key>.webp         # mascot 512px preview
+GET /ipas/full/<key>.webp            # mascot 1024px original
+Base: https://icongems.kuige.me
 ```
 
 ## Deep links
@@ -91,10 +92,10 @@ Base: https://api.iconify.design
 
 - No attribution: MIT, Apache-2.0, ISC, CC0 — all mascot logos + most icon sets above
 - Attribution required: CC BY 4.0 (Solar, Font Awesome Free, Twemoji, Codicons)
-- Illustrations: per-entry, see catalog. unDraw prohibits AI/ML training use.
+- Illustrations: per-entry, see catalog (off-site links). unDraw prohibits AI/ML training use.
 - Always verify on the source site before shipping.
 
 ## Contact
 
-- IconGems is an independent front-end over the Iconify open-source aggregation; all trademarks belong to their owners.
+- IconGems is an independent site over open-source icon data (Iconify open format), fully self-hosted; all trademarks belong to their owners.
 - Author: 魁歌 KuiGe — https://kuige.me/
