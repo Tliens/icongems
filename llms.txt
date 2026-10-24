@@ -22,6 +22,21 @@
 - Originals (1024px WebP with alpha, hosted here; PNG export converts in-browser): https://icongems.kuige.me/ipas/full/<key>.webp
 - Source project: https://ipaslogo.com/ · skill: https://github.com/s1dashu/ip-as-logo-skill
 
+## Avatar Studio (31 styles, generated client-side)
+
+- Deep link: https://icongems.kuige.me/?avatar=<style>:<seed> — e.g. ?avatar=open-peeps:kuige
+- Engine: DiceBear (vendored ESM, self-hosted, MIT) — styles render in the browser, no account, no upload
+- License CC BY 4.0: adventurer, adventurer-neutral, big-ears, big-ears-neutral, big-smile, croodles, croodles-neutral, dylan, fun-emoji, micah, miniavs, personas, toon-head
+- License CC0 1.0: glass, identicon, initials, lorelei, lorelei-neutral, notionists, notionists-neutral, open-peeps, pixel-art, pixel-art-neutral, rings, shapes, thumbs
+- License Free for personal and commercial use: avataaars, avataaars-neutral, bottts, bottts-neutral
+- License MIT: icons
+
+## Self-hosted illustrations (250 files, CC0 / MIT)
+
+- 3D Icons: 120 files, license CC0, by Vijay Verma — https://icongems.kuige.me/illus/<file>.png
+- illlustrations.co: 130 files, license MIT, by Vijay Verma — https://icongems.kuige.me/illus/<file>.png
+- Manifest: https://icongems.kuige.me/data/illus.json
+
 ## Curated icon sets (29 sets, 131,751 icons, self-hosted snapshot of 2026-10-24)
 
 - [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons): 20,779 icons, license MIT, prefix `fluent` [ui]

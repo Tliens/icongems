@@ -88,6 +88,36 @@ total=IDX["total"]
 
 # mascot library (IP as Logo) — derived from data/ipas-logos.json
 ipas=json.load(open(BASE+"/data/ipas-logos.json"))
+illus=json.load(open(BASE+"/data/illus.json"))
+
+AVSTYLES=[
+ ("adventurer","Adventurer","CC BY 4.0"),("adventurer-neutral","Adventurer Neutral","CC BY 4.0"),
+ ("avataaars","Avataaars","Free for personal and commercial use"),("avataaars-neutral","Avataaars Neutral","Free for personal and commercial use"),
+ ("big-ears","Face Generator","CC BY 4.0"),("big-ears-neutral","Face Generator Neutral","CC BY 4.0"),
+ ("big-smile","Big Smile","CC BY 4.0"),("bottts","Bottts","Free for personal and commercial use"),("bottts-neutral","Bottts Neutral","Free for personal and commercial use"),
+ ("croodles","Croodles","CC BY 4.0"),("croodles-neutral","Croodles Neutral","CC BY 4.0"),
+ ("dylan","Dylan","CC BY 4.0"),("fun-emoji","Fun Emoji","CC BY 4.0"),("glass","Glass","CC0 1.0"),
+ ("icons","Bootstrap Icons","MIT"),("identicon","Identicon","CC0 1.0"),("initials","Initials","CC0 1.0"),
+ ("lorelei","Lorelei","CC0 1.0"),("lorelei-neutral","Lorelei Neutral","CC0 1.0"),("micah","Micah","CC BY 4.0"),
+ ("miniavs","Miniavs","CC BY 4.0"),("notionists","Notionists","CC0 1.0"),("notionists-neutral","Notionists Neutral","CC0 1.0"),
+ ("open-peeps","Open Peeps","CC0 1.0"),("personas","Personas","CC BY 4.0"),("pixel-art","Pixel Art","CC0 1.0"),
+ ("pixel-art-neutral","Pixel Art Neutral","CC0 1.0"),("rings","Rings","CC0 1.0"),("shapes","Shapes","CC0 1.0"),
+ ("thumbs","Thumbs","CC0 1.0"),("toon-head","ToonHead","CC BY 4.0")]
+av_json={
+ "id":"avatar-studio","name":"Avatar Studio","engine":"DiceBear (vendored ESM, self-hosted)",
+ "engine_license":"MIT","url":SITE+"/#avstudio","deep_link":SITE+"/?avatar=<style>:<seed>",
+ "style_count":len(AVSTYLES),
+ "note":"Client-side avatar generation — no account, no upload, works offline. Share any combination via ?avatar=<style>:<seed>.",
+ "styles":[{"id":s,"name":n,"license":l} for s,n,l in AVSTYLES],
+}
+illus_json={
+ "id":"illustrations","name":"Self-hosted illustrations","count":len(illus["items"]),
+ "packs":[{"id":pid,"name":p["name"],"author":p["author"],"license":p["lic"],"url":p["url"],
+           "count":sum(1 for i in illus["items"] if i["p"]==pid)} for pid,p in illus["packs"].items()],
+ "manifest":SITE+"/data/illus.json",
+ "files":"3D Icons: "+SITE+"/illus/3d/<slug>.png (+<slug>-clay.png) · illlustrations: "+SITE+"/illus/ill/<file>.png|.svg",
+ "note":"Every file self-hosted; categories in the manifest. ZIP batches of any filtered selection are built client-side.",
+}
 ipas_json={
  "id":"ip-as-logo","name":"IP as Logo","author":"s1dashu / ipaslogo.com",
  "license":"MIT","official_url":"https://ipaslogo.com/",
@@ -110,15 +140,19 @@ cat={
  "llms":SITE+"/llms.txt","llmsFull":SITE+"/llms-full.txt",
  "selfHosted":True,
  "description":"Resource site where every asset lives on this domain: the full IP as Logo mascot library (3,448 MIT-licensed logos, 1024px originals self-hosted) plus complete snapshots of 29 famous open-source icon libraries (searchable & downloadable locally, no third-party API) and a curated list of free illustration libraries (off-site links, clearly labelled).",
- "pageMap":{"mascot_logos":SITE+"/#mascots","search_and_download":SITE+"/#finder","icon_libraries":SITE+"/#libs","more_resources":SITE+"/#more","for_ai":SITE+"/#ai","faq":SITE+"/#faq"},
+ "pageMap":{"mascot_logos":SITE+"/#mascots","avatar_studio":SITE+"/#avstudio","search_and_download":SITE+"/#finder","icon_libraries":SITE+"/#libs","illustrations":SITE+"/?tab=illus","more_resources":SITE+"/#more","for_ai":SITE+"/#ai","faq":SITE+"/#faq"},
  "quickstart":[
   "Mascots: read "+SITE+"/data/ipas-logos.json → 512px preview /ipas/display/<key>.webp → 1024px original /ipas/full/<key>.webp (all on this site, MIT).",
+  "Avatars: pick a style from avatar_studio.styles → share "+SITE+"/?avatar=<style>:<seed> (generated client-side, vendored DiceBear).",
+  "Illustrations: read "+SITE+"/data/illus.json → /illus/3d/<slug>.png or /illus/ill/<file>.png (CC0/MIT).",
   "Icon names: GET "+SITE+"/data/icon-index.json (names grouped by prefix + per-set chunk layout).",
   "Icon SVG data: "+CHUNK_RECIPE,
-  "Embed in web apps via @iconify/react, @iconify/vue or <iconify-icon> web component (npm packages use the same prefixes).",
+  "Embed icons in web apps via @iconify/react, @iconify/vue or <iconify-icon> web component (npm packages use the same prefixes).",
   "Check the license field before shipping; CC BY 4.0 sets need attribution.",
  ],
  "mascot_logos":ipas_json,
+ "avatar_studio":av_json,
+ "illustrations_selfhosted":illus_json,
  "icon_sets":sets_json,
  "icon_index":{ "url":SITE+"/data/icon-index.json","total_icons":total,"prefixes":len(byp),
    "chunked":True,"chunkSize":IDX.get("chunkSize",512),"hash":"djb2-utf8-mod32","recipe":CHUNK_RECIPE},
@@ -145,6 +179,18 @@ L.append(f"- Manifest (category + background color per logo): {SITE}/data/ipas-l
 L.append("- Previews (512px WebP, hosted here): "+SITE+"/ipas/display/<key>.webp")
 L.append("- Originals (1024px WebP with alpha, hosted here; PNG export converts in-browser): "+SITE+"/ipas/full/<key>.webp")
 L.append("- Source project: https://ipaslogo.com/ · skill: https://github.com/s1dashu/ip-as-logo-skill\n")
+L.append("## Avatar Studio (%d styles, generated client-side)\n" % len(AVSTYLES))
+L.append("- Deep link: "+SITE+"/?avatar=<style>:<seed> — e.g. ?avatar=open-peeps:kuige")
+L.append("- Engine: DiceBear (vendored ESM, self-hosted, MIT) — styles render in the browser, no account, no upload")
+lics={}
+for s,n,l in AVSTYLES: lics.setdefault(l,[]).append(s)
+for l,ids in sorted(lics.items()):
+    L.append(f"- License {l}: {', '.join(ids)}")
+L.append("")
+L.append("## Self-hosted illustrations (%d files, CC0 / MIT)\n" % illus_json["count"])
+for p in illus_json["packs"]:
+    L.append(f"- {p['name']}: {p['count']} files, license {p['license']}, by {p['author']} — {SITE}/illus/<file>.png")
+L.append("- Manifest: "+SITE+"/data/illus.json\n")
 L.append("## Curated icon sets (29 sets, %s icons, self-hosted snapshot of %s)\n" % (f"{total:,}",UPDATED))
 for i,n,a,p,c,pl,lic,u in SETS:
     m=set_meta(i); cnt=m.get("cnt",0)

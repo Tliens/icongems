@@ -1,3 +1,5 @@
 scripts/.icons-cache/
 *.tmp
 .DS_Store
+scripts/.cache/
+node_modules/

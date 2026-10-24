@@ -22,6 +22,9 @@
 <link rel="alternate" type="text/plain" title="llms.txt — site guide for AI agents" href="https://icongems.kuige.me/llms.txt">
 <link rel="icon" type="image/png" href="favicon.png?v=3">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
+<script type="importmap">
+{"imports":{"@dicebear/core":"vendor/dicebear/core/index.js"}}
+</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"IconGems","url":"https://icongems.kuige.me/","applicationCategory":"DesignApplication","operatingSystem":"Any modern browser","description":"3,448 free mascot logos (IP as Logo, MIT-licensed) with self-hosted 1024px WebP originals and in-browser PNG export, single files or ZIP batches — plus 131,000+ open-source SVG icons from 29 famous libraries (Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome and more), fully self-hosted: search, preview and download all happen on this site.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["3,448 mascot logos with one-click self-hosted 1024px downloads and ZIP batches (MIT)","Search 131,000+ icons across 29 open-source sets, all served locally","Download SVG and PNG directly","Copy SVG / React / Vue / HTML / CSS snippets","Curated famous icon libraries with license badges","Machine-readable catalogs and llms.txt for AI agents"],"inLanguage":["en","zh"]}
 </script>
@@ -272,7 +275,7 @@ h1{font-size:clamp(24px,4vw,33px)}
 #mascots .chips,#finder .chips{margin-bottom:0}
 /* ===== mascot library (IP as Logo) ===== */
 #mascots{padding:18px 0 10px}
-#mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:11px}
+#mgrid,#ilGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:11px}
 .mcard{position:relative;display:flex;flex-direction:column;gap:6px;cursor:pointer;color:var(--ink);border-radius:12px;padding:0;background:none;border:none;text-align:center}
 .mcard:hover{transform:translateY(-2px)}
 .mcard,.mcard *{transition:transform .12s}
@@ -307,7 +310,7 @@ html:not(.dark) .m-tile{filter:saturate(.85)}
 @media (max-width:640px){
   .kg-nav{gap:9px}
   #grid{grid-template-columns:repeat(auto-fill,minmax(74px,1fr))}
-  #mgrid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:9px}
+  #mgrid,#ilGrid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:9px}
   .m-tile{border-radius:20%}
   /* AI banner: one scrollable line instead of a wrapping paragraph */
   .aibar .wrap{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch}
@@ -343,6 +346,39 @@ html.dark .kg-entry{background:#2c3444;color:#f2f5fb!important}
 .kg-foot-copy{margin:4px 0 0;color:#9ca3af;font-size:12px}
 @media(max-width:640px){.kg-nav a:not(.kg-entry){display:none}}
 
+/* ===== P1: avatar studio / illustrations / batch tray ===== */
+.as-wrap{margin-top:52px;padding-top:36px;border-top:1px solid var(--line)}
+.as-main{display:flex;gap:28px;align-items:flex-start;margin-top:6px;flex-wrap:wrap}
+.as-prev-wrap{flex:0 0 280px;max-width:100%}
+.as-prev{width:280px;height:280px;border:1px solid var(--line);border-radius:16px;background:var(--chipbg);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.as-prev svg{width:100%;height:100%;display:block}
+.as-seed{display:flex;gap:8px;margin-top:12px}
+.as-seed input{flex:1;min-width:0;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;font-size:14px}
+.as-seed input:focus{outline:none;border-color:var(--accent)}
+.as-side{flex:1;min-width:270px;display:flex;flex-direction:column;gap:16px}
+.as-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.as-color{width:26px;height:26px;border-radius:8px;border:1px solid var(--line);cursor:pointer;padding:0;flex:none}
+.as-color.on{outline:2px solid var(--accent);outline-offset:1px}
+.as-color.auto{background:repeating-conic-gradient(var(--line) 0 25%,transparent 0 50%) 0 0/10px 10px}
+.as-variants{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.as-variants button{aspect-ratio:1;border:1px solid var(--line);border-radius:10px;background:var(--card);cursor:pointer;padding:6px;overflow:hidden;transition:border-color .15s}
+.as-variants button.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--glow)}
+.as-variants button:hover{border-color:var(--accent)}
+.as-variants svg{width:100%;height:100%;display:block}
+.as-credit{font-size:12.5px;color:var(--mut);line-height:1.6}
+.as-actions{flex-wrap:wrap}
+/* illustrations reuse .mgrid/.mcard; variant thumbs row in modal */
+.il-vars{display:flex;gap:10px;margin:6px 0 4px}
+.il-vars button{border:1px solid var(--line);border-radius:10px;background:var(--card);cursor:pointer;padding:6px 12px;font:inherit;font-size:12.5px;color:var(--ink)}
+.il-vars button.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--glow)}
+/* batch tray */
+#traybar{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:70;display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:8px 10px 8px 18px;box-shadow:0 10px 34px rgba(0,0,0,.22);max-width:92vw}
+#traybar .tr-cnt{font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
+body.picking .mcard,body.picking .ic-t{cursor:cell}
+.mcard.sel .m-tile,.ic-t.sel{outline:2.5px solid var(--accent);outline-offset:-2.5px}
+.mcard.sel::after,.ic-t.sel::after{content:'✓';position:absolute;top:6px;right:6px;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;line-height:20px;text-align:center;font-weight:700}
+.mcard,.ic-t{position:relative}
+.mini.pick-on{border-color:var(--accent);color:var(--accent);font-weight:600}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Dataset","name":"IconGems curated mascot, icon & illustration catalog","description":"Machine-readable catalogs maintained by IconGems: the full IP as Logo mascot manifest (3,448 MIT-licensed mascot logos with per-logo category and background color, previews hosted at /ipas/display/), 29 famous open-source icon sets (109,000+ icons with per-set licenses, prefixes and API endpoints) and 16 free illustration libraries.","url":"https://icongems.kuige.me/data/catalog.json","sameAs":["https://icongems.kuige.me/","https://icongems.kuige.me/llms.txt"],"creator":{"@type":"Person","name":"KuiGe","url":"https://kuige.me/"},"distribution":[{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://icongems.kuige.me/data/catalog.json"},{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://icongems.kuige.me/data/ipas-logos.json"},{"@type":"DataDownload","encodingFormat":"text/plain","contentUrl":"https://icongems.kuige.me/llms-full.txt"}]}
@@ -366,8 +402,9 @@ html.dark .kg-entry{background:#2c3444;color:#f2f5fb!important}
     </a>
     <nav class="kg-nav">
       <div class="navseg" role="tablist" aria-label="Library">
-        <button class="vtab on" id="tabIpas" role="tab" aria-selected="true" title="Mascot Logos"><span data-i18n="tab_ipas">Mascot Logos</span><small id="tabIpasN">3,448</small></button>
-        <button class="vtab" id="tabIcons" role="tab" aria-selected="false" title="Icon Search"><span data-i18n="tab_icons">Icon Search</span><small id="tabIconsN" data-i18n="tab_icons_n">109,000+</small></button>
+        <button class="vtab on" id="tabIpas" role="tab" aria-selected="true" title="Avatars &amp; IP"><span data-i18n="tab_ipas">Avatars &amp; IP</span><small id="tabIpasN">3,448</small></button>
+        <button class="vtab" id="tabIcons" role="tab" aria-selected="false" title="Icon Search"><span data-i18n="tab_icons">Icon Search</span><small id="tabIconsN" data-i18n="tab_icons_n">131,000+</small></button>
+        <button class="vtab" id="tabIllus" role="tab" aria-selected="false" title="Illustrations"><span data-i18n="tab_illus">Illustrations</span><small id="tabIllusN">250+</small></button>
       </div>
       <a class="navlink" href="#libs" data-needview="icons" data-i18n="nav_libs">Icon Libraries</a>
       <a class="navlink" href="#ai" data-i18n="nav_ai">For AI</a>
@@ -391,6 +428,11 @@ html.dark .kg-entry{background:#2c3444;color:#f2f5fb!important}
     <h1 data-i18n="h1">Search 100,000+ free icons from the names you trust</h1>
     <p class="sub" data-i18n="sub">Google, Microsoft, Tabler, Lucide, Phosphor, Font Awesome… 131,000+ icons, every file served from this site — SVG/PNG download, copy-ready code.</p>
   </div>
+  <div id="heroIllus" hidden>
+    <p class="eyebrow" data-i18n="illus_eyebrow">Free 3D icons &amp; open illustrations · self-hosted</p>
+    <h1 data-i18n="illus_h1">3D icons &amp; illustrations, served from this site</h1>
+    <p class="sub" data-i18n="illus_sub">3D Icons (CC0) + illlustrations.co (MIT) — every PNG &amp; SVG hosted right here, single downloads or ZIP batches.</p>
+  </div>
 </header>
 </div>
 
@@ -409,6 +451,7 @@ html.dark .kg-entry{background:#2c3444;color:#f2f5fb!important}
         <option value="az" data-i18n="sort_az">A → Z</option>
         <option value="rand" data-i18n="sort_rand">Random</option>
       </select>
+      <button class="mini" id="mPick" data-i18n="pick">☑ Select</button>
     </div>
     <div class="chips" id="mcatchips"></div>
   </div>
@@ -421,6 +464,32 @@ html.dark .kg-entry{background:#2c3444;color:#f2f5fb!important}
     <div class="zbar" id="mZbar"><i></i></div>
   </div>
   <p class="src-line" id="mSrc"></p>
+
+  <div class="as-wrap" id="avstudio">
+    <h2 data-i18n="as_h2">Avatar Studio</h2>
+    <p class="sect-sub" data-i18n="as_sub">31 open styles, unlimited seeds — generated locally in your browser by self-hosted DiceBear. Download SVG/PNG, or copy a share link.</p>
+    <div class="chips" id="asStyles" style="margin-bottom:16px"></div>
+    <div class="as-main">
+      <div class="as-prev-wrap">
+        <div class="as-prev" id="asPrev"></div>
+        <div class="as-seed">
+          <input id="asSeed" type="text" data-i18n-ph="as_seed_ph" placeholder="seed — any text" maxlength="64" autocomplete="off">
+          <button class="mini pri" id="asDice" type="button" title="Random seed">🎲</button>
+        </div>
+      </div>
+      <div class="as-side">
+        <div class="as-row" id="asColors"></div>
+        <div class="as-variants" id="asVariants"></div>
+        <div class="m-actions as-actions">
+          <button class="btn" id="asDlSvg" data-i18n="as_dl_svg">⬇ SVG</button>
+          <button class="btn ghost" id="asDlPng" data-i18n="as_dl_png">⬇ PNG · 512px</button>
+          <button class="btn ghost icob" id="asCopySvg" data-i18n-title="as_copy_svg" title="Copy SVG" aria-label="Copy SVG"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+          <button class="btn ghost icob" id="asCopyLink" data-i18n-title="as_copy_link" title="Copy share link" aria-label="Copy share link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+        </div>
+        <p class="as-credit" id="asCredit"></p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div id="iconsview" hidden>
@@ -433,6 +502,7 @@ html.dark .kg-entry{background:#2c3444;color:#f2f5fb!important}
         <button class="sx" id="qClear" type="button" title="Clear" aria-label="Clear search">×</button>
       </div>
       <span class="mcount" id="fstatus"></span>
+      <button class="mini" id="qPick" data-i18n="pick">☑ Select</button>
     </div>
     <div class="chips" id="setchips"></div>
   </div>
@@ -453,6 +523,31 @@ html.dark .kg-entry{background:#2c3444;color:#f2f5fb!important}
   <div class="libgrid" id="libgrid"></div>
 </section>
 </div><!-- /iconsview -->
+
+<div id="illusview" hidden>
+<section id="illus" class="wrap" aria-label="Self-hosted illustrations">
+  <div class="mbar">
+    <div class="mrow">
+      <div class="searchwrap" id="ilWrap">
+        <span class="sic">🔍</span>
+        <input id="ils" type="search" data-i18n-ph="il_ph" placeholder="cube · dumbbell · coffee…" autocomplete="off" enterkeyhint="search">
+        <button class="sx" id="ilClear" type="button" title="Clear" aria-label="Clear search">×</button>
+      </div>
+      <span class="mcount" id="ilCount"></span>
+      <button class="mini" id="ilPick" data-i18n="pick">☑ Select</button>
+    </div>
+    <div class="chips" id="ilPacks"></div>
+  </div>
+  <div class="mgrid" id="ilGrid"></div>
+  <div id="ilEmpty" hidden></div>
+  <div class="zipbar">
+    <button class="btn" id="ilZip" data-i18n="il_zip">⬇ ZIP — current filter (PNG)</button>
+    <span class="zcap" id="ilZipCap" data-i18n="il_zip_cap">Bundles the currently filtered illustrations into one ZIP, built in your browser. Up to 300 files.</span>
+    <div class="zbar" id="ilZbar"><i></i></div>
+  </div>
+  <p class="src-line" id="ilSrc"></p>
+</section>
+</div><!-- /illusview -->
 
 <section id="ai" class="wrap blk">
   <h2 data-i18n="ai_h2">Built for AI &amp; agents, too</h2>
@@ -569,6 +664,27 @@ curl "https://icongems.kuige.me/ipas/full/&lt;key&gt;.webp"       # 1024px masco
       <button class="btn ghost icob" id="mmCopyUrl" data-i18n-title="ipas_copy_url" title="Copy file URL" aria-label="Copy file URL"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
     </div>
   </div>
+</div>
+
+<div id="ilmodal" hidden>
+  <div class="mbox" role="dialog" aria-modal="true">
+    <button class="mx" id="ilClose" title="Close (Esc)">×</button>
+    <div class="m-head"><button class="mx nv" id="ilNavPrev" title="Previous (←)" hidden>‹</button><h3 id="ilName">illustration</h3><span class="lic" id="ilLic">CC0</span><button class="mx nv" id="ilNavNext" title="Next (→)" hidden>›</button></div>
+    <p class="m-set" id="ilPack"></p>
+    <div class="mm-big" id="ilBig"></div>
+    <div class="il-vars" id="ilVars"></div>
+    <div class="m-actions">
+      <button class="btn grow" id="ilDl">⬇ PNG</button>
+      <button class="btn ghost icob" id="ilCopyName" data-i18n-title="ipas_copy_name" title="Copy name" aria-label="Copy name"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+      <button class="btn ghost icob" id="ilCopyUrl" data-i18n-title="ipas_copy_url" title="Copy file URL" aria-label="Copy file URL"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<div id="traybar" hidden>
+  <span class="tr-cnt" id="trCnt"></span>
+  <button class="btn" id="trZip">⬇ ZIP</button>
+  <button class="btn ghost" id="trClear" data-i18n="tray_clear">Clear</button>
 </div>
 
 <script type="module">
@@ -701,6 +817,16 @@ en:{'nav_find':'Icon Search','nav_libs':'Icon Libraries','nav_ipas':'Mascot Logo
 'browse':'Browse','official':'Official ↗','icons_cnt':'icons','by':'by',
 'color':'Color','multicolor':'Multicolor icon — keeps its original colors','current':'follows theme',
 'live':'⌂ on this site',
+'tab_avatars':'Avatars & IP','tab_illus':'Illustrations',
+'illus_eyebrow':'Free 3D icons & open illustrations · self-hosted','illus_h1':'3D icons & illustrations, served from this site',
+'illus_sub':'3D Icons (CC0) + illlustrations.co (MIT) — every PNG & SVG hosted right here, single downloads or ZIP batches.',
+'as_h2':'Avatar Studio','as_sub':'31 open styles, unlimited seeds — generated locally in your browser by self-hosted DiceBear. Download SVG/PNG, or copy a share link.',
+'as_seed_ph':'seed — any text','as_dl_svg':'⬇ SVG','as_dl_png':'⬇ PNG · 512px','as_copy_svg':'Copy SVG','as_copy_link':'Copy share link',
+'as_style':'Style','as_credit_lic':'Commercial use OK','as_credit_ccby':'attribution required',
+'il_ph':'cube · dumbbell · coffee…','il_zip':'⬇ ZIP — current filter (PNG)',
+'il_zip_cap':'Bundles the currently filtered illustrations into one ZIP, built in your browser. Up to 300 files.',
+'il_empty':'Nothing found — try another keyword.','il_src':'All files self-hosted by IconGems · 3D Icons © Vijay Verma (CC0) · illlustrations.co © Vijay Verma (MIT)',
+'pick':'☑ Select','pick_on':'☑ Done','tray_hint':'Tap tiles to add them to the tray','tray_zip':'⬇ ZIP','tray_clear':'Clear','tray_zipping':'Zipping',
 'title_en':'IconGems — 3,448 Free Mascot Logos + 131,000+ SVG Icons, All Self-Hosted',
 'desc_en':'A free resource site where every file lives on this domain: 3,448 mascot logos (IP as Logo, MIT) with self-hosted 1024px originals, plus 131,000+ SVG icons from 29 open-source libraries (Google Material Symbols, Microsoft Fluent, Tabler, Lucide, Phosphor, Font Awesome…) — search locally, download SVG/PNG, copy React/Vue code. No signup, no third-party downloads.'},
 zh:{'nav_find':'图标搜索','nav_libs':'图标库','nav_ipas':'吉祥物','nav_ai':'For AI','nav_faq':'常见问题',
@@ -760,6 +886,16 @@ zh:{'nav_find':'图标搜索','nav_libs':'图标库','nav_ipas':'吉祥物','nav
 'browse':'浏览','official':'官方 ↗','icons_cnt':'个图标','by':'出品',
 'color':'颜色','multicolor':'多彩图标——保留原始配色','current':'跟随主题',
 'live':'⌂ 本站直链',
+'tab_avatars':'头像 · IP','tab_illus':'插画',
+'illus_eyebrow':'免费 3D 图标与开源插画 · 本站自托管','illus_h1':'3D 图标与插画，全部本站直供',
+'illus_sub':'3D Icons（CC0）+ illlustrations.co（MIT）——每张 PNG/SVG 都托管在本站，单张下载或 ZIP 打包。',
+'as_h2':'头像工作室','as_sub':'31 种开源风格、无限种子——全部由浏览器本地生成（自托管 DiceBear，无需注册、不上传任何数据）。下载 SVG/PNG，或复制分享链接。',
+'as_seed_ph':'种子——任意文字','as_dl_svg':'⬇ SVG','as_dl_png':'⬇ PNG · 512px','as_copy_svg':'复制 SVG','as_copy_link':'复制分享链接',
+'as_style':'风格','as_credit_lic':'可免费商用','as_credit_ccby':'需署名',
+'il_ph':'cube · dumbbell · coffee…','il_zip':'⬇ 打包下载当前筛选（PNG）',
+'il_zip_cap':'把当前筛选内的插画在浏览器本地打包成一个 ZIP。单次最多 300 个文件。',
+'il_empty':'没有找到——换个关键词试试。','il_src':'全部文件由本站自托管 · 3D Icons © Vijay Verma（CC0）· illlustrations.co © Vijay Verma（MIT）',
+'pick':'☑ 选择','pick_on':'☑ 完成','tray_hint':'点击方块加入托盘，可跨品类混选','tray_zip':'⬇ ZIP','tray_clear':'清空','tray_zipping':'打包中',
 'title_en':'IconGems — 3,448 免费吉祥物 Logo + 131,000+ SVG 图标 · 全部本站直供',
 'desc_en':'免费资源站，每个文件都在本站域名下：3,448 个吉祥物 Logo（IP as Logo，MIT）1024px 原图自托管；131,000+ 枚开源 SVG 图标（Google Material Symbols、微软 Fluent、Tabler、Lucide、Phosphor、Font Awesome 等 29 库）本地搜索、SVG/PNG 下载、React/Vue 代码复制。免注册、零第三方下载。'}};
 let lang='en';
@@ -779,6 +915,8 @@ function applyLang(l){
   if(document.getElementById('libgrid').children.length)buildLibs();
   renderLibChips();buildMore();
   if(IPAS.loaded){buildMCatChips();renderMCount();document.getElementById('mSrc').innerHTML=t('ipas_src');if(!IPAS.filtered.length)renderMEmpty();}
+  buildAvStyles();
+  if(ILL.loaded){buildIlPacks();renderIlCount();}
 }
 /* ===== theme ===== */
 let theme=localStorage.getItem('icongems-theme')||'auto';
@@ -830,7 +968,8 @@ function svgDataUri(data,mono,color){return 'data:image/svg+xml;utf8,'+encodeURI
 function tileFor(full,cls){
   const [p,n]=full.split(':');
   const tile=document.createElement('button');tile.className='ic-t'+(cls?' '+cls:'');tile.title=full;tile.type='button';
-  tile.onclick=()=>openModal(full);
+  tile.onclick=()=>{if(TRAY.mode){trayFlip('icon',full,n);tile.classList.toggle('sel',TRAY.items.has('icon:'+full));return;}openModal(full);};
+  if(TRAY.items.has('icon:'+full))tile.classList.add('sel');
   const ic=document.createElement('span');ic.className='ic-g';
   tile.classList.add('pending');
   const pal=isPal(p);
@@ -1475,7 +1614,8 @@ function appendM(keys,startIdx){
     const [cat,bg]=IPAS.info.logos[key];
     const name=ipasName(key);
     const card=document.createElement('button');card.type='button';card.className='mcard pending';card.title=name;
-    card.onclick=()=>openMModal(key);
+    card.onclick=()=>{if(TRAY.mode){trayFlip('mascot',key,name);card.classList.toggle('sel',TRAY.items.has('mascot:'+key));return;}openMModal(key);};
+    if(TRAY.items.has('mascot:'+key))card.classList.add('sel');
     const tile=document.createElement('span');tile.className='m-tile';tile.style.background=bg;
     const img=document.createElement('img');img.loading='lazy';img.decoding='async';img.alt='';
     img.onload=()=>card.classList.remove('pending');
@@ -1667,22 +1807,322 @@ document.addEventListener('keydown',e=>{
   else if(e.key==='ArrowRight')navMModal(1);
   else if(e.key==='ArrowLeft')navMModal(-1);
 });
-/* ===== view tabs: mascot library (default) ↔ icon search ===== */
+/* ===== P1 · batch tray (cross-category selection) ===== */
+const TRAY={mode:false,items:new Map(),zipBusy:false};
+function trayToggle(force){
+  TRAY.mode=typeof force==='boolean'?force:!TRAY.mode;
+  document.body.classList.toggle('picking',TRAY.mode);
+  for(const id of ['mPick','qPick','ilPick']){const b=document.getElementById(id);if(b){b.classList.toggle('pick-on',TRAY.mode);b.textContent=TRAY.mode?t('pick_on'):t('pick');}}
+  renderTray();
+}
+function trayFlip(kind,id,label){
+  const key=kind+':'+id;
+  if(TRAY.items.has(key))TRAY.items.delete(key);
+  else{if(TRAY.items.size>=200)return;TRAY.items.set(key,{kind,id,label});}
+  renderTray();
+}
+function renderTray(){
+  const bar=document.getElementById('traybar');
+  const n=TRAY.items.size;
+  if(!n&&!TRAY.mode){bar.hidden=true;return;}
+  bar.hidden=false;
+  document.getElementById('trCnt').textContent=n?`✓ ${n.toLocaleString('en-US')} / 200`:t('tray_hint');
+  document.getElementById('trZip').disabled=!n||TRAY.zipBusy;
+}
+document.getElementById('trClear').onclick=()=>{TRAY.items.clear();document.querySelectorAll('.mcard.sel,.ic-t.sel').forEach(el=>el.classList.remove('sel'));renderTray();};
+document.getElementById('mPick').onclick=()=>trayToggle();
+document.getElementById('qPick').onclick=()=>trayToggle();
+document.getElementById('ilPick').onclick=()=>trayToggle();
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&TRAY.mode&&modal.hidden&&mmodal.hidden&&ilmodal.hidden)trayToggle(false);});
+async function trayZip(){
+  if(TRAY.zipBusy||!TRAY.items.size)return;
+  TRAY.zipBusy=true;renderTray();
+  const btn=document.getElementById('trZip');
+  const files=[];let fail=0,i=0;
+  const entries=[...TRAY.items.values()];
+  for(const it of entries){
+    try{
+      if(it.kind==='icon'){
+        const [p,n]=it.id.split(':');
+        const svg=await svgFor(it.id,'');
+        files.push({name:`${n}-${p}.svg`,data:new TextEncoder().encode(svg)});
+      }else if(it.kind==='mascot'){
+        let r=await fetch(`ipas/full/${it.id}.webp`);if(!r.ok)r=await fetch(`ipas/display/${it.id}.webp`);
+        if(!r.ok)throw 0;
+        files.push({name:`${it.id}.webp`,data:new Uint8Array(await r.arrayBuffer())});
+      }else{ /* illus */
+        const [p,s]=it.id.split(':');
+        const item=ILL.data.items.find(x=>x.p===p&&x.s===s);
+        const f=ilFiles(item)[0];
+        const r=await fetch(`illus/${p}/${f.f}`);if(!r.ok)throw 0;
+        files.push({name:f.f,data:new Uint8Array(await r.arrayBuffer())});
+      }
+    }catch(e){fail++;}
+    i++;
+    if(i%4===0||i===entries.length)btn.textContent=`${t('tray_zipping')} ${i}/${entries.length}`;
+  }
+  if(files.length)saveBlob(zipStore(files),`icongems-batch-${files.length}.zip`);
+  btn.textContent=files.length?t('ipas_zip_done'):t('ipas_zip_err');
+  TRAY.zipBusy=false;
+  setTimeout(()=>{btn.textContent=t('tray_zip');renderTray();},1800);
+}
+document.getElementById('trZip').onclick=trayZip;
+/* ===== P1 · avatar studio (self-hosted DiceBear, MIT/CC0/CC-BY styles) ===== */
+const AVSTYLES=[
+ ['adventurer','Adventurer','CC BY 4.0'],['adventurer-neutral','Adventurer Neutral','CC BY 4.0'],
+ ['avataaars','Avataaars','Free commercial'],['avataaars-neutral','Avataaars Neutral','Free commercial'],
+ ['big-ears','Face Generator','CC BY 4.0'],['big-ears-neutral','Face Generator Neutral','CC BY 4.0'],
+ ['big-smile','Big Smile','CC BY 4.0'],['bottts','Bottts','Free commercial'],['bottts-neutral','Bottts Neutral','Free commercial'],
+ ['croodles','Croodles','CC BY 4.0'],['croodles-neutral','Croodles Neutral','CC BY 4.0'],
+ ['dylan','Dylan','CC BY 4.0'],['fun-emoji','Fun Emoji','CC BY 4.0'],['glass','Glass','CC0'],
+ ['icons','Bootstrap Icons','MIT'],['identicon','Identicon','CC0'],['initials','Initials','CC0'],
+ ['lorelei','Lorelei','CC0'],['lorelei-neutral','Lorelei Neutral','CC0'],['micah','Micah','CC BY 4.0'],
+ ['miniavs','Miniavs','CC BY 4.0'],['notionists','Notionists','CC0'],['notionists-neutral','Notionists Neutral','CC0'],
+ ['open-peeps','Open Peeps','CC0'],['personas','Personas','CC BY 4.0'],['pixel-art','Pixel Art','CC0'],
+ ['pixel-art-neutral','Pixel Art Neutral','CC0'],['rings','Rings','CC0'],['shapes','Shapes','CC0'],
+ ['thumbs','Thumbs','CC0'],['toon-head','ToonHead','CC BY 4.0']];
+const AVBY=Object.fromEntries(AVSTYLES.map(a=>[a[0],{n:a[1],lic:a[2]}]));
+const AS={style:'bottts',seed:'icongems',bg:'',mods:{},core:null,ready:false};
+async function asCore(){if(!AS.core)AS.core=await import('./vendor/dicebear/core/index.js');return AS.core;}
+async function asMod(id){if(!AS.mods[id])AS.mods[id]=await import('./vendor/dicebear/'+id+'/index.js');return AS.mods[id];}
+function asSvgStr(style,seed,bg){
+  return AS.core.createAvatar(AS.mods[style],{seed:seed||'icongems',size:280,backgroundColor:bg?[bg.replace(/^#/,'')]:[]}).toString();
+}
+function buildAvStyles(){
+  const box=document.getElementById('asStyles');if(!box)return;
+  box.textContent='';
+  for(const [id,n,lic] of AVSTYLES){
+    const b=document.createElement('button');b.type='button';
+    b.className='fchip'+(AS.style===id?' on':'');b.textContent=n;b.title=n+' · '+lic;
+    b.onclick=async()=>{AS.style=id;buildAvStyles();await asRender();};
+    box.appendChild(b);
+  }
+}
+async function asRender(){
+  const prev=document.getElementById('asPrev');if(!prev||!AS.core)return;
+  try{
+    await asMod(AS.style); /* 切风格时模块可能尚未加载 */
+    prev.innerHTML=asSvgStr(AS.style,AS.seed,AS.bg);
+    const vBox=document.getElementById('asVariants');vBox.textContent='';
+    const base=AS.seed.replace(/-\d+$/,'');
+    for(let i=1;i<=8;i++){
+      const s=base+'-'+i;
+      const b=document.createElement('button');b.type='button';
+      if(s===AS.seed)b.classList.add('on');
+      b.innerHTML=asSvgStr(AS.style,s,AS.bg);
+      b.title=s;b.setAttribute('aria-label','seed '+s);
+      b.onclick=()=>{AS.seed=s;document.getElementById('asSeed').value=s;asRender();};
+      vBox.appendChild(b);
+    }
+    const m=AVBY[AS.style]||{n:AS.style,lic:''};
+    document.getElementById('asCredit').innerHTML=
+      `${t('as_style')}: <b>${esc(m.n)}</b> · ${esc(m.lic)}${m.lic==='CC BY 4.0'?' ('+t('as_credit_ccby')+')':''} · ${t('site_local')}`;
+  }catch(e){prev.textContent='⚠';}
+}
+async function asInit(){
+  buildAvStyles();
+  if(AS.ready)return;AS.ready=true;
+  const seedIn=document.getElementById('asSeed');
+  seedIn.value=AS.seed;
+  let deb;seedIn.addEventListener('input',()=>{clearTimeout(deb);deb=setTimeout(()=>{AS.seed=seedIn.value.trim()||'icongems';asRender();},350);});
+  document.getElementById('asDice').onclick=()=>{AS.seed=Math.random().toString(36).slice(2,10);seedIn.value=AS.seed;asRender();};
+  const cBox=document.getElementById('asColors');
+  for(const c of ['','b6e3f4','c0aede','ffd5dc','ffdfbf','d1f4d9','c9a227','1a1a1a']){
+    const b=document.createElement('button');b.type='button';b.className='as-color'+(AS.bg===c?' on':'')+(!c?' auto':'');
+    if(c)b.style.background='#'+c;
+    b.title=c?'#'+c:t('current');
+    b.onclick=()=>{AS.bg=c;[...cBox.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');asRender();};
+    cBox.appendChild(b);
+  }
+  document.getElementById('asDlSvg').onclick=async e=>{const btn=e.currentTarget;try{
+    await asCore();await asMod(AS.style);
+    saveBlob(new Blob([asSvgStr(AS.style,AS.seed,AS.bg)],{type:'image/svg+xml'}),`${AS.style}-${AS.seed||'avatar'}.svg`);
+    funnelMaybe();
+  }catch(err){btn.textContent='✕';setTimeout(()=>btn.textContent=t('as_dl_svg'),1500);}};
+  document.getElementById('asDlPng').onclick=async e=>{const btn=e.currentTarget;try{
+    await asCore();await asMod(AS.style);
+    const url=URL.createObjectURL(new Blob([asSvgStr(AS.style,AS.seed,AS.bg)],{type:'image/svg+xml'}));
+    const img=new Image();await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src=url;});
+    const cv=document.createElement('canvas');cv.width=cv.height=512;
+    cv.getContext('2d').drawImage(img,0,0,512,512);URL.revokeObjectURL(url);
+    saveBlob(await new Promise(res=>cv.toBlob(res,'image/png')),`${AS.style}-${AS.seed||'avatar'}-512px.png`);
+    funnelMaybe();
+  }catch(err){btn.textContent='✕';setTimeout(()=>btn.textContent=t('as_dl_png'),1500);}};
+  document.getElementById('asCopySvg').onclick=async e=>{const btn=e.currentTarget;try{
+    await asCore();await asMod(AS.style);
+    copyText(asSvgStr(AS.style,AS.seed,AS.bg),btn);
+  }catch(err){}};
+  document.getElementById('asCopyLink').onclick=e=>{const btn=e.currentTarget;const u=new URL(location.href);
+    u.searchParams.delete('tab');u.searchParams.set('avatar',AS.style+':'+AS.seed);copyText(u.href,btn);};
+  await asCore();await asMod(AS.style);
+  await asRender();
+}
+/* ===== P1 · self-hosted illustrations (3D Icons CC0 + illlustrations.co MIT) ===== */
+const ILL={loaded:false,loading:false,data:null,pack:'',q:'',shown:0,filtered:[],zipBusy:false,cur:null,idx:-1,vfile:null,vk:0};
+const ilgrid=document.getElementById('ilGrid'),ilcountEl=document.getElementById('ilCount'),
+      ilempty=document.getElementById('ilEmpty');
+async function loadIllus(){
+  if(ILL.loaded||ILL.loading)return;ILL.loading=true;
+  ilcountEl.textContent=t('ipas_loading');
+  try{
+    const r=await fetch('data/illus.json');if(!r.ok)throw 0;
+    ILL.data=await r.json();ILL.loaded=true;
+    document.getElementById('tabIllusN').textContent=String(ILL.data.items.length);
+    document.getElementById('ilSrc').textContent=t('il_src');
+    buildIlPacks();applyIlFilter();
+  }catch(e){ilcountEl.textContent=t('err');}
+  ILL.loading=false;
+}
+function buildIlPacks(){
+  const box=document.getElementById('ilPacks');if(!box||!ILL.data)return;
+  box.textContent='';
+  const mk=(label,on,fn)=>{const b=document.createElement('button');b.type='button';b.className='fchip'+(on?' on':'');b.textContent=label;b.onclick=fn;box.appendChild(b);};
+  const items=ILL.data.items;
+  mk(`${t('browse_all')} · ${items.length}`,!ILL.pack,()=>{ILL.pack='';buildIlPacks();applyIlFilter();});
+  for(const pid of Object.keys(ILL.data.packs))
+    mk(`${ILL.data.packs[pid].name} · ${items.filter(i=>i.p===pid).length}`,ILL.pack===pid,()=>{ILL.pack=pid;buildIlPacks();applyIlFilter();});
+}
+function ilFiles(it){return it.p==='3d'?it.v.map(v=>({k:v.k,f:v.f})):it.f.filter(f=>f.endsWith('.png')).map(f=>({k:'png',f}));}
+function applyIlFilter(){
+  if(!ILL.data)return;
+  const q=ILL.q.trim().toLowerCase();
+  const list=ILL.data.items.filter(it=>{
+    if(ILL.pack&&it.p!==ILL.pack)return false;
+    if(q&&!(it.t.toLowerCase().includes(q)||it.s.includes(q)))return false;
+    return true;});
+  ILL.filtered=list;ILL.shown=60;
+  ilgrid.textContent='';
+  appendIl(list.slice(0,ILL.shown));
+  renderIlCount();
+}
+function appendIl(list){
+  for(const it of list){
+    const f=ilFiles(it)[0];
+    const card=document.createElement('button');card.type='button';card.className='mcard';card.title=it.t;
+    if(TRAY.items.has('illus:'+it.p+':'+it.s))card.classList.add('sel');
+    card.onclick=()=>{if(TRAY.mode){trayFlip('illus',it.p+':'+it.s,it.t);card.classList.toggle('sel',TRAY.items.has('illus:'+it.p+':'+it.s));return;}openIlModal(it);};
+    const tile=document.createElement('span');tile.className='m-tile';tile.style.background='var(--card)';
+    const img=document.createElement('img');img.loading='lazy';img.decoding='async';img.alt='';
+    img.onerror=()=>{img.style.opacity=.25;};
+    img.src=`illus/${it.p}/${f.f}`;
+    tile.appendChild(img);
+    const cap=document.createElement('span');cap.className='m-n';cap.textContent=it.t;
+    card.append(tile,cap);
+    ilgrid.appendChild(card);
+  }
+}
+function renderIlCount(){
+  const total=ILL.filtered.length;
+  ilcountEl.innerHTML=total?`<b>${Math.min(ILL.shown,total).toLocaleString('en-US')}</b> / ${total.toLocaleString('en-US')}`:'';
+  ilempty.hidden=total>0;
+  if(!total)ilempty.textContent=t('il_empty');
+  const zb=document.getElementById('ilZip');
+  zb.textContent=`${t('il_zip')} · ${Math.min(total,300).toLocaleString('en-US')}`;
+  zb.disabled=!total;
+}
+document.getElementById('ilZip').onclick=async()=>{
+  if(ILL.zipBusy||!ILL.filtered.length)return;
+  const list=ILL.filtered.slice(0,300);
+  ILL.zipBusy=true;
+  const btn=document.getElementById('ilZip'),bar=document.getElementById('ilZbar');
+  btn.disabled=true;bar.style.display='block';
+  const files=[];let fail=0;
+  for(let i=0;i<list.length;i+=8){
+    const batch=list.slice(i,i+8);
+    const rs=await Promise.allSettled(batch.map(it=>fetch(`illus/${it.p}/${ilFiles(it)[0].f}`).then(r=>{if(!r.ok)throw 0;return r.arrayBuffer();})));
+    rs.forEach((r,j)=>{r.status==='fulfilled'?files.push({name:ilFiles(batch[j])[0].f,data:new Uint8Array(r.value)}):fail++;});
+    bar.firstElementChild.style.width=Math.min(100,Math.round((i+batch.length)/list.length*100))+'%';
+    btn.textContent=`${t('tray_zipping')} ${Math.min(i+batch.length,list.length)}/${list.length}`;
+  }
+  if(files.length){saveBlob(zipStore(files),`icongems-illustrations-${files.length}.zip`);btn.textContent=t('ipas_zip_done');}
+  else btn.textContent=t('ipas_zip_err');
+  setTimeout(()=>{renderIlCount();btn.disabled=false;bar.style.display='none';bar.firstElementChild.style.width='0';ILL.zipBusy=false;},2000);
+};
+/* illustration modal */
+const ilmodal=document.getElementById('ilmodal');
+function openIlModal(it){
+  mmodal.hidden=true;modal.hidden=true;
+  ILL.cur=it;ILL.idx=ILL.filtered.indexOf(it);
+  const canNav=ILL.idx>=0&&ILL.filtered.length>1;
+  document.getElementById('ilNavPrev').hidden=!canNav;
+  document.getElementById('ilNavNext').hidden=!canNav;
+  document.getElementById('ilName').textContent=it.t;
+  const pack=ILL.data.packs[it.p];
+  document.getElementById('ilLic').textContent=pack.lic;
+  document.getElementById('ilPack').textContent=`${pack.name} · © ${pack.author} · ${pack.lic} · ${t('site_local')}`;
+  ilVarShow(0);
+  ilmodal.hidden=false;document.body.style.overflow='hidden';
+}
+function ilVarShow(vi){
+  const it=ILL.cur;if(!it)return;
+  const fs=ilFiles(it);
+  ILL.vk=Math.max(0,Math.min(vi,fs.length-1));
+  ILL.vfile=fs[ILL.vk].f;
+  const big=document.getElementById('ilBig');big.textContent='';big.style.background='var(--chipbg)';
+  const img=document.createElement('img');img.alt=it.t;img.src=`illus/${it.p}/${ILL.vfile}`;big.appendChild(img);
+  const vBox=document.getElementById('ilVars');vBox.textContent='';
+  fs.forEach((vv,i)=>{
+    const b=document.createElement('button');b.type='button';b.textContent=vv.k;
+    if(i===ILL.vk)b.classList.add('on');
+    b.onclick=()=>ilVarShow(i);vBox.appendChild(b);});
+  document.getElementById('ilDl').textContent='⬇ '+ILL.vfile;
+}
+document.getElementById('ilDl').onclick=async e=>{const btn=e.currentTarget;if(!ILL.cur)return;
+  const orig=btn.textContent;btn.disabled=true;
+  try{const r=await fetch(`illus/${ILL.cur.p}/${ILL.vfile}`);if(!r.ok)throw 0;
+    saveBlob(await r.blob(),ILL.vfile);btn.textContent='✓';}
+  catch(err){btn.textContent=t('ipas_dl_fail');}
+  setTimeout(()=>{btn.textContent=orig;btn.disabled=false;},1600);};
+document.getElementById('ilCopyName').onclick=e=>{if(ILL.cur)copyText(ILL.cur.t,e.currentTarget);};
+document.getElementById('ilCopyUrl').onclick=e=>{if(ILL.cur)copyText(`https://icongems.kuige.me/illus/${ILL.cur.p}/${ILL.vfile}`,e.currentTarget);};
+function closeIlModal(){ilmodal.hidden=true;document.body.style.overflow='';}
+document.getElementById('ilClose').onclick=closeIlModal;
+ilmodal.addEventListener('click',e=>{if(e.target===ilmodal)closeIlModal();});
+function navIlModal(d){
+  const i=ILL.idx;if(i<0||!ILL.filtered.length)return;
+  const ni=i+d;if(ni<0||ni>=ILL.filtered.length)return;
+  openIlModal(ILL.filtered[ni]);
+}
+document.getElementById('ilNavPrev').onclick=()=>navIlModal(-1);
+document.getElementById('ilNavNext').onclick=()=>navIlModal(1);
+document.addEventListener('keydown',e=>{
+  if(ilmodal.hidden)return;
+  if(e.key==='Escape')closeIlModal();
+  else if(e.key==='ArrowRight')navIlModal(1);
+  else if(e.key==='ArrowLeft')navIlModal(-1);
+});
+let ildeb=null;
+document.getElementById('ils').addEventListener('input',e=>{ILL.q=e.target.value;clearTimeout(ildeb);ildeb=setTimeout(applyIlFilter,200);});
+bindClear('ilWrap','ils',()=>{ILL.q='';applyIlFilter();});
+window.addEventListener('scroll',()=>{
+  if(view!=='illus'||ILL.zipBusy||!ILL.loaded)return;
+  if(ILL.filtered.length>ILL.shown&&window.innerHeight+window.scrollY>document.documentElement.scrollHeight-900){
+    const from=ILL.shown;ILL.shown+=60;
+    appendIl(ILL.filtered.slice(from,ILL.shown));renderIlCount();
+  }
+},{passive:true});
+/* ===== view tabs: avatars & IP (default) ↔ icon search ↔ illustrations ===== */
 let view='ipas',iconsBooted=false;
 function switchTab(v,opts={}){
   view=v;
   document.getElementById('mascots').hidden=v!=='ipas';
   document.getElementById('iconsview').hidden=v!=='icons';
+  document.getElementById('illusview').hidden=v!=='illus';
   document.getElementById('heroIpas').hidden=v!=='ipas';
   document.getElementById('heroIcons').hidden=v!=='icons';
-  const ti=document.getElementById('tabIpas'),tc=document.getElementById('tabIcons');
-  ti.classList.toggle('on',v==='ipas');ti.setAttribute('aria-selected',v==='ipas');
-  tc.classList.toggle('on',v==='icons');tc.setAttribute('aria-selected',v==='icons');
+  document.getElementById('heroIllus').hidden=v!=='illus';
+  for(const [id,vv] of [['tabIpas','ipas'],['tabIcons','icons'],['tabIllus','illus']]){
+    const el=document.getElementById(id);
+    el.classList.toggle('on',v===vv);el.setAttribute('aria-selected',v===vv);
+  }
   const u=new URL(location.href);
-  if(v==='icons')u.searchParams.set('tab','icons');else u.searchParams.delete('tab');
+  if(v==='icons')u.searchParams.set('tab','icons');
+  else if(v==='illus')u.searchParams.set('tab','illus');
+  else u.searchParams.delete('tab');
   history.replaceState(null,'',u);
-  if(v==='ipas'&&!IPAS.loaded)loadIpas();
+  if(v==='ipas'){if(!IPAS.loaded)loadIpas();asInit();}
   if(v==='icons'&&!iconsBooted)bootIcons();
+  if(v==='illus'&&!ILL.loaded)loadIllus();
   if(!opts.keepScroll)window.scrollTo(0,0);
 }
 function bootIcons(){
@@ -1695,6 +2135,7 @@ function bootIcons(){
 }
 document.getElementById('tabIpas').onclick=()=>switchTab('ipas');
 document.getElementById('tabIcons').onclick=()=>switchTab('icons');
+document.getElementById('tabIllus').onclick=()=>switchTab('illus');
 document.addEventListener('click',e=>{
   const a=e.target.closest('[data-needview]');
   if(!a)return;
@@ -1710,10 +2151,15 @@ document.getElementById('btnLang').onclick=()=>{applyLang(lang==='zh'?'en':'zh')
 buildLibs();renderLibChips();buildMore();
 /* default view: the mascot library; deep links (?tab=icons / ?q / ?set / #finder+) open the icon search */
 const hashView=/^#(finder|libs)/.test(url.hash);
-const wantIcons=url.searchParams.get('tab')==='icons'||hashView||url.searchParams.has('q')||url.searchParams.has('set');
-switchTab(wantIcons?'icons':'ipas',{keepScroll:wantIcons});
+const wantTab=url.searchParams.get('tab');
+const wantIcons=wantTab==='icons'||hashView||url.searchParams.has('q')||url.searchParams.has('set');
+const av0=url.searchParams.get('avatar');
+switchTab(av0?'ipas':(wantIcons?'icons':(wantTab==='illus'?'illus':'ipas')),{keepScroll:wantIcons||!!av0});
 loadIndex();
-window.__IG={svgFor,iconData,iconEntry,state,openModal,browseSet,applyLang,closeModal,doSearch,switchTab,IPAS,zipCurrent,IDX,ensureChunk};
+if(av0){const [st,se]=av0.split(':');AS.style=AVBY[st]?st:'bottts';AS.seed=se||'icongems';
+  asInit().then(async()=>{document.getElementById('asSeed').value=AS.seed;buildAvStyles();await asRender();
+    document.getElementById('avstudio').scrollIntoView({behavior:'smooth'});});}
+window.__IG={svgFor,iconData,iconEntry,state,openModal,browseSet,applyLang,closeModal,doSearch,switchTab,IPAS,zipCurrent,IDX,ensureChunk,AS,ILL,TRAY,asRender,openIlModal};
 </script>
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "948f2535a9dd4775a436c677b3c950e4"}'></script>
 </body>

@@ -22,6 +22,21 @@
 - Originals (1024px WebP with alpha, hosted here; PNG export converts in-browser): https://icongems.kuige.me/ipas/full/<key>.webp
 - Source project: https://ipaslogo.com/ · skill: https://github.com/s1dashu/ip-as-logo-skill
 
+## Avatar Studio (31 styles, generated client-side)
+
+- Deep link: https://icongems.kuige.me/?avatar=<style>:<seed> — e.g. ?avatar=open-peeps:kuige
+- Engine: DiceBear (vendored ESM, self-hosted, MIT) — styles render in the browser, no account, no upload
+- License CC BY 4.0: adventurer, adventurer-neutral, big-ears, big-ears-neutral, big-smile, croodles, croodles-neutral, dylan, fun-emoji, micah, miniavs, personas, toon-head
+- License CC0 1.0: glass, identicon, initials, lorelei, lorelei-neutral, notionists, notionists-neutral, open-peeps, pixel-art, pixel-art-neutral, rings, shapes, thumbs
+- License Free for personal and commercial use: avataaars, avataaars-neutral, bottts, bottts-neutral
+- License MIT: icons
+
+## Self-hosted illustrations (250 files, CC0 / MIT)
+
+- 3D Icons: 120 files, license CC0, by Vijay Verma — https://icongems.kuige.me/illus/<file>.png
+- illlustrations.co: 130 files, license MIT, by Vijay Verma — https://icongems.kuige.me/illus/<file>.png
+- Manifest: https://icongems.kuige.me/data/illus.json
+
 ## Curated icon sets (29 sets, 131,751 icons, self-hosted snapshot of 2026-10-24)
 
 - [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons): 20,779 icons, license MIT, prefix `fluent` [ui]
@@ -110,17 +125,21 @@ Base: https://icongems.kuige.me
  "description": "Resource site where every asset lives on this domain: the full IP as Logo mascot library (3,448 MIT-licensed logos, 1024px originals self-hosted) plus complete snapshots of 29 famous open-source icon libraries (searchable & downloadable locally, no third-party API) and a curated list of free illustration libraries (off-site links, clearly labelled).",
  "pageMap": {
   "mascot_logos": "https://icongems.kuige.me/#mascots",
+  "avatar_studio": "https://icongems.kuige.me/#avstudio",
   "search_and_download": "https://icongems.kuige.me/#finder",
   "icon_libraries": "https://icongems.kuige.me/#libs",
+  "illustrations": "https://icongems.kuige.me/?tab=illus",
   "more_resources": "https://icongems.kuige.me/#more",
   "for_ai": "https://icongems.kuige.me/#ai",
   "faq": "https://icongems.kuige.me/#faq"
  },
  "quickstart": [
   "Mascots: read https://icongems.kuige.me/data/ipas-logos.json → 512px preview /ipas/display/<key>.webp → 1024px original /ipas/full/<key>.webp (all on this site, MIT).",
+  "Avatars: pick a style from avatar_studio.styles → share https://icongems.kuige.me/?avatar=<style>:<seed> (generated client-side, vendored DiceBear).",
+  "Illustrations: read https://icongems.kuige.me/data/illus.json → /illus/3d/<slug>.png or /illus/ill/<file>.png (CC0/MIT).",
   "Icon names: GET https://icongems.kuige.me/data/icon-index.json (names grouped by prefix + per-set chunk layout).",
   "Icon SVG data: Icon data is hash-chunked: for icon <prefix>:<name>, k = djb2_utf8(name) % K (K = byPrefix.<prefix>.k in the index; djb2_utf8: h=5381; for each UTF-8 byte b: h=(h*33+b) mod 2^32). Fetch https://icongems.kuige.me/icons/<prefix>.<k>.json and read .icons[<name>] = {body, width?, height?}; set-level width/height are the fallback dimensions. SVG = <svg xmlns viewBox=\"0 0 W H\"> + body + </svg>.",
-  "Embed in web apps via @iconify/react, @iconify/vue or <iconify-icon> web component (npm packages use the same prefixes).",
+  "Embed icons in web apps via @iconify/react, @iconify/vue or <iconify-icon> web component (npm packages use the same prefixes).",
   "Check the license field before shipping; CC BY 4.0 sets need attribution."
  ],
  "mascot_logos": {
@@ -152,6 +171,199 @@ Base: https://icongems.kuige.me
   "manifest": "https://icongems.kuige.me/data/ipas-logos.json",
   "manifest_shape": "{logos: {<key>: [category, background-color]}}, key = <hash>-<slug>",
   "note": "Rounded neo-skeuomorphic mascot logos, MIT. Every file (512px previews and 1024px originals) is self-hosted by IconGems; PNG export is converted in the browser from the local WebP. Categories are keyword-derived (source category API unreachable from CN networks)."
+ },
+ "avatar_studio": {
+  "id": "avatar-studio",
+  "name": "Avatar Studio",
+  "engine": "DiceBear (vendored ESM, self-hosted)",
+  "engine_license": "MIT",
+  "url": "https://icongems.kuige.me/#avstudio",
+  "deep_link": "https://icongems.kuige.me/?avatar=<style>:<seed>",
+  "style_count": 31,
+  "note": "Client-side avatar generation — no account, no upload, works offline. Share any combination via ?avatar=<style>:<seed>.",
+  "styles": [
+   {
+    "id": "adventurer",
+    "name": "Adventurer",
+    "license": "CC BY 4.0"
+   },
+   {
+    "id": "adventurer-neutral",
+    "name": "Adventurer Neutral",
+    "license": "CC BY 4.0"
+   },
+   {
+    "id": "avataaars",
+    "name": "Avataaars",
+    "license": "Free for personal and commercial use"
+   },
+   {
+    "id": "avataaars-neutral",
+    "name": "Avataaars Neutral",
+    "license": "Free for personal and commercial use"
+   },
+   {
+    "id": "big-ears",
+    "name": "Face Generator",
+    "license": "CC BY 4.0"
+   },
+   {
+    "id": "big-ears-neutral",
+    "name": "Face Generator Neutral",
+    "license": "CC BY 4.0"
+   },
+   {
+    "id": "big-smile",
+    "name": "Big Smile",
+    "license": "CC BY 4.0"
+   },
+   {
+    "id": "bottts",
+    "name": "Bottts",
+    "license": "Free for personal and commercial use"
+   },
+   {
+    "id": "bottts-neutral",
+    "name": "Bottts Neutral",
+    "license": "Free for personal and commercial use"
+   },
+   {
+    "id": "croodles",
+    "name": "Croodles",
+    "license": "CC BY 4.0"
+   },
+   {
+    "id": "croodles-neutral",
+    "name": "Croodles Neutral",
+    "license": "CC BY 4.0"
+   },
+   {
+    "id": "dylan",
+    "name": "Dylan",
+    "license": "CC BY 4.0"
+   },
+   {
+    "id": "fun-emoji",
+    "name": "Fun Emoji",
+    "license": "CC BY 4.0"
+   },
+   {
+    "id": "glass",
+    "name": "Glass",
+    "license": "CC0 1.0"
+   },
+   {
+    "id": "icons",
+    "name": "Bootstrap Icons",
+    "license": "MIT"
+   },
+   {
+    "id": "identicon",
+    "name": "Identicon",
+    "license": "CC0 1.0"
+   },
+   {
+    "id": "initials",
+    "name": "Initials",
+    "license": "CC0 1.0"
+   },
+   {
+    "id": "lorelei",
+    "name": "Lorelei",
+    "license": "CC0 1.0"
+   },
+   {
+    "id": "lorelei-neutral",
+    "name": "Lorelei Neutral",
+    "license": "CC0 1.0"
+   },
+   {
+    "id": "micah",
+    "name": "Micah",
+    "license": "CC BY 4.0"
+   },
+   {
+    "id": "miniavs",
+    "name": "Miniavs",
+    "license": "CC BY 4.0"
+   },
+   {
+    "id": "notionists",
+    "name": "Notionists",
+    "license": "CC0 1.0"
+   },
+   {
+    "id": "notionists-neutral",
+    "name": "Notionists Neutral",
+    "license": "CC0 1.0"
+   },
+   {
+    "id": "open-peeps",
+    "name": "Open Peeps",
+    "license": "CC0 1.0"
+   },
+   {
+    "id": "personas",
+    "name": "Personas",
+    "license": "CC BY 4.0"
+   },
+   {
+    "id": "pixel-art",
+    "name": "Pixel Art",
+    "license": "CC0 1.0"
+   },
+   {
+    "id": "pixel-art-neutral",
+    "name": "Pixel Art Neutral",
+    "license": "CC0 1.0"
+   },
+   {
+    "id": "rings",
+    "name": "Rings",
+    "license": "CC0 1.0"
+   },
+   {
+    "id": "shapes",
+    "name": "Shapes",
+    "license": "CC0 1.0"
+   },
+   {
+    "id": "thumbs",
+    "name": "Thumbs",
+    "license": "CC0 1.0"
+   },
+   {
+    "id": "toon-head",
+    "name": "ToonHead",
+    "license": "CC BY 4.0"
+   }
+  ]
+ },
+ "illustrations_selfhosted": {
+  "id": "illustrations",
+  "name": "Self-hosted illustrations",
+  "count": 250,
+  "packs": [
+   {
+    "id": "3d",
+    "name": "3D Icons",
+    "author": "Vijay Verma",
+    "license": "CC0",
+    "url": "https://3dicons.co",
+    "count": 120
+   },
+   {
+    "id": "ill",
+    "name": "illlustrations.co",
+    "author": "Vijay Verma",
+    "license": "MIT",
+    "url": "https://illlustrations.co",
+    "count": 130
+   }
+  ],
+  "manifest": "https://icongems.kuige.me/data/illus.json",
+  "files": "3D Icons: https://icongems.kuige.me/illus/3d/<slug>.png (+<slug>-clay.png) · illlustrations: https://icongems.kuige.me/illus/ill/<file>.png|.svg",
+  "note": "Every file self-hosted; categories in the manifest. ZIP batches of any filtered selection are built client-side."
  },
  "icon_sets": [
   {
