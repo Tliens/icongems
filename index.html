@@ -289,7 +289,7 @@ html:not(.dark) .m-tile{filter:saturate(.85)}
 @media (hover:none){.mcard .macts{display:none!important}}
 .mcard .macts{position:absolute;top:7px;right:7px;display:none;gap:5px}
 .mcard:hover .macts,.mcard:focus-within .macts{display:flex}
-.macts button{width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,.92);border:none;color:#1a1a1a;font-size:13.5px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+.macts button{width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,.92);border:none;color:#1a1a1a;font-size:13.5px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;overflow:hidden;white-space:nowrap}
 .macts button:hover{background:#fff;color:#8b6914}
 /* skeleton shimmer while the 188KB manifest loads */
 .mcard.pending .m-tile::before{content:"";width:56%;height:56%;border-radius:12px;background:linear-gradient(100deg,var(--chipbg) 40%,color-mix(in srgb,var(--ink) 9%,transparent) 50%,var(--chipbg) 60%);background-size:200% 100%;animation:skel 1.1s linear infinite}
@@ -346,6 +346,8 @@ html.dark .kg-entry{background:#2c3444;color:#f2f5fb!important}
 .kg-foot-copy{margin:4px 0 0;color:#9ca3af;font-size:12px}
 @media(max-width:640px){.kg-nav a:not(.kg-entry){display:none}}
 
+/* download buttons keep one line in every state (…/✓/✕ feedback) */
+.btn{white-space:nowrap}
 /* ===== P1: avatar studio / illustrations / batch tray ===== */
 .as-wrap{margin-top:52px;padding-top:36px;border-top:1px solid var(--line)}
 .as-main{display:flex;gap:28px;align-items:flex-start;margin-top:6px;flex-wrap:wrap}
@@ -956,6 +958,19 @@ const SVG={
   check:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'
 };
 const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+/* 统一的单文件下载按钮反馈（A3 就地确认）：宽度锁定 → '…' → 绿勾/✕，1.4s 后还原。
+   宽按钮、26px 小方块按钮都安全——任何状态都不溢出、不跳宽。 */
+async function dlFeedback(btn,action){
+  if(btn.dataset.dlb)return; /* 防重复点击 */
+  const orig=btn.innerHTML,w=btn.offsetWidth;
+  if(w)btn.style.minWidth=w+'px';
+  btn.dataset.dlb='1';btn.disabled=true;btn.innerHTML='…';
+  let ok=false;
+  try{await action();ok=true;}catch(e){}
+  btn.innerHTML=ok?SVG.check:'✕';
+  if(ok)btn.classList.add('cok');
+  setTimeout(()=>{btn.innerHTML=orig;btn.classList.remove('cok');btn.style.minWidth='';btn.disabled=false;delete btn.dataset.dlb;},1400);
+}
 /* ===== finder state ===== */
 const state={mode:'search',q:'',filter:'',cat:'',limit:96,names:[],browse:null,page:0};
 const grid=document.getElementById('grid'),fempty=document.getElementById('fempty'),ferr=document.getElementById('ferr'),
@@ -1450,20 +1465,20 @@ document.addEventListener('click',e=>{
   const span=cp.parentElement.querySelector('span');
   if(span)copyText(span.textContent,cp);
 });
-document.getElementById('mSvg').onclick=async e=>{
-  if(!cur)return;const btn=e.target;
-  try{
+document.getElementById('mSvg').onclick=e=>{const btn=e.currentTarget;
+  if(!cur)return;
+  dlFeedback(btn,async()=>{
     const txt=await svgFor(cur.p+':'+cur.n,curColor);
     const blob=new Blob([txt],{type:'image/svg+xml'});
     const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${cur.n}-${cur.p}.svg`;
     a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
     funnelMaybe();
-  }catch(err){btn.textContent='✕';setTimeout(()=>btn.textContent=t('dl_svg'),1500);}
+  });
 };
-document.getElementById('mPng').onclick=async e=>{
-  if(!cur)return;const btn=e.target;
-  const size=+document.getElementById('mPngSize').value||128;
-  try{
+document.getElementById('mPng').onclick=e=>{const btn=e.currentTarget;
+  if(!cur)return;
+  dlFeedback(btn,async()=>{
+    const size=+document.getElementById('mPngSize').value||128;
     const txt=await svgFor(cur.p+':'+cur.n,curColor);
     const url=URL.createObjectURL(new Blob([txt],{type:'image/svg+xml'}));
     const img=new Image();
@@ -1477,7 +1492,7 @@ document.getElementById('mPng').onclick=async e=>{
     const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${cur.n}-${cur.p}-${cv.width}px.png`;
     a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
     funnelMaybe();
-  }catch(err){btn.textContent='✕';setTimeout(()=>btn.textContent=t('dl_png'),1500);}
+  });
 };
 /* funnel (matrix) */
 function funnelMaybe(){
@@ -1687,15 +1702,11 @@ async function ipasFetchFull(key){
   if(!r.ok)throw new Error('not found');
   return {blob:await r.blob(),name:`${key}-512.webp`};
 }
-async function dlIpasWebp(key,btn){
-  const orig=btn.textContent;btn.disabled=true;btn.textContent=t('ipas_dl_busy');
-  try{const f=await ipasFetchFull(key);saveBlob(f.blob,f.name);btn.textContent='✓';}
-  catch(e){btn.textContent=t('ipas_dl_fail');}
-  setTimeout(()=>{btn.textContent=orig;btn.disabled=false;},1600);
+function dlIpasWebp(key,btn){
+  return dlFeedback(btn,async()=>{const f=await ipasFetchFull(key);saveBlob(f.blob,f.name);});
 }
-async function dlIpasPng(key,btn){
-  const orig=btn.textContent;btn.disabled=true;btn.textContent=t('ipas_dl_busy');
-  try{
+function dlIpasPng(key,btn){
+  return dlFeedback(btn,async()=>{
     const f=await ipasFetchFull(key);
     const bmp=await createImageBitmap(f.blob);
     const cv=document.createElement('canvas');cv.width=bmp.width;cv.height=bmp.height;
@@ -1703,9 +1714,7 @@ async function dlIpasPng(key,btn){
     const png=await new Promise(res=>cv.toBlob(res,'image/png'));
     if(!png)throw new Error('png encode failed');
     saveBlob(png,`${key}-${bmp.width}px.png`);
-    btn.textContent='✓';
-  }catch(e){btn.textContent=t('ipas_dl_fail');}
-  setTimeout(()=>{btn.textContent=orig;btn.disabled=false;},1600);
+  });
 }
 /* store-only ZIP writer (webp/png are pre-compressed) — batches any filter, built fully client-side */
 function crc32(buf){
@@ -1934,20 +1943,22 @@ async function asInit(){
     b.onclick=()=>{AS.bg=c;[...cBox.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');asRender();};
     cBox.appendChild(b);
   }
-  document.getElementById('asDlSvg').onclick=async e=>{const btn=e.currentTarget;try{
-    await asCore();await asMod(AS.style);
-    saveBlob(new Blob([asSvgStr(AS.style,AS.seed,AS.bg)],{type:'image/svg+xml'}),`${AS.style}-${AS.seed||'avatar'}.svg`);
-    funnelMaybe();
-  }catch(err){btn.textContent='✕';setTimeout(()=>btn.textContent=t('as_dl_svg'),1500);}};
-  document.getElementById('asDlPng').onclick=async e=>{const btn=e.currentTarget;try{
-    await asCore();await asMod(AS.style);
-    const url=URL.createObjectURL(new Blob([asSvgStr(AS.style,AS.seed,AS.bg)],{type:'image/svg+xml'}));
-    const img=new Image();await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src=url;});
-    const cv=document.createElement('canvas');cv.width=cv.height=512;
-    cv.getContext('2d').drawImage(img,0,0,512,512);URL.revokeObjectURL(url);
-    saveBlob(await new Promise(res=>cv.toBlob(res,'image/png')),`${AS.style}-${AS.seed||'avatar'}-512px.png`);
-    funnelMaybe();
-  }catch(err){btn.textContent='✕';setTimeout(()=>btn.textContent=t('as_dl_png'),1500);}};
+  document.getElementById('asDlSvg').onclick=e=>{const btn=e.currentTarget;
+    dlFeedback(btn,async()=>{
+      await asCore();await asMod(AS.style);
+      saveBlob(new Blob([asSvgStr(AS.style,AS.seed,AS.bg)],{type:'image/svg+xml'}),`${AS.style}-${AS.seed||'avatar'}.svg`);
+      funnelMaybe();
+    });};
+  document.getElementById('asDlPng').onclick=e=>{const btn=e.currentTarget;
+    dlFeedback(btn,async()=>{
+      await asCore();await asMod(AS.style);
+      const url=URL.createObjectURL(new Blob([asSvgStr(AS.style,AS.seed,AS.bg)],{type:'image/svg+xml'}));
+      const img=new Image();await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src=url;});
+      const cv=document.createElement('canvas');cv.width=cv.height=512;
+      cv.getContext('2d').drawImage(img,0,0,512,512);URL.revokeObjectURL(url);
+      saveBlob(await new Promise(res=>cv.toBlob(res,'image/png')),`${AS.style}-${AS.seed||'avatar'}-512px.png`);
+      funnelMaybe();
+    });};
   document.getElementById('asCopySvg').onclick=async e=>{const btn=e.currentTarget;try{
     await asCore();await asMod(AS.style);
     copyText(asSvgStr(AS.style,AS.seed,AS.bg),btn);
@@ -2067,12 +2078,9 @@ function ilVarShow(vi){
     b.onclick=()=>ilVarShow(i);vBox.appendChild(b);});
   document.getElementById('ilDl').textContent='⬇ '+ILL.vfile;
 }
-document.getElementById('ilDl').onclick=async e=>{const btn=e.currentTarget;if(!ILL.cur)return;
-  const orig=btn.textContent;btn.disabled=true;
-  try{const r=await fetch(`illus/${ILL.cur.p}/${ILL.vfile}`);if(!r.ok)throw 0;
-    saveBlob(await r.blob(),ILL.vfile);btn.textContent='✓';}
-  catch(err){btn.textContent=t('ipas_dl_fail');}
-  setTimeout(()=>{btn.textContent=orig;btn.disabled=false;},1600);};
+document.getElementById('ilDl').onclick=e=>{const btn=e.currentTarget;if(!ILL.cur)return;
+  dlFeedback(btn,async()=>{const r=await fetch(`illus/${ILL.cur.p}/${ILL.vfile}`);if(!r.ok)throw 0;
+    saveBlob(await r.blob(),ILL.vfile);});};
 document.getElementById('ilCopyName').onclick=e=>{if(ILL.cur)copyText(ILL.cur.t,e.currentTarget);};
 document.getElementById('ilCopyUrl').onclick=e=>{if(ILL.cur)copyText(`https://icongems.kuige.me/illus/${ILL.cur.p}/${ILL.vfile}`,e.currentTarget);};
 function closeIlModal(){ilmodal.hidden=true;document.body.style.overflow='';}
